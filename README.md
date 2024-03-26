@@ -2,6 +2,8 @@
 
 # Run
 
-In dev, run this. Code will restart when file is changed.
+`npm run run`
 
-`npm run watch`
+# Run In Dev 
+
+`in dev, run this. Code will restart when file is changed.`

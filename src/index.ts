@@ -15,7 +15,7 @@ import WCPSParser, {
     WcpsQueryContext,
     WhereClauseContext,
 } from './grammar/wcpsParser';
-import { beautifyForClause } from './utils';
+import { BeautifiLetClause, beautifyForClause } from './utils';
 
 const input = ` FOR $c IN (mean_summer_airtemp),
                     $z IN (what_is_this),
@@ -43,7 +43,34 @@ class ParseTreeBeautifier extends ParseTreeListener {
     }
 
     enterEveryRule(node: ParserRuleContext): void {
+        if (node instanceof ForClauseListContext) {
+            const forClauseSet = node.forClause_list();
+            const forClauseArray = [];
 
+            for (let i = 0; i < forClauseSet.length; i++) {
+                let beautifiedFor = beautifyForClause(forClauseSet[i]);
+                forClauseArray.push(beautifiedFor);
+            }
+
+            const forClauseList = forClauseArray.join(',\n    ');
+            this.output.push(`for ${forClauseList}`);
+        }
+
+        if (node instanceof LetClauseListContext) {
+            const letClauseSet = node.letClause_list();
+            const letClauseArray = [];
+
+            for (let i = 0; i < letClauseSet.length; i++) {
+                let beautifiedLet = BeautifiLetClause(letClauseSet[i]);
+                letClauseArray.push(beautifiedLet);
+            }
+        }
+
+        if (node instanceof WhereClauseContext) {
+        }
+
+        if (node instanceof ReturnClauseContext) {
+        }
     }
 
     run() {
@@ -52,8 +79,7 @@ class ParseTreeBeautifier extends ParseTreeListener {
     }
 }
 
+const beautifier = new ParseTreeBeautifier(tree);
+beautifier.run();
 
-
-const walker = new ParseTreeWalker();
-const listener = new Listener();
-walker.walk(listener, tree);
+console.log(beautifier.output.join('\n'));

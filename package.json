@@ -1,0 +1,28 @@
+{
+  "name": "parser",
+  "version": "0.0.1",
+  "description": "WCPS Parser + Beautifier",
+  "author": "Nodar Chabashvili",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf build",
+    "test": "jest",
+    "watch": "nodemon",
+    "build": "tsc",
+    "run": "ts-node ./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.0.0",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.9",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "antlr4": "^4.13.1-patch-1"
+  }
+}

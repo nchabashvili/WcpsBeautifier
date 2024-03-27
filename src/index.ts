@@ -84,6 +84,16 @@ class ParseTreeBeautifier extends ParseTreeListener {
         }
 
         if (node instanceof ReturnClauseContext) {
+            const processingExpression = node.processingExpression().getText();
+            const hasLeft = node.LEFT_PARENTHESIS() != null;
+            const hasRight = node.RIGHT_PARENTHESIS() != null;
+
+            let retrunClause = 'return ';
+            if (hasLeft) retrunClause += '( ';
+            retrunClause += processingExpression;
+            if (hasRight) retrunClause += ' )';
+
+            this.output.push(retrunClause);
         }
     }
 

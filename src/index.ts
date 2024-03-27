@@ -15,7 +15,7 @@ import WCPSParser, {
     WcpsQueryContext,
     WhereClauseContext,
 } from './grammar/wcpsParser';
-import { BeautifyLetClause, beautifyForClause } from './utils';
+import { BeautifyLetClause, BeautifyReturnClause, BeautifyWhereClause, beautifyForClause } from './utils';
 
 const input = ` FOR $c IN (mean_summer_airtemp),
                     $z IN (what_is_this),
@@ -71,29 +71,17 @@ class ParseTreeBeautifier extends ParseTreeListener {
         }
 
         if (node instanceof WhereClauseContext) {
-            const coverageExpression = node.coverageExpression().getText();
-            const hasLeft = node.LEFT_PARENTHESIS() != null;
-            const hasRight = node.RIGHT_PARENTHESIS() != null;
 
-            let whereClause = 'where ';
-            if (hasLeft) whereClause += '( ';
-            whereClause += coverageExpression;
-            if (hasRight) whereClause += ' )';
+            const beautifiedWhere = BeautifyWhereClause(node);
 
-            this.output.push(whereClause);
+            this.output.push(beautifiedWhere);
         }
 
         if (node instanceof ReturnClauseContext) {
-            const processingExpression = node.processingExpression().getText();
-            const hasLeft = node.LEFT_PARENTHESIS() != null;
-            const hasRight = node.RIGHT_PARENTHESIS() != null;
 
-            let retrunClause = 'return ';
-            if (hasLeft) retrunClause += '( ';
-            retrunClause += processingExpression;
-            if (hasRight) retrunClause += ' )';
+            const beautifiedReturn = BeautifyReturnClause(node);
 
-            this.output.push(retrunClause);
+            this.output.push(beautifiedReturn);
         }
     }
 

@@ -1,4 +1,4 @@
-import { ForClauseContext, LetClauseContext } from './grammar/wcpsParser';
+import { ForClauseContext, LetClauseContext, ReturnClauseContext, WhereClauseContext } from './grammar/wcpsParser';
 
 export function beautifyForClause(node: ForClauseContext): string {
     const coverageVariableName = node.coverageVariableName().getText();
@@ -57,4 +57,31 @@ export function BeautifyLetClause(node: LetClauseContext): string {
     }
 
     return letClause;
+}
+
+export function BeautifyWhereClause(node: WhereClauseContext):string {
+    const coverageExpression = node.coverageExpression().getText();
+    const hasLeft = node.LEFT_PARENTHESIS() != null;
+    const hasRight = node.RIGHT_PARENTHESIS() != null;
+
+    let whereClause = 'where ';
+    if (hasLeft) whereClause += '( ';
+    whereClause += coverageExpression;
+    if (hasRight) whereClause += ' )';
+
+    return whereClause;
+}
+
+export function BeautifyReturnClause(node: ReturnClauseContext):string {
+
+    const processingExpression = node.processingExpression().getText();
+    const hasLeft = node.LEFT_PARENTHESIS() != null;
+    const hasRight = node.RIGHT_PARENTHESIS() != null;
+
+    let retrunClause = 'return ';
+    if (hasLeft) retrunClause += '( ';
+    retrunClause += processingExpression;
+    if (hasRight) retrunClause += ' )';
+
+    return retrunClause;
 }

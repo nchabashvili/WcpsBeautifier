@@ -15,7 +15,7 @@ import WCPSParser, {
     WcpsQueryContext,
     WhereClauseContext,
 } from './grammar/wcpsParser';
-import { BeautifiLetClause, beautifyForClause } from './utils';
+import { BeautifyLetClause, beautifyForClause } from './utils';
 
 const input = ` FOR $c IN (mean_summer_airtemp),
                     $z IN (what_is_this),
@@ -61,12 +61,26 @@ class ParseTreeBeautifier extends ParseTreeListener {
             const letClauseArray = [];
 
             for (let i = 0; i < letClauseSet.length; i++) {
-                let beautifiedLet = BeautifiLetClause(letClauseSet[i]);
+                let beautifiedLet = BeautifyLetClause(letClauseSet[i]);
                 letClauseArray.push(beautifiedLet);
             }
+            
+            const letClauseList = letClauseArray.join(',\n    ');
+            this.output.push(`let ${letClauseList}`);
+
         }
 
         if (node instanceof WhereClauseContext) {
+            const coverageExpression = node.coverageExpression().getText();
+            const hasLeft = node.LEFT_PARENTHESIS() != null;
+            const hasRight = node.RIGHT_PARENTHESIS() != null;
+
+            let whereClause = 'where ';
+            if (hasLeft) whereClause += '( ';
+            whereClause += coverageExpression;
+            if (hasRight) whereClause += ' )';
+
+            this.output.push(whereClause);
         }
 
         if (node instanceof ReturnClauseContext) {

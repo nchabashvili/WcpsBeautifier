@@ -69,7 +69,7 @@ export function BeautifyWhereClause(node: WhereClauseContext): string {
 
     const hasLeft = node.LEFT_PARENTHESIS() != null;
     const hasRight = node.RIGHT_PARENTHESIS() != null;
-    
+
     let operator = "";
     if (comparison) {
         operator = node.coverageExpression().numericalComparissonOperator().getText();
@@ -88,20 +88,35 @@ export function BeautifyWhereClause(node: WhereClauseContext): string {
 export function BeautifyReturnClause(node: ReturnClauseContext): string {
     // variables for encoded expression
     const encodedExpression = node.processingExpression().encodedCoverageExpression();
+
     const hasLeft = encodedExpression.LEFT_PARENTHESIS() != null;
     const hasRight = encodedExpression.RIGHT_PARENTHESIS() != null;
     const encodeEquation = encodedExpression.coverageExpression().coverageExpression_list().map(node => node.getText());
     const encodeString = encodedExpression.STRING_LITERAL();
 
+    //variables for unary Arithmetic Expression
+    const unary = encodedExpression.coverageExpression().unaryArithmeticExpression();
+    const unaryExpression = unary.unaryArithmeticExpressionOperator().getText();
+
+    //console.log(unary.getText());
+
     let returnClause = 'return\n    ';
     if (encodedExpression) {
         returnClause += "encode";
         if (hasLeft) returnClause += '(\n        ';
-        returnClause += encodeEquation[0].toString();
-        returnClause += " ";
-        returnClause += encodedExpression.coverageExpression().coverageArithmeticOperator().getText();
-        returnClause += " ";
-        returnClause += encodeEquation[1].toString();
+
+        if(unaryExpression.length != 0){
+            returnClause += unaryExpression;
+        }
+
+        if (encodeEquation.length != 0) {
+            returnClause += encodeEquation[0].toString();
+            returnClause += " ";
+            returnClause += encodedExpression.coverageExpression().coverageArithmeticOperator().getText();
+            returnClause += " ";
+            returnClause += encodeEquation[1].toString();
+        }
+
         if (encodeString != null) returnClause += ",\n        " + encodeString.getText();
         if (hasRight) returnClause += '\n    )';
     }

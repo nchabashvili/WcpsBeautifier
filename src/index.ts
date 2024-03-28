@@ -10,6 +10,7 @@ import {
 import WCPSLexer from './grammar/wcpsLexer';
 import WCPSParser, {
     ForClauseListContext,
+    GetComponentExpressionContext,
     LetClauseListContext,
     ReturnClauseContext,
     WcpsQueryContext,
@@ -17,14 +18,8 @@ import WCPSParser, {
 } from './grammar/wcpsParser';
 import { BeautifyLetClause, BeautifyReturnClause, BeautifyWhereClause, beautifyForClause } from './utils';
 
-const input = ` FOR $c IN (mean_summer_airtemp),
-                    $z IN (what_is_this),
-                    $f IN (nice,goodbye,third)
-                LET $a := $c[Lat(20:30), Long(40:45)],
-                    $b := $c + 2,
-                    $z := [$z(0:20),$f(5:30),$j(3:30)]
-                WHERE $a > 25
-                RETURN encode($a + $b, "png")`;
+const input = `
+FOR $c IN (mean_summer_airtemp), $z IN (what_is_this), $f IN (nice,goodbye,third) LET $a:=$c[Lat(20:30),Long(40:45)], $b:=$c+2,$z:=[$z(0:20),$f(5:30),$j(3:30)] WHERE $a>25 RETURN encode($a+$b,"png")`;
 
 const charStream = new CharStream(input);
 const lexer = new WCPSLexer(charStream);
@@ -46,7 +41,8 @@ class ParseTreeBeautifier extends ParseTreeListener {
         if (node instanceof ForClauseListContext) {
             const forClauseSet = node.forClause_list();
             const forClauseArray = [];
-
+            
+            // TODO: Convert to map
             for (let i = 0; i < forClauseSet.length; i++) {
                 let beautifiedFor = beautifyForClause(forClauseSet[i]);
                 forClauseArray.push(beautifiedFor);
@@ -67,20 +63,15 @@ class ParseTreeBeautifier extends ParseTreeListener {
             
             const letClauseList = letClauseArray.join(',\n    ');
             this.output.push(`let ${letClauseList}`);
-
         }
 
         if (node instanceof WhereClauseContext) {
-
             const beautifiedWhere = BeautifyWhereClause(node);
-
             this.output.push(beautifiedWhere);
         }
 
         if (node instanceof ReturnClauseContext) {
-
             const beautifiedReturn = BeautifyReturnClause(node);
-
             this.output.push(beautifiedReturn);
         }
     }

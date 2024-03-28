@@ -513,6 +513,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 0, wcpsParser.RULE_wcpsQuery);
 		let _la: number;
 		try {
+			localctx = new WcpsQueryLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			{
@@ -1077,6 +1078,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 24, wcpsParser.RULE_geoXYAxisLabelAndDomainResolution);
 		let _la: number;
 		try {
+			localctx = new GeoXYAxisLabelAndDomainResolutionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 367;
@@ -1130,6 +1132,7 @@ export default class wcpsParser extends Parser {
 		let localctx: CoverageVariableNameContext = new CoverageVariableNameContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 26, wcpsParser.RULE_coverageVariableName);
 		try {
+			localctx = new CoverageVariableNameLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 380;
@@ -1214,6 +1217,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ScalarValueCoverageExpressionContext = new ScalarValueCoverageExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 30, wcpsParser.RULE_scalarValueCoverageExpression);
 		try {
+			localctx = new ScalarValueCoverageExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 390;
@@ -1351,18 +1355,28 @@ export default class wcpsParser extends Parser {
 			switch ( this._interp.adaptivePredict(this._input, 23, this._ctx) ) {
 			case 1:
 				{
+				localctx = new BooleanReduceExpressionContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
+
 				this.state = 406;
 				this.reduceBooleanExpression();
 				}
 				break;
 			case 2:
 				{
+				localctx = new BooleanConstantLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 407;
 				this.booleanConstant();
 				}
 				break;
 			case 3:
 				{
+				localctx = new BooleanUnaryScalarLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 408;
 				this.booleanUnaryOperator();
 				this.state = 410;
@@ -1391,6 +1405,9 @@ export default class wcpsParser extends Parser {
 				break;
 			case 4:
 				{
+				localctx = new BooleanNumericalComparisonScalarLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 416;
 				this.numericalScalarExpression(0);
 				this.state = 417;
@@ -1401,12 +1418,18 @@ export default class wcpsParser extends Parser {
 				break;
 			case 5:
 				{
+				localctx = new BooleanReduceExpressionContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 420;
 				this.reduceBooleanExpression();
 				}
 				break;
 			case 6:
 				{
+				localctx = new BooleanStringComparisonScalarContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 421;
 				this.stringScalarExpression();
 				this.state = 422;
@@ -1428,7 +1451,7 @@ export default class wcpsParser extends Parser {
 					_prevctx = localctx;
 					{
 					{
-					localctx = new BooleanScalarExpressionContext(this, _parentctx, _parentState);
+					localctx = new BooleanBinaryScalarLabelContext(this, new BooleanScalarExpressionContext(this, _parentctx, _parentState));
 					this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_booleanScalarExpression);
 					this.state = 427;
 					if (!(this.precpred(this._ctx, 4))) {
@@ -1623,6 +1646,7 @@ export default class wcpsParser extends Parser {
 		let localctx: StringScalarExpressionContext = new StringScalarExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 46, wcpsParser.RULE_stringScalarExpression);
 		try {
+			localctx = new StringScalarExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 446;
@@ -1648,6 +1672,7 @@ export default class wcpsParser extends Parser {
 		let localctx: StarExpressionContext = new StarExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 48, wcpsParser.RULE_starExpression);
 		try {
+			localctx = new StarExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 448;
@@ -1896,6 +1921,10 @@ export default class wcpsParser extends Parser {
 			switch ( this._interp.adaptivePredict(this._input, 33, this._ctx) ) {
 			case 1:
 				{
+				localctx = new NumericalUnaryScalarExpressionLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
+
 				this.state = 504;
 				this.numericalUnaryOperation();
 				this.state = 505;
@@ -1908,6 +1937,9 @@ export default class wcpsParser extends Parser {
 				break;
 			case 2:
 				{
+				localctx = new NumericalTrigonometricScalarExpressionLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 509;
 				this.trigonometricOperator();
 				this.state = 510;
@@ -1920,24 +1952,36 @@ export default class wcpsParser extends Parser {
 				break;
 			case 3:
 				{
+				localctx = new NumericalCondenseExpressionLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 514;
 				this.condenseExpression();
 				}
 				break;
 			case 4:
 				{
+				localctx = new NumericalRealNumberExpressionLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 515;
 				this.number_();
 				}
 				break;
 			case 5:
 				{
+				localctx = new NumericalNanNumberExpressionLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 516;
 				this.match(wcpsParser.NAN_NUMBER_CONSTANT);
 				}
 				break;
 			case 6:
 				{
+				localctx = new NumericalComplexNumberConstantContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 517;
 				this.complexNumberConstant();
 				}
@@ -1955,7 +1999,7 @@ export default class wcpsParser extends Parser {
 					_prevctx = localctx;
 					{
 					{
-					localctx = new NumericalScalarExpressionContext(this, _parentctx, _parentState);
+					localctx = new NumericalBinaryScalarExpressionLabelContext(this, new NumericalScalarExpressionContext(this, _parentctx, _parentState));
 					this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_numericalScalarExpression);
 					this.state = 520;
 					if (!(this.precpred(this._ctx, 5))) {
@@ -1993,6 +2037,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ComplexNumberConstantContext = new ComplexNumberConstantContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 56, wcpsParser.RULE_complexNumberConstant);
 		try {
+			localctx = new ComplexNumberConstantLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 529;
@@ -2205,6 +2250,7 @@ export default class wcpsParser extends Parser {
 		let localctx: CoverageExpressionNullSetRetrievingContext = new CoverageExpressionNullSetRetrievingContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 66, wcpsParser.RULE_coverageExpressionNullSetRetrieving);
 		try {
+			localctx = new CoverageExpressionNullSetRetrievingLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 551;
@@ -2236,6 +2282,7 @@ export default class wcpsParser extends Parser {
 		let localctx: CoverageIdentifierExpressionContext = new CoverageIdentifierExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 68, wcpsParser.RULE_coverageIdentifierExpression);
 		try {
+			localctx = new CoverageIdentifierExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 556;
@@ -2267,6 +2314,7 @@ export default class wcpsParser extends Parser {
 		let localctx: CellCountExpressionContext = new CellCountExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 70, wcpsParser.RULE_cellCountExpression);
 		try {
+			localctx = new CellCountExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 561;
@@ -2298,6 +2346,7 @@ export default class wcpsParser extends Parser {
 		let localctx: CoverageCrsSetExpressionContext = new CoverageCrsSetExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 72, wcpsParser.RULE_coverageCrsSetExpression);
 		try {
+			localctx = new CoverageCrsSetExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 566;
@@ -2330,6 +2379,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 74, wcpsParser.RULE_domainExpression);
 		let _la: number;
 		try {
+			localctx = new DomainExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 571;
@@ -2385,6 +2435,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ImageCrsDomainByDimensionExpressionContext = new ImageCrsDomainByDimensionExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 76, wcpsParser.RULE_imageCrsDomainByDimensionExpression);
 		try {
+			localctx = new ImageCrsDomainByDimensionExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 584;
@@ -2420,6 +2471,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ImageCrsDomainExpressionContext = new ImageCrsDomainExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 78, wcpsParser.RULE_imageCrsDomainExpression);
 		try {
+			localctx = new ImageCrsDomainExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 591;
@@ -2451,6 +2503,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ImageCrsExpressionContext = new ImageCrsExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 80, wcpsParser.RULE_imageCrsExpression);
 		try {
+			localctx = new ImageCrsExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 596;
@@ -2483,6 +2536,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 82, wcpsParser.RULE_describeCoverageExpression);
 		let _la: number;
 		try {
+			localctx = new DescribeCoverageExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 601;
@@ -2589,6 +2643,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 88, wcpsParser.RULE_encodedCoverageExpression);
 		let _la: number;
 		try {
+			localctx = new EncodedCoverageExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 616;
@@ -2637,6 +2692,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 90, wcpsParser.RULE_decodeCoverageExpression);
 		let _la: number;
 		try {
+			localctx = new DecodedCoverageExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 627;
@@ -2700,12 +2756,19 @@ export default class wcpsParser extends Parser {
 			switch ( this._interp.adaptivePredict(this._input, 49, this._ctx) ) {
 			case 1:
 				{
+				localctx = new CoverageExpressionUdfExpressionContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
+
 				this.state = 637;
 				this.udfExpression();
 				}
 				break;
 			case 2:
 				{
+				localctx = new CoverageExpressionSliceLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 638;
 				this.match(wcpsParser.SLICE);
 				this.state = 639;
@@ -2726,6 +2789,9 @@ export default class wcpsParser extends Parser {
 				break;
 			case 3:
 				{
+				localctx = new CoverageExpressionTrimCoverageLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 647;
 				this.match(wcpsParser.TRIM);
 				this.state = 648;
@@ -2746,6 +2812,9 @@ export default class wcpsParser extends Parser {
 				break;
 			case 4:
 				{
+				localctx = new CoverageExpressionCoverageLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 656;
 				this.match(wcpsParser.LEFT_PARENTHESIS);
 				this.state = 657;
@@ -2756,60 +2825,90 @@ export default class wcpsParser extends Parser {
 				break;
 			case 5:
 				{
+				localctx = new CoverageExpressionScalarLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 660;
 				this.scalarExpression();
 				}
 				break;
 			case 6:
 				{
+				localctx = new CoverageExpressionDomainIntervalsLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 661;
 				this.domainIntervals();
 				}
 				break;
 			case 7:
 				{
+				localctx = new CoverageExpressionTimeExtractorLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 662;
 				this.timeExtractorElement();
 				}
 				break;
 			case 8:
 				{
+				localctx = new CoverageExpressionTimeTruncatorLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 663;
 				this.timeTruncatorElement();
 				}
 				break;
 			case 9:
 				{
+				localctx = new CoverageExpressionGeoXYAxisLabelAndDomainResolutionContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 664;
 				this.geoXYAxisLabelAndDomainResolution();
 				}
 				break;
 			case 10:
 				{
+				localctx = new CoverageExpressionConstructorLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 665;
 				this.coverageConstructorExpression();
 				}
 				break;
 			case 11:
 				{
+				localctx = new CoverageExpressionVariableNameLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 666;
 				this.coverageVariableName();
 				}
 				break;
 			case 12:
 				{
+				localctx = new CoverageExpressionConstantLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 667;
 				this.coverageConstantExpression();
 				}
 				break;
 			case 13:
 				{
+				localctx = new CoverageExpressionDecodeLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 668;
 				this.decodeCoverageExpression();
 				}
 				break;
 			case 14:
 				{
+				localctx = new CoverageExpressionExtendLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 669;
 				this.match(wcpsParser.EXTEND);
 				this.state = 670;
@@ -2844,6 +2943,9 @@ export default class wcpsParser extends Parser {
 				break;
 			case 15:
 				{
+				localctx = new CoverageExpressionExtendByDomainIntervalsLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 681;
 				this.match(wcpsParser.EXTEND);
 				this.state = 682;
@@ -2881,102 +2983,153 @@ export default class wcpsParser extends Parser {
 				break;
 			case 16:
 				{
+				localctx = new CoverageExpressionUnaryArithmeticLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 693;
 				this.unaryArithmeticExpression();
 				}
 				break;
 			case 17:
 				{
+				localctx = new CoverageExpressionTrigonometricLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 694;
 				this.trigonometricExpression();
 				}
 				break;
 			case 18:
 				{
+				localctx = new CoverageExpressionExponentialLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 695;
 				this.exponentialExpression();
 				}
 				break;
 			case 19:
 				{
+				localctx = new CoverageExpressionMinBinaryLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 696;
 				this.minBinaryExpression();
 				}
 				break;
 			case 20:
 				{
+				localctx = new CoverageExpressionMaxBinaryLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 697;
 				this.maxBinaryExpression();
 				}
 				break;
 			case 21:
 				{
+				localctx = new CoverageExpressionPowerLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 698;
 				this.unaryPowerExpression();
 				}
 				break;
 			case 22:
 				{
+				localctx = new CoverageExpressionModLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 699;
 				this.unaryModExpression();
 				}
 				break;
 			case 23:
 				{
+				localctx = new CoverageExpressionUnaryBooleanLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 700;
 				this.unaryBooleanExpression();
 				}
 				break;
 			case 24:
 				{
+				localctx = new CoverageExpressionCastLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 701;
 				this.castExpression();
 				}
 				break;
 			case 25:
 				{
+				localctx = new CoverageExpressionRangeConstructorLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 702;
 				this.rangeConstructorExpression();
 				}
 				break;
 			case 26:
 				{
+				localctx = new CoverageExpressionClipWKTLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 703;
 				this.clipWKTExpression();
 				}
 				break;
 			case 27:
 				{
+				localctx = new CoverageExpressionClipCurtainLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 704;
 				this.clipCurtainExpression();
 				}
 				break;
 			case 28:
 				{
+				localctx = new CoverageExpressionClipCorridorLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 705;
 				this.clipCorridorExpression();
 				}
 				break;
 			case 29:
 				{
+				localctx = new CoverageExpressionCrsTransformLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 706;
 				this.crsTransformExpression();
 				}
 				break;
 			case 30:
 				{
+				localctx = new CoverageExpressionCrsTransformShorthandLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 707;
 				this.crsTransformShorthandExpression();
 				}
 				break;
 			case 31:
 				{
+				localctx = new CoverageExpressionSwitchCaseLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 708;
 				this.switchCaseExpression();
 				}
 				break;
 			case 32:
 				{
+				localctx = new CoverageExpressionScaleByImageCrsDomainLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 709;
 				this.match(wcpsParser.SCALE);
 				this.state = 710;
@@ -3014,6 +3167,9 @@ export default class wcpsParser extends Parser {
 				break;
 			case 33:
 				{
+				localctx = new CoverageExpressionScaleByFactorLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 721;
 				this.match(wcpsParser.SCALE);
 				this.state = 722;
@@ -3108,6 +3264,9 @@ export default class wcpsParser extends Parser {
 				break;
 			case 34:
 				{
+				localctx = new CoverageExpressionScaleByFactorListLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 737;
 				this.match(wcpsParser.SCALE);
 				this.state = 738;
@@ -3142,6 +3301,9 @@ export default class wcpsParser extends Parser {
 				break;
 			case 35:
 				{
+				localctx = new CoverageExpressionScaleByDimensionIntervalsLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 749;
 				this.match(wcpsParser.SCALE);
 				this.state = 750;
@@ -3176,18 +3338,27 @@ export default class wcpsParser extends Parser {
 				break;
 			case 36:
 				{
+				localctx = new CoverageExpresisonFlipLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 761;
 				this.flipExpression();
 				}
 				break;
 			case 37:
 				{
+				localctx = new CoverageExpressionSortLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 762;
 				this.sortExpression();
 				}
 				break;
 			case 38:
 				{
+				localctx = new CoverageExpressionPolygonizeLabelContext(this, localctx);
+				this._ctx = localctx;
+				_prevctx = localctx;
 				this.state = 763;
 				this.polygonizeExpression();
 				}
@@ -3209,7 +3380,7 @@ export default class wcpsParser extends Parser {
 					switch ( this._interp.adaptivePredict(this._input, 51, this._ctx) ) {
 					case 1:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionLogicLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 766;
 						if (!(this.precpred(this._ctx, 50))) {
@@ -3223,7 +3394,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 2:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionComparissonLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 770;
 						if (!(this.precpred(this._ctx, 35))) {
@@ -3237,7 +3408,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 3:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionArithmeticLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 774;
 						if (!(this.precpred(this._ctx, 34))) {
@@ -3251,7 +3422,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 4:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionOverlayLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 778;
 						if (!(this.precpred(this._ctx, 4))) {
@@ -3265,7 +3436,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 5:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionShorthandSliceLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 781;
 						if (!(this.precpred(this._ctx, 49))) {
@@ -3281,7 +3452,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 6:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionShorthandSubsetLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 786;
 						if (!(this.precpred(this._ctx, 47))) {
@@ -3297,7 +3468,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 7:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionShortHandSubsetWithLetClauseVariableLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 791;
 						if (!(this.precpred(this._ctx, 46))) {
@@ -3313,7 +3484,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 8:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionRangeSubsettingLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 796;
 						if (!(this.precpred(this._ctx, 38))) {
@@ -3327,7 +3498,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 9:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageIsNullExpressionContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 799;
 						if (!(this.precpred(this._ctx, 9))) {
@@ -3351,7 +3522,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 10:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionDynamicallyChangingNullValuesLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 805;
 						if (!(this.precpred(this._ctx, 8))) {
@@ -3363,7 +3534,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 11:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionDynamicallyChangingNullValuesFromLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 807;
 						if (!(this.precpred(this._ctx, 7))) {
@@ -3375,7 +3546,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 12:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionDynamicallyChangingNullMaskLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 809;
 						if (!(this.precpred(this._ctx, 6))) {
@@ -3387,7 +3558,7 @@ export default class wcpsParser extends Parser {
 						break;
 					case 13:
 						{
-						localctx = new CoverageExpressionContext(this, _parentctx, _parentState);
+						localctx = new CoverageExpressionDynamicallyChangingNullMaskDiscardLabelContext(this, new CoverageExpressionContext(this, _parentctx, _parentState));
 						this.pushNewRecursionContext(localctx, _startState, wcpsParser.RULE_coverageExpression);
 						this.state = 811;
 						if (!(this.precpred(this._ctx, 5))) {
@@ -3491,6 +3662,7 @@ export default class wcpsParser extends Parser {
 		let localctx: UnaryArithmeticExpressionContext = new UnaryArithmeticExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 98, wcpsParser.RULE_unaryArithmeticExpression);
 		try {
+			localctx = new UnaryCoverageArithmeticExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 822;
@@ -3538,6 +3710,7 @@ export default class wcpsParser extends Parser {
 		let localctx: TrigonometricExpressionContext = new TrigonometricExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 100, wcpsParser.RULE_trigonometricExpression);
 		try {
+			localctx = new TrigonometricExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 830;
@@ -3602,6 +3775,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ExponentialExpressionContext = new ExponentialExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 104, wcpsParser.RULE_exponentialExpression);
 		try {
+			localctx = new ExponentialExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 837;
@@ -3633,6 +3807,7 @@ export default class wcpsParser extends Parser {
 		let localctx: UnaryPowerExpressionContext = new UnaryPowerExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 106, wcpsParser.RULE_unaryPowerExpression);
 		try {
+			localctx = new UnaryPowerExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 842;
@@ -3717,6 +3892,7 @@ export default class wcpsParser extends Parser {
 		let localctx: UnaryModExpressionContext = new UnaryModExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 108, wcpsParser.RULE_unaryModExpression);
 		try {
+			localctx = new UnaryModExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 852;
@@ -3801,6 +3977,7 @@ export default class wcpsParser extends Parser {
 		let localctx: MinBinaryExpressionContext = new MinBinaryExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 110, wcpsParser.RULE_minBinaryExpression);
 		try {
+			localctx = new MinBinaryExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 862;
@@ -3836,6 +4013,7 @@ export default class wcpsParser extends Parser {
 		let localctx: MaxBinaryExpressionContext = new MaxBinaryExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 112, wcpsParser.RULE_maxBinaryExpression);
 		try {
+			localctx = new MaxBinaryExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 869;
@@ -3875,6 +4053,7 @@ export default class wcpsParser extends Parser {
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case 75:
+				localctx = new NotUnaryBooleanExpressionLabelContext(this, localctx);
 				this.enterOuterAlt(localctx, 1);
 				{
 				this.state = 876;
@@ -3888,6 +4067,7 @@ export default class wcpsParser extends Parser {
 				}
 				break;
 			case 18:
+				localctx = new BitUnaryBooleanExpressionLabelContext(this, localctx);
 				this.enterOuterAlt(localctx, 2);
 				{
 				this.state = 881;
@@ -4016,6 +4196,7 @@ export default class wcpsParser extends Parser {
 		let localctx: CastExpressionContext = new CastExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 118, wcpsParser.RULE_castExpression);
 		try {
+			localctx = new CastExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 900;
@@ -4080,6 +4261,7 @@ export default class wcpsParser extends Parser {
 		let localctx: RangeConstructorExpressionContext = new RangeConstructorExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 122, wcpsParser.RULE_rangeConstructorExpression);
 		try {
+			localctx = new RangeConstructorExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 907;
@@ -4109,6 +4291,7 @@ export default class wcpsParser extends Parser {
 		let localctx: RangeConstructorElementContext = new RangeConstructorElementContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 124, wcpsParser.RULE_rangeConstructorElement);
 		try {
+			localctx = new RangeConstructorElementLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 911;
@@ -4139,6 +4322,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 126, wcpsParser.RULE_rangeConstructorElementList);
 		let _la: number;
 		try {
+			localctx = new RangeConstructorElementListLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 915;
@@ -4181,6 +4365,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 128, wcpsParser.RULE_rangeConstructorSwitchCaseExpression);
 		let _la: number;
 		try {
+			localctx = new RangeConstructorSwitchCaseExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 923;
@@ -4237,6 +4422,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 130, wcpsParser.RULE_dimensionPointList);
 		let _la: number;
 		try {
+			localctx = new DimensionPointListLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 940;
@@ -4279,6 +4465,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 132, wcpsParser.RULE_dimensionPointElement);
 		let _la: number;
 		try {
+			localctx = new DimensionPointElementLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 948;
@@ -4364,6 +4551,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ScaleDimensionPointElementContext = new ScaleDimensionPointElementContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 136, wcpsParser.RULE_scaleDimensionPointElement);
 		try {
+			localctx = new SliceScaleDimensionPointElementLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 965;
@@ -4396,6 +4584,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 138, wcpsParser.RULE_scaleDimensionPointList);
 		let _la: number;
 		try {
+			localctx = new ScaleDimensionPointListLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 970;
@@ -4438,6 +4627,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 140, wcpsParser.RULE_scaleDimensionIntervalList);
 		let _la: number;
 		try {
+			localctx = new ScaleDimensionIntervalListLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 978;
@@ -4479,6 +4669,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ScaleDimensionIntervalElementContext = new ScaleDimensionIntervalElementContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 142, wcpsParser.RULE_scaleDimensionIntervalElement);
 		try {
+			localctx = new TrimScaleDimensionIntervalElementLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 986;
@@ -4515,6 +4706,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 144, wcpsParser.RULE_dimensionBoundConcatenationElement);
 		let _la: number;
 		try {
+			localctx = new DimensionBoundConcatenationElementLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 994;
@@ -4601,6 +4793,7 @@ export default class wcpsParser extends Parser {
 			this._errHandler.sync(this);
 			switch ( this._interp.adaptivePredict(this._input, 75, this._ctx) ) {
 			case 1:
+				localctx = new TrimDimensionIntervalElementLabelContext(this, localctx);
 				this.enterOuterAlt(localctx, 1);
 				{
 				this.state = 1013;
@@ -4630,6 +4823,7 @@ export default class wcpsParser extends Parser {
 				}
 				break;
 			case 2:
+				localctx = new TrimDimensionIntervalByImageCrsDomainElementLabelContext(this, localctx);
 				this.enterOuterAlt(localctx, 2);
 				{
 				this.state = 1024;
@@ -4655,6 +4849,7 @@ export default class wcpsParser extends Parser {
 				}
 				break;
 			case 3:
+				localctx = new SliceDimensionIntervalElementLabelContext(this, localctx);
 				this.enterOuterAlt(localctx, 3);
 				{
 				this.state = 1033;
@@ -4960,6 +5155,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 154, wcpsParser.RULE_wktPoints);
 		let _la: number;
 		try {
+			localctx = new WktPointsLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			{
@@ -5032,6 +5228,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 156, wcpsParser.RULE_wktPointElementList);
 		try {
 			let _alt: number;
+			localctx = new WKTPointElementListLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1136;
@@ -5083,6 +5280,7 @@ export default class wcpsParser extends Parser {
 		let localctx: WktLineStringContext = new WktLineStringContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 158, wcpsParser.RULE_wktLineString);
 		try {
+			localctx = new WKTLineStringLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1149;
@@ -5110,6 +5308,7 @@ export default class wcpsParser extends Parser {
 		let localctx: WktPolygonContext = new WktPolygonContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 160, wcpsParser.RULE_wktPolygon);
 		try {
+			localctx = new WKTPolygonLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1152;
@@ -5142,6 +5341,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 162, wcpsParser.RULE_wktMultipolygon);
 		let _la: number;
 		try {
+			localctx = new WKTMultipolygonLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1157;
@@ -5197,6 +5397,7 @@ export default class wcpsParser extends Parser {
 		let localctx: WktCoverageExpressionContext = new WktCoverageExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 164, wcpsParser.RULE_wktCoverageExpression);
 		try {
+			localctx = new WKTCoverageExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1174;
@@ -5222,6 +5423,7 @@ export default class wcpsParser extends Parser {
 		let localctx: WktExpressionContext = new WktExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 166, wcpsParser.RULE_wktExpression);
 		try {
+			localctx = new WKTExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1180;
@@ -5400,6 +5602,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 172, wcpsParser.RULE_clipCurtainExpression);
 		let _la: number;
 		try {
+			localctx = new ClipCurtainExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1186;
@@ -5568,6 +5771,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 182, wcpsParser.RULE_clipCorridorExpression);
 		let _la: number;
 		try {
+			localctx = new ClipCorridorExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1215;
@@ -5652,6 +5856,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 184, wcpsParser.RULE_clipWKTExpression);
 		let _la: number;
 		try {
+			localctx = new ClipWKTExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1242;
@@ -5710,6 +5915,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 186, wcpsParser.RULE_crsTransformExpression);
 		let _la: number;
 		try {
+			localctx = new CrsTransformExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1255;
@@ -5818,6 +6024,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 188, wcpsParser.RULE_crsTransformShorthandExpression);
 		let _la: number;
 		try {
+			localctx = new CrsTransformShorthandExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1287;
@@ -5925,6 +6132,7 @@ export default class wcpsParser extends Parser {
 		let localctx: PolygonizeExpressionContext = new PolygonizeExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 190, wcpsParser.RULE_polygonizeExpression);
 		try {
+			localctx = new PolygonizeExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1319;
@@ -5971,6 +6179,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 192, wcpsParser.RULE_dimensionCrsList);
 		let _la: number;
 		try {
+			localctx = new DimensionCrsListLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1328;
@@ -6017,6 +6226,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 194, wcpsParser.RULE_dimensionGeoXYResolutionsList);
 		let _la: number;
 		try {
+			localctx = new DimensionGeoXYResolutionsListLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1339;
@@ -6100,6 +6310,7 @@ export default class wcpsParser extends Parser {
 		let localctx: DimensionCrsElementContext = new DimensionCrsElementContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 198, wcpsParser.RULE_dimensionCrsElement);
 		try {
+			localctx = new DimensionCrsElementLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1353;
@@ -6129,6 +6340,7 @@ export default class wcpsParser extends Parser {
 		let localctx: InterpolationTypeContext = new InterpolationTypeContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 200, wcpsParser.RULE_interpolationType);
 		try {
+			localctx = new InterpolationTypeLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1357;
@@ -6155,6 +6367,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 202, wcpsParser.RULE_coverageConstructorExpression);
 		let _la: number;
 		try {
+			localctx = new CoverageConstructorExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1359;
@@ -6211,6 +6424,7 @@ export default class wcpsParser extends Parser {
 			this._errHandler.sync(this);
 			switch ( this._interp.adaptivePredict(this._input, 112, this._ctx) ) {
 			case 1:
+				localctx = new AxisIteratorDomainIntervalsLabelContext(this, localctx);
 				this.enterOuterAlt(localctx, 1);
 				{
 				this.state = 1373;
@@ -6255,6 +6469,7 @@ export default class wcpsParser extends Parser {
 				}
 				break;
 			case 2:
+				localctx = new AxisIteratorLabelContext(this, localctx);
 				this.enterOuterAlt(localctx, 2);
 				{
 				this.state = 1385;
@@ -6303,6 +6518,7 @@ export default class wcpsParser extends Parser {
 				}
 				break;
 			case 3:
+				localctx = new AxisIteratorEnumerationListLabelContext(this, localctx);
 				this.enterOuterAlt(localctx, 3);
 				{
 				this.state = 1399;
@@ -6396,6 +6612,7 @@ export default class wcpsParser extends Parser {
 		let localctx: IntervalExpressionContext = new IntervalExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 208, wcpsParser.RULE_intervalExpression);
 		try {
+			localctx = new IntervalExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1418;
@@ -6426,6 +6643,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 210, wcpsParser.RULE_coverageConstantExpression);
 		let _la: number;
 		try {
+			localctx = new CoverageConstantExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1422;
@@ -6499,6 +6717,7 @@ export default class wcpsParser extends Parser {
 		let localctx: AxisSpecContext = new AxisSpecContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 212, wcpsParser.RULE_axisSpec);
 		try {
+			localctx = new AxisSpecLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1446;
@@ -6637,6 +6856,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ReduceBooleanExpressionContext = new ReduceBooleanExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 220, wcpsParser.RULE_reduceBooleanExpression);
 		try {
+			localctx = new ReduceBooleanExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1456;
@@ -6668,6 +6888,7 @@ export default class wcpsParser extends Parser {
 		let localctx: ReduceNumericalExpressionContext = new ReduceNumericalExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 222, wcpsParser.RULE_reduceNumericalExpression);
 		try {
+			localctx = new ReduceNumericalExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1461;
@@ -6779,6 +7000,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 228, wcpsParser.RULE_generalCondenseExpression);
 		let _la: number;
 		try {
+			localctx = new GeneralCondenseExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1472;
@@ -6840,6 +7062,7 @@ export default class wcpsParser extends Parser {
 		let localctx: FlipExpressionContext = new FlipExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 230, wcpsParser.RULE_flipExpression);
 		try {
+			localctx = new FlipExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1489;
@@ -6872,6 +7095,7 @@ export default class wcpsParser extends Parser {
 		this.enterRule(localctx, 232, wcpsParser.RULE_sortExpression);
 		let _la: number;
 		try {
+			localctx = new SortExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1494;
@@ -6917,6 +7141,7 @@ export default class wcpsParser extends Parser {
 		let localctx: SwitchCaseExpressionContext = new SwitchCaseExpressionContext(this, this._ctx, this.state);
 		this.enterRule(localctx, 234, wcpsParser.RULE_switchCaseExpression);
 		try {
+			localctx = new SwitchCaseExpressionLabelContext(this, localctx);
 			this.enterOuterAlt(localctx, 1);
 			{
 			this.state = 1504;
@@ -8367,6 +8592,18 @@ export class WcpsQueryContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_wcpsQuery;
+	}
+	public copyFrom(ctx: WcpsQueryContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class WcpsQueryLabelContext extends WcpsQueryContext {
+	constructor(parser: wcpsParser, ctx: WcpsQueryContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public forClauseList(): ForClauseListContext {
 		return this.getTypedRuleContext(ForClauseListContext, 0) as ForClauseListContext;
 	}
@@ -8379,17 +8616,14 @@ export class WcpsQueryContext extends ParserRuleContext {
 	public whereClause(): WhereClauseContext {
 		return this.getTypedRuleContext(WhereClauseContext, 0) as WhereClauseContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_wcpsQuery;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterWcpsQuery) {
-	 		listener.enterWcpsQuery(this);
+	    if(listener.enterWcpsQueryLabel) {
+	 		listener.enterWcpsQueryLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitWcpsQuery) {
-	 		listener.exitWcpsQuery(this);
+	    if(listener.exitWcpsQueryLabel) {
+	 		listener.exitWcpsQueryLabel(this);
 		}
 	}
 }
@@ -8781,6 +9015,18 @@ export class GeoXYAxisLabelAndDomainResolutionContext extends ParserRuleContext 
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_geoXYAxisLabelAndDomainResolution;
+	}
+	public copyFrom(ctx: GeoXYAxisLabelAndDomainResolutionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class GeoXYAxisLabelAndDomainResolutionLabelContext extends GeoXYAxisLabelAndDomainResolutionContext {
+	constructor(parser: wcpsParser, ctx: GeoXYAxisLabelAndDomainResolutionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public COVERAGE_NAME(): TerminalNode {
 		return this.getToken(wcpsParser.COVERAGE_NAME, 0);
 	}
@@ -8811,17 +9057,14 @@ export class GeoXYAxisLabelAndDomainResolutionContext extends ParserRuleContext 
 	public crsName(): CrsNameContext {
 		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_geoXYAxisLabelAndDomainResolution;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterGeoXYAxisLabelAndDomainResolution) {
-	 		listener.enterGeoXYAxisLabelAndDomainResolution(this);
+	    if(listener.enterGeoXYAxisLabelAndDomainResolutionLabel) {
+	 		listener.enterGeoXYAxisLabelAndDomainResolutionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitGeoXYAxisLabelAndDomainResolution) {
-	 		listener.exitGeoXYAxisLabelAndDomainResolution(this);
+	    if(listener.exitGeoXYAxisLabelAndDomainResolutionLabel) {
+	 		listener.exitGeoXYAxisLabelAndDomainResolutionLabel(this);
 		}
 	}
 }
@@ -8832,20 +9075,29 @@ export class CoverageVariableNameContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
-	public COVERAGE_VARIABLE_NAME(): TerminalNode {
-		return this.getToken(wcpsParser.COVERAGE_VARIABLE_NAME, 0);
-	}
     public get ruleIndex(): number {
     	return wcpsParser.RULE_coverageVariableName;
 	}
+	public copyFrom(ctx: CoverageVariableNameContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CoverageVariableNameLabelContext extends CoverageVariableNameContext {
+	constructor(parser: wcpsParser, ctx: CoverageVariableNameContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public COVERAGE_VARIABLE_NAME(): TerminalNode {
+		return this.getToken(wcpsParser.COVERAGE_VARIABLE_NAME, 0);
+	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCoverageVariableName) {
-	 		listener.enterCoverageVariableName(this);
+	    if(listener.enterCoverageVariableNameLabel) {
+	 		listener.enterCoverageVariableNameLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCoverageVariableName) {
-	 		listener.exitCoverageVariableName(this);
+	    if(listener.exitCoverageVariableNameLabel) {
+	 		listener.exitCoverageVariableNameLabel(this);
 		}
 	}
 }
@@ -8892,6 +9144,18 @@ export class ScalarValueCoverageExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_scalarValueCoverageExpression;
+	}
+	public copyFrom(ctx: ScalarValueCoverageExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ScalarValueCoverageExpressionLabelContext extends ScalarValueCoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: ScalarValueCoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public coverageExpression(): CoverageExpressionContext {
 		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
 	}
@@ -8901,17 +9165,14 @@ export class ScalarValueCoverageExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_scalarValueCoverageExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterScalarValueCoverageExpression) {
-	 		listener.enterScalarValueCoverageExpression(this);
+	    if(listener.enterScalarValueCoverageExpressionLabel) {
+	 		listener.enterScalarValueCoverageExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitScalarValueCoverageExpression) {
-	 		listener.exitScalarValueCoverageExpression(this);
+	    if(listener.exitScalarValueCoverageExpressionLabel) {
+	 		listener.exitScalarValueCoverageExpressionLabel(this);
 		}
 	}
 }
@@ -8964,14 +9225,17 @@ export class BooleanScalarExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
-	public reduceBooleanExpression(): ReduceBooleanExpressionContext {
-		return this.getTypedRuleContext(ReduceBooleanExpressionContext, 0) as ReduceBooleanExpressionContext;
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_booleanScalarExpression;
 	}
-	public booleanConstant(): BooleanConstantContext {
-		return this.getTypedRuleContext(BooleanConstantContext, 0) as BooleanConstantContext;
+	public copyFrom(ctx: BooleanScalarExpressionContext): void {
+		super.copyFrom(ctx);
 	}
-	public booleanUnaryOperator(): BooleanUnaryOperatorContext {
-		return this.getTypedRuleContext(BooleanUnaryOperatorContext, 0) as BooleanUnaryOperatorContext;
+}
+export class BooleanBinaryScalarLabelContext extends BooleanScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: BooleanScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public booleanScalarExpression_list(): BooleanScalarExpressionContext[] {
 		return this.getTypedRuleContexts(BooleanScalarExpressionContext) as BooleanScalarExpressionContext[];
@@ -8979,20 +9243,71 @@ export class BooleanScalarExpressionContext extends ParserRuleContext {
 	public booleanScalarExpression(i: number): BooleanScalarExpressionContext {
 		return this.getTypedRuleContext(BooleanScalarExpressionContext, i) as BooleanScalarExpressionContext;
 	}
+	public booleanOperator(): BooleanOperatorContext {
+		return this.getTypedRuleContext(BooleanOperatorContext, 0) as BooleanOperatorContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterBooleanBinaryScalarLabel) {
+	 		listener.enterBooleanBinaryScalarLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitBooleanBinaryScalarLabel) {
+	 		listener.exitBooleanBinaryScalarLabel(this);
+		}
+	}
+}
+export class BooleanReduceExpressionContext extends BooleanScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: BooleanScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public reduceBooleanExpression(): ReduceBooleanExpressionContext {
+		return this.getTypedRuleContext(ReduceBooleanExpressionContext, 0) as ReduceBooleanExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterBooleanReduceExpression) {
+	 		listener.enterBooleanReduceExpression(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitBooleanReduceExpression) {
+	 		listener.exitBooleanReduceExpression(this);
+		}
+	}
+}
+export class BooleanUnaryScalarLabelContext extends BooleanScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: BooleanScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public booleanUnaryOperator(): BooleanUnaryOperatorContext {
+		return this.getTypedRuleContext(BooleanUnaryOperatorContext, 0) as BooleanUnaryOperatorContext;
+	}
+	public booleanScalarExpression(): BooleanScalarExpressionContext {
+		return this.getTypedRuleContext(BooleanScalarExpressionContext, 0) as BooleanScalarExpressionContext;
+	}
 	public LEFT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
 	}
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-	public numericalScalarExpression_list(): NumericalScalarExpressionContext[] {
-		return this.getTypedRuleContexts(NumericalScalarExpressionContext) as NumericalScalarExpressionContext[];
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterBooleanUnaryScalarLabel) {
+	 		listener.enterBooleanUnaryScalarLabel(this);
+		}
 	}
-	public numericalScalarExpression(i: number): NumericalScalarExpressionContext {
-		return this.getTypedRuleContext(NumericalScalarExpressionContext, i) as NumericalScalarExpressionContext;
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitBooleanUnaryScalarLabel) {
+	 		listener.exitBooleanUnaryScalarLabel(this);
+		}
 	}
-	public numericalComparissonOperator(): NumericalComparissonOperatorContext {
-		return this.getTypedRuleContext(NumericalComparissonOperatorContext, 0) as NumericalComparissonOperatorContext;
+}
+export class BooleanStringComparisonScalarContext extends BooleanScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: BooleanScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public stringScalarExpression_list(): StringScalarExpressionContext[] {
 		return this.getTypedRuleContexts(StringScalarExpressionContext) as StringScalarExpressionContext[];
@@ -9003,20 +9318,58 @@ export class BooleanScalarExpressionContext extends ParserRuleContext {
 	public stringOperator(): StringOperatorContext {
 		return this.getTypedRuleContext(StringOperatorContext, 0) as StringOperatorContext;
 	}
-	public booleanOperator(): BooleanOperatorContext {
-		return this.getTypedRuleContext(BooleanOperatorContext, 0) as BooleanOperatorContext;
-	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_booleanScalarExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterBooleanScalarExpression) {
-	 		listener.enterBooleanScalarExpression(this);
+	    if(listener.enterBooleanStringComparisonScalar) {
+	 		listener.enterBooleanStringComparisonScalar(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitBooleanScalarExpression) {
-	 		listener.exitBooleanScalarExpression(this);
+	    if(listener.exitBooleanStringComparisonScalar) {
+	 		listener.exitBooleanStringComparisonScalar(this);
+		}
+	}
+}
+export class BooleanConstantLabelContext extends BooleanScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: BooleanScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public booleanConstant(): BooleanConstantContext {
+		return this.getTypedRuleContext(BooleanConstantContext, 0) as BooleanConstantContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterBooleanConstantLabel) {
+	 		listener.enterBooleanConstantLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitBooleanConstantLabel) {
+	 		listener.exitBooleanConstantLabel(this);
+		}
+	}
+}
+export class BooleanNumericalComparisonScalarLabelContext extends BooleanScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: BooleanScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public numericalScalarExpression_list(): NumericalScalarExpressionContext[] {
+		return this.getTypedRuleContexts(NumericalScalarExpressionContext) as NumericalScalarExpressionContext[];
+	}
+	public numericalScalarExpression(i: number): NumericalScalarExpressionContext {
+		return this.getTypedRuleContext(NumericalScalarExpressionContext, i) as NumericalScalarExpressionContext;
+	}
+	public numericalComparissonOperator(): NumericalComparissonOperatorContext {
+		return this.getTypedRuleContext(NumericalComparissonOperatorContext, 0) as NumericalComparissonOperatorContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterBooleanNumericalComparisonScalarLabel) {
+	 		listener.enterBooleanNumericalComparisonScalarLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitBooleanNumericalComparisonScalarLabel) {
+	 		listener.exitBooleanNumericalComparisonScalarLabel(this);
 		}
 	}
 }
@@ -9174,20 +9527,29 @@ export class StringScalarExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
-	public STRING_LITERAL(): TerminalNode {
-		return this.getToken(wcpsParser.STRING_LITERAL, 0);
-	}
     public get ruleIndex(): number {
     	return wcpsParser.RULE_stringScalarExpression;
 	}
+	public copyFrom(ctx: StringScalarExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class StringScalarExpressionLabelContext extends StringScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: StringScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public STRING_LITERAL(): TerminalNode {
+		return this.getToken(wcpsParser.STRING_LITERAL, 0);
+	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterStringScalarExpression) {
-	 		listener.enterStringScalarExpression(this);
+	    if(listener.enterStringScalarExpressionLabel) {
+	 		listener.enterStringScalarExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitStringScalarExpression) {
-	 		listener.exitStringScalarExpression(this);
+	    if(listener.exitStringScalarExpressionLabel) {
+	 		listener.exitStringScalarExpressionLabel(this);
 		}
 	}
 }
@@ -9198,20 +9560,29 @@ export class StarExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
-	public MULTIPLICATION(): TerminalNode {
-		return this.getToken(wcpsParser.MULTIPLICATION, 0);
-	}
     public get ruleIndex(): number {
     	return wcpsParser.RULE_starExpression;
 	}
+	public copyFrom(ctx: StarExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class StarExpressionLabelContext extends StarExpressionContext {
+	constructor(parser: wcpsParser, ctx: StarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public MULTIPLICATION(): TerminalNode {
+		return this.getToken(wcpsParser.MULTIPLICATION, 0);
+	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterStarExpression) {
-	 		listener.enterStarExpression(this);
+	    if(listener.enterStarExpressionLabel) {
+	 		listener.enterStarExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitStarExpression) {
-	 		listener.exitStarExpression(this);
+	    if(listener.exitStarExpressionLabel) {
+	 		listener.exitStarExpressionLabel(this);
 		}
 	}
 }
@@ -9309,11 +9680,130 @@ export class NumericalScalarExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_numericalScalarExpression;
+	}
+	public copyFrom(ctx: NumericalScalarExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class NumericalTrigonometricScalarExpressionLabelContext extends NumericalScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: NumericalScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public trigonometricOperator(): TrigonometricOperatorContext {
+		return this.getTypedRuleContext(TrigonometricOperatorContext, 0) as TrigonometricOperatorContext;
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public numericalScalarExpression(): NumericalScalarExpressionContext {
+		return this.getTypedRuleContext(NumericalScalarExpressionContext, 0) as NumericalScalarExpressionContext;
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterNumericalTrigonometricScalarExpressionLabel) {
+	 		listener.enterNumericalTrigonometricScalarExpressionLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitNumericalTrigonometricScalarExpressionLabel) {
+	 		listener.exitNumericalTrigonometricScalarExpressionLabel(this);
+		}
+	}
+}
+export class NumericalNanNumberExpressionLabelContext extends NumericalScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: NumericalScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public NAN_NUMBER_CONSTANT(): TerminalNode {
+		return this.getToken(wcpsParser.NAN_NUMBER_CONSTANT, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterNumericalNanNumberExpressionLabel) {
+	 		listener.enterNumericalNanNumberExpressionLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitNumericalNanNumberExpressionLabel) {
+	 		listener.exitNumericalNanNumberExpressionLabel(this);
+		}
+	}
+}
+export class NumericalRealNumberExpressionLabelContext extends NumericalScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: NumericalScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public number_(): NumberContext {
+		return this.getTypedRuleContext(NumberContext, 0) as NumberContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterNumericalRealNumberExpressionLabel) {
+	 		listener.enterNumericalRealNumberExpressionLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitNumericalRealNumberExpressionLabel) {
+	 		listener.exitNumericalRealNumberExpressionLabel(this);
+		}
+	}
+}
+export class NumericalCondenseExpressionLabelContext extends NumericalScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: NumericalScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public condenseExpression(): CondenseExpressionContext {
+		return this.getTypedRuleContext(CondenseExpressionContext, 0) as CondenseExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterNumericalCondenseExpressionLabel) {
+	 		listener.enterNumericalCondenseExpressionLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitNumericalCondenseExpressionLabel) {
+	 		listener.exitNumericalCondenseExpressionLabel(this);
+		}
+	}
+}
+export class NumericalUnaryScalarExpressionLabelContext extends NumericalScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: NumericalScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public numericalUnaryOperation(): NumericalUnaryOperationContext {
 		return this.getTypedRuleContext(NumericalUnaryOperationContext, 0) as NumericalUnaryOperationContext;
 	}
 	public LEFT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public numericalScalarExpression(): NumericalScalarExpressionContext {
+		return this.getTypedRuleContext(NumericalScalarExpressionContext, 0) as NumericalScalarExpressionContext;
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterNumericalUnaryScalarExpressionLabel) {
+	 		listener.enterNumericalUnaryScalarExpressionLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitNumericalUnaryScalarExpressionLabel) {
+	 		listener.exitNumericalUnaryScalarExpressionLabel(this);
+		}
+	}
+}
+export class NumericalBinaryScalarExpressionLabelContext extends NumericalScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: NumericalScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public numericalScalarExpression_list(): NumericalScalarExpressionContext[] {
 		return this.getTypedRuleContexts(NumericalScalarExpressionContext) as NumericalScalarExpressionContext[];
@@ -9321,38 +9811,36 @@ export class NumericalScalarExpressionContext extends ParserRuleContext {
 	public numericalScalarExpression(i: number): NumericalScalarExpressionContext {
 		return this.getTypedRuleContext(NumericalScalarExpressionContext, i) as NumericalScalarExpressionContext;
 	}
-	public RIGHT_PARENTHESIS(): TerminalNode {
-		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	public numericalOperator(): NumericalOperatorContext {
+		return this.getTypedRuleContext(NumericalOperatorContext, 0) as NumericalOperatorContext;
 	}
-	public trigonometricOperator(): TrigonometricOperatorContext {
-		return this.getTypedRuleContext(TrigonometricOperatorContext, 0) as TrigonometricOperatorContext;
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterNumericalBinaryScalarExpressionLabel) {
+	 		listener.enterNumericalBinaryScalarExpressionLabel(this);
+		}
 	}
-	public condenseExpression(): CondenseExpressionContext {
-		return this.getTypedRuleContext(CondenseExpressionContext, 0) as CondenseExpressionContext;
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitNumericalBinaryScalarExpressionLabel) {
+	 		listener.exitNumericalBinaryScalarExpressionLabel(this);
+		}
 	}
-	public number_(): NumberContext {
-		return this.getTypedRuleContext(NumberContext, 0) as NumberContext;
-	}
-	public NAN_NUMBER_CONSTANT(): TerminalNode {
-		return this.getToken(wcpsParser.NAN_NUMBER_CONSTANT, 0);
+}
+export class NumericalComplexNumberConstantContext extends NumericalScalarExpressionContext {
+	constructor(parser: wcpsParser, ctx: NumericalScalarExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public complexNumberConstant(): ComplexNumberConstantContext {
 		return this.getTypedRuleContext(ComplexNumberConstantContext, 0) as ComplexNumberConstantContext;
 	}
-	public numericalOperator(): NumericalOperatorContext {
-		return this.getTypedRuleContext(NumericalOperatorContext, 0) as NumericalOperatorContext;
-	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_numericalScalarExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterNumericalScalarExpression) {
-	 		listener.enterNumericalScalarExpression(this);
+	    if(listener.enterNumericalComplexNumberConstant) {
+	 		listener.enterNumericalComplexNumberConstant(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitNumericalScalarExpression) {
-	 		listener.exitNumericalScalarExpression(this);
+	    if(listener.exitNumericalComplexNumberConstant) {
+	 		listener.exitNumericalComplexNumberConstant(this);
 		}
 	}
 }
@@ -9362,6 +9850,18 @@ export class ComplexNumberConstantContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_complexNumberConstant;
+	}
+	public copyFrom(ctx: ComplexNumberConstantContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ComplexNumberConstantLabelContext extends ComplexNumberConstantContext {
+	constructor(parser: wcpsParser, ctx: ComplexNumberConstantContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public LEFT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
@@ -9378,17 +9878,14 @@ export class ComplexNumberConstantContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_complexNumberConstant;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterComplexNumberConstant) {
-	 		listener.enterComplexNumberConstant(this);
+	    if(listener.enterComplexNumberConstantLabel) {
+	 		listener.enterComplexNumberConstantLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitComplexNumberConstant) {
-	 		listener.exitComplexNumberConstant(this);
+	    if(listener.exitComplexNumberConstantLabel) {
+	 		listener.exitComplexNumberConstantLabel(this);
 		}
 	}
 }
@@ -9579,6 +10076,18 @@ export class CoverageExpressionNullSetRetrievingContext extends ParserRuleContex
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_coverageExpressionNullSetRetrieving;
+	}
+	public copyFrom(ctx: CoverageExpressionNullSetRetrievingContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CoverageExpressionNullSetRetrievingLabelContext extends CoverageExpressionNullSetRetrievingContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionNullSetRetrievingContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public NULLSET(): TerminalNode {
 		return this.getToken(wcpsParser.NULLSET, 0);
 	}
@@ -9591,17 +10100,14 @@ export class CoverageExpressionNullSetRetrievingContext extends ParserRuleContex
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_coverageExpressionNullSetRetrieving;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCoverageExpressionNullSetRetrieving) {
-	 		listener.enterCoverageExpressionNullSetRetrieving(this);
+	    if(listener.enterCoverageExpressionNullSetRetrievingLabel) {
+	 		listener.enterCoverageExpressionNullSetRetrievingLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCoverageExpressionNullSetRetrieving) {
-	 		listener.exitCoverageExpressionNullSetRetrieving(this);
+	    if(listener.exitCoverageExpressionNullSetRetrievingLabel) {
+	 		listener.exitCoverageExpressionNullSetRetrievingLabel(this);
 		}
 	}
 }
@@ -9611,6 +10117,18 @@ export class CoverageIdentifierExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_coverageIdentifierExpression;
+	}
+	public copyFrom(ctx: CoverageIdentifierExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CoverageIdentifierExpressionLabelContext extends CoverageIdentifierExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageIdentifierExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public IDENTIFIER(): TerminalNode {
 		return this.getToken(wcpsParser.IDENTIFIER, 0);
@@ -9624,17 +10142,14 @@ export class CoverageIdentifierExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_coverageIdentifierExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCoverageIdentifierExpression) {
-	 		listener.enterCoverageIdentifierExpression(this);
+	    if(listener.enterCoverageIdentifierExpressionLabel) {
+	 		listener.enterCoverageIdentifierExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCoverageIdentifierExpression) {
-	 		listener.exitCoverageIdentifierExpression(this);
+	    if(listener.exitCoverageIdentifierExpressionLabel) {
+	 		listener.exitCoverageIdentifierExpressionLabel(this);
 		}
 	}
 }
@@ -9644,6 +10159,18 @@ export class CellCountExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_cellCountExpression;
+	}
+	public copyFrom(ctx: CellCountExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CellCountExpressionLabelContext extends CellCountExpressionContext {
+	constructor(parser: wcpsParser, ctx: CellCountExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public CELLCOUNT(): TerminalNode {
 		return this.getToken(wcpsParser.CELLCOUNT, 0);
@@ -9657,17 +10184,14 @@ export class CellCountExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_cellCountExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCellCountExpression) {
-	 		listener.enterCellCountExpression(this);
+	    if(listener.enterCellCountExpressionLabel) {
+	 		listener.enterCellCountExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCellCountExpression) {
-	 		listener.exitCellCountExpression(this);
+	    if(listener.exitCellCountExpressionLabel) {
+	 		listener.exitCellCountExpressionLabel(this);
 		}
 	}
 }
@@ -9677,6 +10201,18 @@ export class CoverageCrsSetExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_coverageCrsSetExpression;
+	}
+	public copyFrom(ctx: CoverageCrsSetExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CoverageCrsSetExpressionLabelContext extends CoverageCrsSetExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageCrsSetExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public CRSSET(): TerminalNode {
 		return this.getToken(wcpsParser.CRSSET, 0);
@@ -9690,17 +10226,14 @@ export class CoverageCrsSetExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_coverageCrsSetExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCoverageCrsSetExpression) {
-	 		listener.enterCoverageCrsSetExpression(this);
+	    if(listener.enterCoverageCrsSetExpressionLabel) {
+	 		listener.enterCoverageCrsSetExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCoverageCrsSetExpression) {
-	 		listener.exitCoverageCrsSetExpression(this);
+	    if(listener.exitCoverageCrsSetExpressionLabel) {
+	 		listener.exitCoverageCrsSetExpressionLabel(this);
 		}
 	}
 }
@@ -9710,6 +10243,18 @@ export class DomainExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_domainExpression;
+	}
+	public copyFrom(ctx: DomainExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DomainExpressionLabelContext extends DomainExpressionContext {
+	constructor(parser: wcpsParser, ctx: DomainExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public DOMAIN(): TerminalNode {
 		return this.getToken(wcpsParser.DOMAIN, 0);
@@ -9735,17 +10280,14 @@ export class DomainExpressionContext extends ParserRuleContext {
 	public crsName(): CrsNameContext {
 		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_domainExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDomainExpression) {
-	 		listener.enterDomainExpression(this);
+	    if(listener.enterDomainExpressionLabel) {
+	 		listener.enterDomainExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDomainExpression) {
-	 		listener.exitDomainExpression(this);
+	    if(listener.exitDomainExpressionLabel) {
+	 		listener.exitDomainExpressionLabel(this);
 		}
 	}
 }
@@ -9755,6 +10297,18 @@ export class ImageCrsDomainByDimensionExpressionContext extends ParserRuleContex
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_imageCrsDomainByDimensionExpression;
+	}
+	public copyFrom(ctx: ImageCrsDomainByDimensionExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ImageCrsDomainByDimensionExpressionLabelContext extends ImageCrsDomainByDimensionExpressionContext {
+	constructor(parser: wcpsParser, ctx: ImageCrsDomainByDimensionExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public IMAGECRSDOMAIN(): TerminalNode {
 		return this.getToken(wcpsParser.IMAGECRSDOMAIN, 0);
@@ -9774,17 +10328,14 @@ export class ImageCrsDomainByDimensionExpressionContext extends ParserRuleContex
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_imageCrsDomainByDimensionExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterImageCrsDomainByDimensionExpression) {
-	 		listener.enterImageCrsDomainByDimensionExpression(this);
+	    if(listener.enterImageCrsDomainByDimensionExpressionLabel) {
+	 		listener.enterImageCrsDomainByDimensionExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitImageCrsDomainByDimensionExpression) {
-	 		listener.exitImageCrsDomainByDimensionExpression(this);
+	    if(listener.exitImageCrsDomainByDimensionExpressionLabel) {
+	 		listener.exitImageCrsDomainByDimensionExpressionLabel(this);
 		}
 	}
 }
@@ -9794,6 +10345,18 @@ export class ImageCrsDomainExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_imageCrsDomainExpression;
+	}
+	public copyFrom(ctx: ImageCrsDomainExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ImageCrsDomainExpressionLabelContext extends ImageCrsDomainExpressionContext {
+	constructor(parser: wcpsParser, ctx: ImageCrsDomainExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public IMAGECRSDOMAIN(): TerminalNode {
 		return this.getToken(wcpsParser.IMAGECRSDOMAIN, 0);
@@ -9807,17 +10370,14 @@ export class ImageCrsDomainExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_imageCrsDomainExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterImageCrsDomainExpression) {
-	 		listener.enterImageCrsDomainExpression(this);
+	    if(listener.enterImageCrsDomainExpressionLabel) {
+	 		listener.enterImageCrsDomainExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitImageCrsDomainExpression) {
-	 		listener.exitImageCrsDomainExpression(this);
+	    if(listener.exitImageCrsDomainExpressionLabel) {
+	 		listener.exitImageCrsDomainExpressionLabel(this);
 		}
 	}
 }
@@ -9827,6 +10387,18 @@ export class ImageCrsExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_imageCrsExpression;
+	}
+	public copyFrom(ctx: ImageCrsExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ImageCrsExpressionLabelContext extends ImageCrsExpressionContext {
+	constructor(parser: wcpsParser, ctx: ImageCrsExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public IMAGECRS(): TerminalNode {
 		return this.getToken(wcpsParser.IMAGECRS, 0);
@@ -9840,17 +10412,14 @@ export class ImageCrsExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_imageCrsExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterImageCrsExpression) {
-	 		listener.enterImageCrsExpression(this);
+	    if(listener.enterImageCrsExpressionLabel) {
+	 		listener.enterImageCrsExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitImageCrsExpression) {
-	 		listener.exitImageCrsExpression(this);
+	    if(listener.exitImageCrsExpressionLabel) {
+	 		listener.exitImageCrsExpressionLabel(this);
 		}
 	}
 }
@@ -9860,6 +10429,18 @@ export class DescribeCoverageExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_describeCoverageExpression;
+	}
+	public copyFrom(ctx: DescribeCoverageExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DescribeCoverageExpressionLabelContext extends DescribeCoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: DescribeCoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public DESCRIBE_COVERAGE(): TerminalNode {
 		return this.getToken(wcpsParser.DESCRIBE_COVERAGE, 0);
@@ -9885,17 +10466,14 @@ export class DescribeCoverageExpressionContext extends ParserRuleContext {
 	public extraParams(): ExtraParamsContext {
 		return this.getTypedRuleContext(ExtraParamsContext, 0) as ExtraParamsContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_describeCoverageExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDescribeCoverageExpression) {
-	 		listener.enterDescribeCoverageExpression(this);
+	    if(listener.enterDescribeCoverageExpressionLabel) {
+	 		listener.enterDescribeCoverageExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDescribeCoverageExpression) {
-	 		listener.exitDescribeCoverageExpression(this);
+	    if(listener.exitDescribeCoverageExpressionLabel) {
+	 		listener.exitDescribeCoverageExpressionLabel(this);
 		}
 	}
 }
@@ -9957,6 +10535,18 @@ export class EncodedCoverageExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_encodedCoverageExpression;
+	}
+	public copyFrom(ctx: EncodedCoverageExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class EncodedCoverageExpressionLabelContext extends EncodedCoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: EncodedCoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public ENCODE(): TerminalNode {
 		return this.getToken(wcpsParser.ENCODE, 0);
 	}
@@ -9981,17 +10571,14 @@ export class EncodedCoverageExpressionContext extends ParserRuleContext {
 	public extraParams(): ExtraParamsContext {
 		return this.getTypedRuleContext(ExtraParamsContext, 0) as ExtraParamsContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_encodedCoverageExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterEncodedCoverageExpression) {
-	 		listener.enterEncodedCoverageExpression(this);
+	    if(listener.enterEncodedCoverageExpressionLabel) {
+	 		listener.enterEncodedCoverageExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitEncodedCoverageExpression) {
-	 		listener.exitEncodedCoverageExpression(this);
+	    if(listener.exitEncodedCoverageExpressionLabel) {
+	 		listener.exitEncodedCoverageExpressionLabel(this);
 		}
 	}
 }
@@ -10001,6 +10588,18 @@ export class DecodeCoverageExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_decodeCoverageExpression;
+	}
+	public copyFrom(ctx: DecodeCoverageExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DecodedCoverageExpressionLabelContext extends DecodeCoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: DecodeCoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public DECODE(): TerminalNode {
 		return this.getToken(wcpsParser.DECODE, 0);
@@ -10020,17 +10619,14 @@ export class DecodeCoverageExpressionContext extends ParserRuleContext {
 	public extraParams(): ExtraParamsContext {
 		return this.getTypedRuleContext(ExtraParamsContext, 0) as ExtraParamsContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_decodeCoverageExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDecodeCoverageExpression) {
-	 		listener.enterDecodeCoverageExpression(this);
+	    if(listener.enterDecodedCoverageExpressionLabel) {
+	 		listener.enterDecodedCoverageExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDecodeCoverageExpression) {
-	 		listener.exitDecodeCoverageExpression(this);
+	    if(listener.exitDecodedCoverageExpressionLabel) {
+	 		listener.exitDecodedCoverageExpressionLabel(this);
 		}
 	}
 }
@@ -10041,8 +10637,809 @@ export class CoverageExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_coverageExpression;
+	}
+	public copyFrom(ctx: CoverageExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CoverageExpressionCrsTransformShorthandLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public crsTransformShorthandExpression(): CrsTransformShorthandExpressionContext {
+		return this.getTypedRuleContext(CrsTransformShorthandExpressionContext, 0) as CrsTransformShorthandExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionCrsTransformShorthandLabel) {
+	 		listener.enterCoverageExpressionCrsTransformShorthandLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionCrsTransformShorthandLabel) {
+	 		listener.exitCoverageExpressionCrsTransformShorthandLabel(this);
+		}
+	}
+}
+export class CoverageExpressionDynamicallyChangingNullValuesLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public nullClause(): NullClauseContext {
+		return this.getTypedRuleContext(NullClauseContext, 0) as NullClauseContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionDynamicallyChangingNullValuesLabel) {
+	 		listener.enterCoverageExpressionDynamicallyChangingNullValuesLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionDynamicallyChangingNullValuesLabel) {
+	 		listener.exitCoverageExpressionDynamicallyChangingNullValuesLabel(this);
+		}
+	}
+}
+export class CoverageExpressionUdfExpressionContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public udfExpression(): UdfExpressionContext {
 		return this.getTypedRuleContext(UdfExpressionContext, 0) as UdfExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionUdfExpression) {
+	 		listener.enterCoverageExpressionUdfExpression(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionUdfExpression) {
+	 		listener.exitCoverageExpressionUdfExpression(this);
+		}
+	}
+}
+export class CoverageExpressionScaleByImageCrsDomainLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public SCALE(): TerminalNode {
+		return this.getToken(wcpsParser.SCALE, 0);
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public COMMA(): TerminalNode {
+		return this.getToken(wcpsParser.COMMA, 0);
+	}
+	public LEFT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACE, 0);
+	}
+	public RIGHT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACE, 0);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public domainIntervals(): DomainIntervalsContext {
+		return this.getTypedRuleContext(DomainIntervalsContext, 0) as DomainIntervalsContext;
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionScaleByImageCrsDomainLabel) {
+	 		listener.enterCoverageExpressionScaleByImageCrsDomainLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionScaleByImageCrsDomainLabel) {
+	 		listener.exitCoverageExpressionScaleByImageCrsDomainLabel(this);
+		}
+	}
+}
+export class CoverageExpressionScaleByDimensionIntervalsLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public SCALE(): TerminalNode {
+		return this.getToken(wcpsParser.SCALE, 0);
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public COMMA(): TerminalNode {
+		return this.getToken(wcpsParser.COMMA, 0);
+	}
+	public LEFT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACE, 0);
+	}
+	public RIGHT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACE, 0);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public dimensionIntervalList(): DimensionIntervalListContext {
+		return this.getTypedRuleContext(DimensionIntervalListContext, 0) as DimensionIntervalListContext;
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionScaleByDimensionIntervalsLabel) {
+	 		listener.enterCoverageExpressionScaleByDimensionIntervalsLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionScaleByDimensionIntervalsLabel) {
+	 		listener.exitCoverageExpressionScaleByDimensionIntervalsLabel(this);
+		}
+	}
+}
+export class CoverageExpressionDynamicallyChangingNullMaskDiscardLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public nullMaskDiscard(): NullMaskDiscardContext {
+		return this.getTypedRuleContext(NullMaskDiscardContext, 0) as NullMaskDiscardContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionDynamicallyChangingNullMaskDiscardLabel) {
+	 		listener.enterCoverageExpressionDynamicallyChangingNullMaskDiscardLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionDynamicallyChangingNullMaskDiscardLabel) {
+	 		listener.exitCoverageExpressionDynamicallyChangingNullMaskDiscardLabel(this);
+		}
+	}
+}
+export class CoverageExpressionOverlayLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression_list(): CoverageExpressionContext[] {
+		return this.getTypedRuleContexts(CoverageExpressionContext) as CoverageExpressionContext[];
+	}
+	public coverageExpression(i: number): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, i) as CoverageExpressionContext;
+	}
+	public OVERLAY(): TerminalNode {
+		return this.getToken(wcpsParser.OVERLAY, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionOverlayLabel) {
+	 		listener.enterCoverageExpressionOverlayLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionOverlayLabel) {
+	 		listener.exitCoverageExpressionOverlayLabel(this);
+		}
+	}
+}
+export class CoverageExpressionComparissonLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression_list(): CoverageExpressionContext[] {
+		return this.getTypedRuleContexts(CoverageExpressionContext) as CoverageExpressionContext[];
+	}
+	public coverageExpression(i: number): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, i) as CoverageExpressionContext;
+	}
+	public numericalComparissonOperator(): NumericalComparissonOperatorContext {
+		return this.getTypedRuleContext(NumericalComparissonOperatorContext, 0) as NumericalComparissonOperatorContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionComparissonLabel) {
+	 		listener.enterCoverageExpressionComparissonLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionComparissonLabel) {
+	 		listener.exitCoverageExpressionComparissonLabel(this);
+		}
+	}
+}
+export class CoverageExpressionShortHandSubsetWithLetClauseVariableLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public LEFT_BRACKET(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACKET, 0);
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public RIGHT_BRACKET(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACKET, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionShortHandSubsetWithLetClauseVariableLabel) {
+	 		listener.enterCoverageExpressionShortHandSubsetWithLetClauseVariableLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionShortHandSubsetWithLetClauseVariableLabel) {
+	 		listener.exitCoverageExpressionShortHandSubsetWithLetClauseVariableLabel(this);
+		}
+	}
+}
+export class CoverageExpressionUnaryBooleanLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public unaryBooleanExpression(): UnaryBooleanExpressionContext {
+		return this.getTypedRuleContext(UnaryBooleanExpressionContext, 0) as UnaryBooleanExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionUnaryBooleanLabel) {
+	 		listener.enterCoverageExpressionUnaryBooleanLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionUnaryBooleanLabel) {
+	 		listener.exitCoverageExpressionUnaryBooleanLabel(this);
+		}
+	}
+}
+export class CoverageExpressionVariableNameLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionVariableNameLabel) {
+	 		listener.enterCoverageExpressionVariableNameLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionVariableNameLabel) {
+	 		listener.exitCoverageExpressionVariableNameLabel(this);
+		}
+	}
+}
+export class CoverageExpressionGeoXYAxisLabelAndDomainResolutionContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public geoXYAxisLabelAndDomainResolution(): GeoXYAxisLabelAndDomainResolutionContext {
+		return this.getTypedRuleContext(GeoXYAxisLabelAndDomainResolutionContext, 0) as GeoXYAxisLabelAndDomainResolutionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionGeoXYAxisLabelAndDomainResolution) {
+	 		listener.enterCoverageExpressionGeoXYAxisLabelAndDomainResolution(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionGeoXYAxisLabelAndDomainResolution) {
+	 		listener.exitCoverageExpressionGeoXYAxisLabelAndDomainResolution(this);
+		}
+	}
+}
+export class CoverageExpressionRangeConstructorLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public rangeConstructorExpression(): RangeConstructorExpressionContext {
+		return this.getTypedRuleContext(RangeConstructorExpressionContext, 0) as RangeConstructorExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionRangeConstructorLabel) {
+	 		listener.enterCoverageExpressionRangeConstructorLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionRangeConstructorLabel) {
+	 		listener.exitCoverageExpressionRangeConstructorLabel(this);
+		}
+	}
+}
+export class CoverageExpressionExtendByDomainIntervalsLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public EXTEND(): TerminalNode {
+		return this.getToken(wcpsParser.EXTEND, 0);
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public COMMA(): TerminalNode {
+		return this.getToken(wcpsParser.COMMA, 0);
+	}
+	public LEFT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACE, 0);
+	}
+	public RIGHT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACE, 0);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public domainIntervals(): DomainIntervalsContext {
+		return this.getTypedRuleContext(DomainIntervalsContext, 0) as DomainIntervalsContext;
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionExtendByDomainIntervalsLabel) {
+	 		listener.enterCoverageExpressionExtendByDomainIntervalsLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionExtendByDomainIntervalsLabel) {
+	 		listener.exitCoverageExpressionExtendByDomainIntervalsLabel(this);
+		}
+	}
+}
+export class CoverageExpressionCastLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public castExpression(): CastExpressionContext {
+		return this.getTypedRuleContext(CastExpressionContext, 0) as CastExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionCastLabel) {
+	 		listener.enterCoverageExpressionCastLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionCastLabel) {
+	 		listener.exitCoverageExpressionCastLabel(this);
+		}
+	}
+}
+export class CoverageExpressionPowerLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public unaryPowerExpression(): UnaryPowerExpressionContext {
+		return this.getTypedRuleContext(UnaryPowerExpressionContext, 0) as UnaryPowerExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionPowerLabel) {
+	 		listener.enterCoverageExpressionPowerLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionPowerLabel) {
+	 		listener.exitCoverageExpressionPowerLabel(this);
+		}
+	}
+}
+export class CoverageExpresisonFlipLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public flipExpression(): FlipExpressionContext {
+		return this.getTypedRuleContext(FlipExpressionContext, 0) as FlipExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpresisonFlipLabel) {
+	 		listener.enterCoverageExpresisonFlipLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpresisonFlipLabel) {
+	 		listener.exitCoverageExpresisonFlipLabel(this);
+		}
+	}
+}
+export class CoverageExpressionDynamicallyChangingNullMaskLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public nullMask(): NullMaskContext {
+		return this.getTypedRuleContext(NullMaskContext, 0) as NullMaskContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionDynamicallyChangingNullMaskLabel) {
+	 		listener.enterCoverageExpressionDynamicallyChangingNullMaskLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionDynamicallyChangingNullMaskLabel) {
+	 		listener.exitCoverageExpressionDynamicallyChangingNullMaskLabel(this);
+		}
+	}
+}
+export class CoverageExpressionExtendLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public EXTEND(): TerminalNode {
+		return this.getToken(wcpsParser.EXTEND, 0);
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public COMMA(): TerminalNode {
+		return this.getToken(wcpsParser.COMMA, 0);
+	}
+	public LEFT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACE, 0);
+	}
+	public RIGHT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACE, 0);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public dimensionIntervalList(): DimensionIntervalListContext {
+		return this.getTypedRuleContext(DimensionIntervalListContext, 0) as DimensionIntervalListContext;
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionExtendLabel) {
+	 		listener.enterCoverageExpressionExtendLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionExtendLabel) {
+	 		listener.exitCoverageExpressionExtendLabel(this);
+		}
+	}
+}
+export class CoverageExpressionSwitchCaseLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public switchCaseExpression(): SwitchCaseExpressionContext {
+		return this.getTypedRuleContext(SwitchCaseExpressionContext, 0) as SwitchCaseExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionSwitchCaseLabel) {
+	 		listener.enterCoverageExpressionSwitchCaseLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionSwitchCaseLabel) {
+	 		listener.exitCoverageExpressionSwitchCaseLabel(this);
+		}
+	}
+}
+export class CoverageExpressionTimeTruncatorLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public timeTruncatorElement(): TimeTruncatorElementContext {
+		return this.getTypedRuleContext(TimeTruncatorElementContext, 0) as TimeTruncatorElementContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionTimeTruncatorLabel) {
+	 		listener.enterCoverageExpressionTimeTruncatorLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionTimeTruncatorLabel) {
+	 		listener.exitCoverageExpressionTimeTruncatorLabel(this);
+		}
+	}
+}
+export class CoverageExpressionModLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public unaryModExpression(): UnaryModExpressionContext {
+		return this.getTypedRuleContext(UnaryModExpressionContext, 0) as UnaryModExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionModLabel) {
+	 		listener.enterCoverageExpressionModLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionModLabel) {
+	 		listener.exitCoverageExpressionModLabel(this);
+		}
+	}
+}
+export class CoverageExpressionTrigonometricLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public trigonometricExpression(): TrigonometricExpressionContext {
+		return this.getTypedRuleContext(TrigonometricExpressionContext, 0) as TrigonometricExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionTrigonometricLabel) {
+	 		listener.enterCoverageExpressionTrigonometricLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionTrigonometricLabel) {
+	 		listener.exitCoverageExpressionTrigonometricLabel(this);
+		}
+	}
+}
+export class CoverageExpressionDynamicallyChangingNullValuesFromLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public nullSetFrom(): NullSetFromContext {
+		return this.getTypedRuleContext(NullSetFromContext, 0) as NullSetFromContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionDynamicallyChangingNullValuesFromLabel) {
+	 		listener.enterCoverageExpressionDynamicallyChangingNullValuesFromLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionDynamicallyChangingNullValuesFromLabel) {
+	 		listener.exitCoverageExpressionDynamicallyChangingNullValuesFromLabel(this);
+		}
+	}
+}
+export class CoverageExpressionCoverageLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionCoverageLabel) {
+	 		listener.enterCoverageExpressionCoverageLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionCoverageLabel) {
+	 		listener.exitCoverageExpressionCoverageLabel(this);
+		}
+	}
+}
+export class CoverageExpressionConstantLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageConstantExpression(): CoverageConstantExpressionContext {
+		return this.getTypedRuleContext(CoverageConstantExpressionContext, 0) as CoverageConstantExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionConstantLabel) {
+	 		listener.enterCoverageExpressionConstantLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionConstantLabel) {
+	 		listener.exitCoverageExpressionConstantLabel(this);
+		}
+	}
+}
+export class CoverageExpressionShorthandSliceLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public LEFT_BRACKET(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACKET, 0);
+	}
+	public dimensionPointList(): DimensionPointListContext {
+		return this.getTypedRuleContext(DimensionPointListContext, 0) as DimensionPointListContext;
+	}
+	public RIGHT_BRACKET(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACKET, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionShorthandSliceLabel) {
+	 		listener.enterCoverageExpressionShorthandSliceLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionShorthandSliceLabel) {
+	 		listener.exitCoverageExpressionShorthandSliceLabel(this);
+		}
+	}
+}
+export class CoverageExpressionSortLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public sortExpression(): SortExpressionContext {
+		return this.getTypedRuleContext(SortExpressionContext, 0) as SortExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionSortLabel) {
+	 		listener.enterCoverageExpressionSortLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionSortLabel) {
+	 		listener.exitCoverageExpressionSortLabel(this);
+		}
+	}
+}
+export class CoverageExpressionShorthandSubsetLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public LEFT_BRACKET(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACKET, 0);
+	}
+	public dimensionIntervalList(): DimensionIntervalListContext {
+		return this.getTypedRuleContext(DimensionIntervalListContext, 0) as DimensionIntervalListContext;
+	}
+	public RIGHT_BRACKET(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACKET, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionShorthandSubsetLabel) {
+	 		listener.enterCoverageExpressionShorthandSubsetLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionShorthandSubsetLabel) {
+	 		listener.exitCoverageExpressionShorthandSubsetLabel(this);
+		}
+	}
+}
+export class CoverageExpressionArithmeticLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression_list(): CoverageExpressionContext[] {
+		return this.getTypedRuleContexts(CoverageExpressionContext) as CoverageExpressionContext[];
+	}
+	public coverageExpression(i: number): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, i) as CoverageExpressionContext;
+	}
+	public coverageArithmeticOperator(): CoverageArithmeticOperatorContext {
+		return this.getTypedRuleContext(CoverageArithmeticOperatorContext, 0) as CoverageArithmeticOperatorContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionArithmeticLabel) {
+	 		listener.enterCoverageExpressionArithmeticLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionArithmeticLabel) {
+	 		listener.exitCoverageExpressionArithmeticLabel(this);
+		}
+	}
+}
+export class CoverageExpressionExponentialLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public exponentialExpression(): ExponentialExpressionContext {
+		return this.getTypedRuleContext(ExponentialExpressionContext, 0) as ExponentialExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionExponentialLabel) {
+	 		listener.enterCoverageExpressionExponentialLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionExponentialLabel) {
+	 		listener.exitCoverageExpressionExponentialLabel(this);
+		}
+	}
+}
+export class CoverageExpressionPolygonizeLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public polygonizeExpression(): PolygonizeExpressionContext {
+		return this.getTypedRuleContext(PolygonizeExpressionContext, 0) as PolygonizeExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionPolygonizeLabel) {
+	 		listener.enterCoverageExpressionPolygonizeLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionPolygonizeLabel) {
+	 		listener.exitCoverageExpressionPolygonizeLabel(this);
+		}
+	}
+}
+export class CoverageExpressionLogicLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression_list(): CoverageExpressionContext[] {
+		return this.getTypedRuleContexts(CoverageExpressionContext) as CoverageExpressionContext[];
+	}
+	public coverageExpression(i: number): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, i) as CoverageExpressionContext;
+	}
+	public booleanOperator(): BooleanOperatorContext {
+		return this.getTypedRuleContext(BooleanOperatorContext, 0) as BooleanOperatorContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionLogicLabel) {
+	 		listener.enterCoverageExpressionLogicLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionLogicLabel) {
+	 		listener.exitCoverageExpressionLogicLabel(this);
+		}
+	}
+}
+export class CoverageExpressionSliceLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public SLICE(): TerminalNode {
 		return this.getToken(wcpsParser.SLICE, 0);
@@ -10050,11 +11447,8 @@ export class CoverageExpressionContext extends ParserRuleContext {
 	public LEFT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
 	}
-	public coverageExpression_list(): CoverageExpressionContext[] {
-		return this.getTypedRuleContexts(CoverageExpressionContext) as CoverageExpressionContext[];
-	}
-	public coverageExpression(i: number): CoverageExpressionContext {
-		return this.getTypedRuleContext(CoverageExpressionContext, i) as CoverageExpressionContext;
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
 	}
 	public COMMA(): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, 0);
@@ -10071,128 +11465,149 @@ export class CoverageExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-	public TRIM(): TerminalNode {
-		return this.getToken(wcpsParser.TRIM, 0);
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionSliceLabel) {
+	 		listener.enterCoverageExpressionSliceLabel(this);
+		}
 	}
-	public dimensionIntervalList(): DimensionIntervalListContext {
-		return this.getTypedRuleContext(DimensionIntervalListContext, 0) as DimensionIntervalListContext;
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionSliceLabel) {
+	 		listener.exitCoverageExpressionSliceLabel(this);
+		}
 	}
-	public scalarExpression(): ScalarExpressionContext {
-		return this.getTypedRuleContext(ScalarExpressionContext, 0) as ScalarExpressionContext;
-	}
-	public domainIntervals(): DomainIntervalsContext {
-		return this.getTypedRuleContext(DomainIntervalsContext, 0) as DomainIntervalsContext;
-	}
-	public timeExtractorElement(): TimeExtractorElementContext {
-		return this.getTypedRuleContext(TimeExtractorElementContext, 0) as TimeExtractorElementContext;
-	}
-	public timeTruncatorElement(): TimeTruncatorElementContext {
-		return this.getTypedRuleContext(TimeTruncatorElementContext, 0) as TimeTruncatorElementContext;
-	}
-	public geoXYAxisLabelAndDomainResolution(): GeoXYAxisLabelAndDomainResolutionContext {
-		return this.getTypedRuleContext(GeoXYAxisLabelAndDomainResolutionContext, 0) as GeoXYAxisLabelAndDomainResolutionContext;
-	}
-	public coverageConstructorExpression(): CoverageConstructorExpressionContext {
-		return this.getTypedRuleContext(CoverageConstructorExpressionContext, 0) as CoverageConstructorExpressionContext;
-	}
-	public coverageVariableName(): CoverageVariableNameContext {
-		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
-	}
-	public coverageConstantExpression(): CoverageConstantExpressionContext {
-		return this.getTypedRuleContext(CoverageConstantExpressionContext, 0) as CoverageConstantExpressionContext;
-	}
-	public decodeCoverageExpression(): DecodeCoverageExpressionContext {
-		return this.getTypedRuleContext(DecodeCoverageExpressionContext, 0) as DecodeCoverageExpressionContext;
-	}
-	public EXTEND(): TerminalNode {
-		return this.getToken(wcpsParser.EXTEND, 0);
-	}
-	public unaryArithmeticExpression(): UnaryArithmeticExpressionContext {
-		return this.getTypedRuleContext(UnaryArithmeticExpressionContext, 0) as UnaryArithmeticExpressionContext;
-	}
-	public trigonometricExpression(): TrigonometricExpressionContext {
-		return this.getTypedRuleContext(TrigonometricExpressionContext, 0) as TrigonometricExpressionContext;
-	}
-	public exponentialExpression(): ExponentialExpressionContext {
-		return this.getTypedRuleContext(ExponentialExpressionContext, 0) as ExponentialExpressionContext;
-	}
-	public minBinaryExpression(): MinBinaryExpressionContext {
-		return this.getTypedRuleContext(MinBinaryExpressionContext, 0) as MinBinaryExpressionContext;
-	}
-	public maxBinaryExpression(): MaxBinaryExpressionContext {
-		return this.getTypedRuleContext(MaxBinaryExpressionContext, 0) as MaxBinaryExpressionContext;
-	}
-	public unaryPowerExpression(): UnaryPowerExpressionContext {
-		return this.getTypedRuleContext(UnaryPowerExpressionContext, 0) as UnaryPowerExpressionContext;
-	}
-	public unaryModExpression(): UnaryModExpressionContext {
-		return this.getTypedRuleContext(UnaryModExpressionContext, 0) as UnaryModExpressionContext;
-	}
-	public unaryBooleanExpression(): UnaryBooleanExpressionContext {
-		return this.getTypedRuleContext(UnaryBooleanExpressionContext, 0) as UnaryBooleanExpressionContext;
-	}
-	public castExpression(): CastExpressionContext {
-		return this.getTypedRuleContext(CastExpressionContext, 0) as CastExpressionContext;
-	}
-	public rangeConstructorExpression(): RangeConstructorExpressionContext {
-		return this.getTypedRuleContext(RangeConstructorExpressionContext, 0) as RangeConstructorExpressionContext;
-	}
-	public clipWKTExpression(): ClipWKTExpressionContext {
-		return this.getTypedRuleContext(ClipWKTExpressionContext, 0) as ClipWKTExpressionContext;
+}
+export class CoverageExpressionClipCurtainLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public clipCurtainExpression(): ClipCurtainExpressionContext {
 		return this.getTypedRuleContext(ClipCurtainExpressionContext, 0) as ClipCurtainExpressionContext;
 	}
-	public clipCorridorExpression(): ClipCorridorExpressionContext {
-		return this.getTypedRuleContext(ClipCorridorExpressionContext, 0) as ClipCorridorExpressionContext;
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionClipCurtainLabel) {
+	 		listener.enterCoverageExpressionClipCurtainLabel(this);
+		}
 	}
-	public crsTransformExpression(): CrsTransformExpressionContext {
-		return this.getTypedRuleContext(CrsTransformExpressionContext, 0) as CrsTransformExpressionContext;
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionClipCurtainLabel) {
+	 		listener.exitCoverageExpressionClipCurtainLabel(this);
+		}
 	}
-	public crsTransformShorthandExpression(): CrsTransformShorthandExpressionContext {
-		return this.getTypedRuleContext(CrsTransformShorthandExpressionContext, 0) as CrsTransformShorthandExpressionContext;
+}
+export class CoverageExpressionRangeSubsettingLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
-	public switchCaseExpression(): SwitchCaseExpressionContext {
-		return this.getTypedRuleContext(SwitchCaseExpressionContext, 0) as SwitchCaseExpressionContext;
-	}
-	public SCALE(): TerminalNode {
-		return this.getToken(wcpsParser.SCALE, 0);
-	}
-	public scaleDimensionPointList(): ScaleDimensionPointListContext {
-		return this.getTypedRuleContext(ScaleDimensionPointListContext, 0) as ScaleDimensionPointListContext;
-	}
-	public flipExpression(): FlipExpressionContext {
-		return this.getTypedRuleContext(FlipExpressionContext, 0) as FlipExpressionContext;
-	}
-	public sortExpression(): SortExpressionContext {
-		return this.getTypedRuleContext(SortExpressionContext, 0) as SortExpressionContext;
-	}
-	public polygonizeExpression(): PolygonizeExpressionContext {
-		return this.getTypedRuleContext(PolygonizeExpressionContext, 0) as PolygonizeExpressionContext;
-	}
-	public booleanOperator(): BooleanOperatorContext {
-		return this.getTypedRuleContext(BooleanOperatorContext, 0) as BooleanOperatorContext;
-	}
-	public numericalComparissonOperator(): NumericalComparissonOperatorContext {
-		return this.getTypedRuleContext(NumericalComparissonOperatorContext, 0) as NumericalComparissonOperatorContext;
-	}
-	public coverageArithmeticOperator(): CoverageArithmeticOperatorContext {
-		return this.getTypedRuleContext(CoverageArithmeticOperatorContext, 0) as CoverageArithmeticOperatorContext;
-	}
-	public OVERLAY(): TerminalNode {
-		return this.getToken(wcpsParser.OVERLAY, 0);
-	}
-	public LEFT_BRACKET(): TerminalNode {
-		return this.getToken(wcpsParser.LEFT_BRACKET, 0);
-	}
-	public RIGHT_BRACKET(): TerminalNode {
-		return this.getToken(wcpsParser.RIGHT_BRACKET, 0);
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
 	}
 	public DOT(): TerminalNode {
 		return this.getToken(wcpsParser.DOT, 0);
 	}
 	public fieldName(): FieldNameContext {
 		return this.getTypedRuleContext(FieldNameContext, 0) as FieldNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionRangeSubsettingLabel) {
+	 		listener.enterCoverageExpressionRangeSubsettingLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionRangeSubsettingLabel) {
+	 		listener.exitCoverageExpressionRangeSubsettingLabel(this);
+		}
+	}
+}
+export class CoverageExpressionMaxBinaryLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public maxBinaryExpression(): MaxBinaryExpressionContext {
+		return this.getTypedRuleContext(MaxBinaryExpressionContext, 0) as MaxBinaryExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionMaxBinaryLabel) {
+	 		listener.enterCoverageExpressionMaxBinaryLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionMaxBinaryLabel) {
+	 		listener.exitCoverageExpressionMaxBinaryLabel(this);
+		}
+	}
+}
+export class CoverageExpressionDomainIntervalsLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public domainIntervals(): DomainIntervalsContext {
+		return this.getTypedRuleContext(DomainIntervalsContext, 0) as DomainIntervalsContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionDomainIntervalsLabel) {
+	 		listener.enterCoverageExpressionDomainIntervalsLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionDomainIntervalsLabel) {
+	 		listener.exitCoverageExpressionDomainIntervalsLabel(this);
+		}
+	}
+}
+export class CoverageExpressionScaleByFactorLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public SCALE(): TerminalNode {
+		return this.getToken(wcpsParser.SCALE, 0);
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public COMMA(): TerminalNode {
+		return this.getToken(wcpsParser.COMMA, 0);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public scalarExpression(): ScalarExpressionContext {
+		return this.getTypedRuleContext(ScalarExpressionContext, 0) as ScalarExpressionContext;
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public LEFT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACE, 0);
+	}
+	public RIGHT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACE, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionScaleByFactorLabel) {
+	 		listener.enterCoverageExpressionScaleByFactorLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionScaleByFactorLabel) {
+	 		listener.exitCoverageExpressionScaleByFactorLabel(this);
+		}
+	}
+}
+export class CoverageIsNullExpressionContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
 	}
 	public IS(): TerminalNode {
 		return this.getToken(wcpsParser.IS, 0);
@@ -10203,29 +11618,268 @@ export class CoverageExpressionContext extends ParserRuleContext {
 	public NOT(): TerminalNode {
 		return this.getToken(wcpsParser.NOT, 0);
 	}
-	public nullClause(): NullClauseContext {
-		return this.getTypedRuleContext(NullClauseContext, 0) as NullClauseContext;
-	}
-	public nullSetFrom(): NullSetFromContext {
-		return this.getTypedRuleContext(NullSetFromContext, 0) as NullSetFromContext;
-	}
-	public nullMask(): NullMaskContext {
-		return this.getTypedRuleContext(NullMaskContext, 0) as NullMaskContext;
-	}
-	public nullMaskDiscard(): NullMaskDiscardContext {
-		return this.getTypedRuleContext(NullMaskDiscardContext, 0) as NullMaskDiscardContext;
-	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_coverageExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCoverageExpression) {
-	 		listener.enterCoverageExpression(this);
+	    if(listener.enterCoverageIsNullExpression) {
+	 		listener.enterCoverageIsNullExpression(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCoverageExpression) {
-	 		listener.exitCoverageExpression(this);
+	    if(listener.exitCoverageIsNullExpression) {
+	 		listener.exitCoverageIsNullExpression(this);
+		}
+	}
+}
+export class CoverageExpressionClipWKTLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public clipWKTExpression(): ClipWKTExpressionContext {
+		return this.getTypedRuleContext(ClipWKTExpressionContext, 0) as ClipWKTExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionClipWKTLabel) {
+	 		listener.enterCoverageExpressionClipWKTLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionClipWKTLabel) {
+	 		listener.exitCoverageExpressionClipWKTLabel(this);
+		}
+	}
+}
+export class CoverageExpressionScalarLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public scalarExpression(): ScalarExpressionContext {
+		return this.getTypedRuleContext(ScalarExpressionContext, 0) as ScalarExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionScalarLabel) {
+	 		listener.enterCoverageExpressionScalarLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionScalarLabel) {
+	 		listener.exitCoverageExpressionScalarLabel(this);
+		}
+	}
+}
+export class CoverageExpressionTrimCoverageLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public TRIM(): TerminalNode {
+		return this.getToken(wcpsParser.TRIM, 0);
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public COMMA(): TerminalNode {
+		return this.getToken(wcpsParser.COMMA, 0);
+	}
+	public LEFT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACE, 0);
+	}
+	public dimensionIntervalList(): DimensionIntervalListContext {
+		return this.getTypedRuleContext(DimensionIntervalListContext, 0) as DimensionIntervalListContext;
+	}
+	public RIGHT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACE, 0);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionTrimCoverageLabel) {
+	 		listener.enterCoverageExpressionTrimCoverageLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionTrimCoverageLabel) {
+	 		listener.exitCoverageExpressionTrimCoverageLabel(this);
+		}
+	}
+}
+export class CoverageExpressionMinBinaryLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public minBinaryExpression(): MinBinaryExpressionContext {
+		return this.getTypedRuleContext(MinBinaryExpressionContext, 0) as MinBinaryExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionMinBinaryLabel) {
+	 		listener.enterCoverageExpressionMinBinaryLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionMinBinaryLabel) {
+	 		listener.exitCoverageExpressionMinBinaryLabel(this);
+		}
+	}
+}
+export class CoverageExpressionConstructorLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageConstructorExpression(): CoverageConstructorExpressionContext {
+		return this.getTypedRuleContext(CoverageConstructorExpressionContext, 0) as CoverageConstructorExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionConstructorLabel) {
+	 		listener.enterCoverageExpressionConstructorLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionConstructorLabel) {
+	 		listener.exitCoverageExpressionConstructorLabel(this);
+		}
+	}
+}
+export class CoverageExpressionCrsTransformLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public crsTransformExpression(): CrsTransformExpressionContext {
+		return this.getTypedRuleContext(CrsTransformExpressionContext, 0) as CrsTransformExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionCrsTransformLabel) {
+	 		listener.enterCoverageExpressionCrsTransformLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionCrsTransformLabel) {
+	 		listener.exitCoverageExpressionCrsTransformLabel(this);
+		}
+	}
+}
+export class CoverageExpressionDecodeLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public decodeCoverageExpression(): DecodeCoverageExpressionContext {
+		return this.getTypedRuleContext(DecodeCoverageExpressionContext, 0) as DecodeCoverageExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionDecodeLabel) {
+	 		listener.enterCoverageExpressionDecodeLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionDecodeLabel) {
+	 		listener.exitCoverageExpressionDecodeLabel(this);
+		}
+	}
+}
+export class CoverageExpressionScaleByFactorListLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public SCALE(): TerminalNode {
+		return this.getToken(wcpsParser.SCALE, 0);
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
+	public COMMA(): TerminalNode {
+		return this.getToken(wcpsParser.COMMA, 0);
+	}
+	public LEFT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_BRACE, 0);
+	}
+	public RIGHT_BRACE(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_BRACE, 0);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public scaleDimensionPointList(): ScaleDimensionPointListContext {
+		return this.getTypedRuleContext(ScaleDimensionPointListContext, 0) as ScaleDimensionPointListContext;
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionScaleByFactorListLabel) {
+	 		listener.enterCoverageExpressionScaleByFactorListLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionScaleByFactorListLabel) {
+	 		listener.exitCoverageExpressionScaleByFactorListLabel(this);
+		}
+	}
+}
+export class CoverageExpressionTimeExtractorLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public timeExtractorElement(): TimeExtractorElementContext {
+		return this.getTypedRuleContext(TimeExtractorElementContext, 0) as TimeExtractorElementContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionTimeExtractorLabel) {
+	 		listener.enterCoverageExpressionTimeExtractorLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionTimeExtractorLabel) {
+	 		listener.exitCoverageExpressionTimeExtractorLabel(this);
+		}
+	}
+}
+export class CoverageExpressionUnaryArithmeticLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public unaryArithmeticExpression(): UnaryArithmeticExpressionContext {
+		return this.getTypedRuleContext(UnaryArithmeticExpressionContext, 0) as UnaryArithmeticExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionUnaryArithmeticLabel) {
+	 		listener.enterCoverageExpressionUnaryArithmeticLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionUnaryArithmeticLabel) {
+	 		listener.exitCoverageExpressionUnaryArithmeticLabel(this);
+		}
+	}
+}
+export class CoverageExpressionClipCorridorLabelContext extends CoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public clipCorridorExpression(): ClipCorridorExpressionContext {
+		return this.getTypedRuleContext(ClipCorridorExpressionContext, 0) as ClipCorridorExpressionContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterCoverageExpressionClipCorridorLabel) {
+	 		listener.enterCoverageExpressionClipCorridorLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitCoverageExpressionClipCorridorLabel) {
+	 		listener.exitCoverageExpressionClipCorridorLabel(this);
 		}
 	}
 }
@@ -10305,6 +11959,18 @@ export class UnaryArithmeticExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_unaryArithmeticExpression;
+	}
+	public copyFrom(ctx: UnaryArithmeticExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class UnaryCoverageArithmeticExpressionLabelContext extends UnaryArithmeticExpressionContext {
+	constructor(parser: wcpsParser, ctx: UnaryArithmeticExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public unaryArithmeticExpressionOperator(): UnaryArithmeticExpressionOperatorContext {
 		return this.getTypedRuleContext(UnaryArithmeticExpressionOperatorContext, 0) as UnaryArithmeticExpressionOperatorContext;
 	}
@@ -10317,17 +11983,14 @@ export class UnaryArithmeticExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_unaryArithmeticExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterUnaryArithmeticExpression) {
-	 		listener.enterUnaryArithmeticExpression(this);
+	    if(listener.enterUnaryCoverageArithmeticExpressionLabel) {
+	 		listener.enterUnaryCoverageArithmeticExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitUnaryArithmeticExpression) {
-	 		listener.exitUnaryArithmeticExpression(this);
+	    if(listener.exitUnaryCoverageArithmeticExpressionLabel) {
+	 		listener.exitUnaryCoverageArithmeticExpressionLabel(this);
 		}
 	}
 }
@@ -10337,6 +12000,18 @@ export class TrigonometricExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_trigonometricExpression;
+	}
+	public copyFrom(ctx: TrigonometricExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class TrigonometricExpressionLabelContext extends TrigonometricExpressionContext {
+	constructor(parser: wcpsParser, ctx: TrigonometricExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public trigonometricOperator(): TrigonometricOperatorContext {
 		return this.getTypedRuleContext(TrigonometricOperatorContext, 0) as TrigonometricOperatorContext;
@@ -10350,17 +12025,14 @@ export class TrigonometricExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_trigonometricExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterTrigonometricExpression) {
-	 		listener.enterTrigonometricExpression(this);
+	    if(listener.enterTrigonometricExpressionLabel) {
+	 		listener.enterTrigonometricExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitTrigonometricExpression) {
-	 		listener.exitTrigonometricExpression(this);
+	    if(listener.exitTrigonometricExpressionLabel) {
+	 		listener.exitTrigonometricExpressionLabel(this);
 		}
 	}
 }
@@ -10401,6 +12073,18 @@ export class ExponentialExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_exponentialExpression;
+	}
+	public copyFrom(ctx: ExponentialExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ExponentialExpressionLabelContext extends ExponentialExpressionContext {
+	constructor(parser: wcpsParser, ctx: ExponentialExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public exponentialExpressionOperator(): ExponentialExpressionOperatorContext {
 		return this.getTypedRuleContext(ExponentialExpressionOperatorContext, 0) as ExponentialExpressionOperatorContext;
 	}
@@ -10413,17 +12097,14 @@ export class ExponentialExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_exponentialExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterExponentialExpression) {
-	 		listener.enterExponentialExpression(this);
+	    if(listener.enterExponentialExpressionLabel) {
+	 		listener.enterExponentialExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitExponentialExpression) {
-	 		listener.exitExponentialExpression(this);
+	    if(listener.exitExponentialExpressionLabel) {
+	 		listener.exitExponentialExpressionLabel(this);
 		}
 	}
 }
@@ -10433,6 +12114,18 @@ export class UnaryPowerExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_unaryPowerExpression;
+	}
+	public copyFrom(ctx: UnaryPowerExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class UnaryPowerExpressionLabelContext extends UnaryPowerExpressionContext {
+	constructor(parser: wcpsParser, ctx: UnaryPowerExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public POWER(): TerminalNode {
 		return this.getToken(wcpsParser.POWER, 0);
@@ -10455,17 +12148,14 @@ export class UnaryPowerExpressionContext extends ParserRuleContext {
 	public coverageVariableName(): CoverageVariableNameContext {
 		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_unaryPowerExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterUnaryPowerExpression) {
-	 		listener.enterUnaryPowerExpression(this);
+	    if(listener.enterUnaryPowerExpressionLabel) {
+	 		listener.enterUnaryPowerExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitUnaryPowerExpression) {
-	 		listener.exitUnaryPowerExpression(this);
+	    if(listener.exitUnaryPowerExpressionLabel) {
+	 		listener.exitUnaryPowerExpressionLabel(this);
 		}
 	}
 }
@@ -10475,6 +12165,18 @@ export class UnaryModExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_unaryModExpression;
+	}
+	public copyFrom(ctx: UnaryModExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class UnaryModExpressionLabelContext extends UnaryModExpressionContext {
+	constructor(parser: wcpsParser, ctx: UnaryModExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public MOD(): TerminalNode {
 		return this.getToken(wcpsParser.MOD, 0);
@@ -10497,17 +12199,14 @@ export class UnaryModExpressionContext extends ParserRuleContext {
 	public coverageVariableName(): CoverageVariableNameContext {
 		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_unaryModExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterUnaryModExpression) {
-	 		listener.enterUnaryModExpression(this);
+	    if(listener.enterUnaryModExpressionLabel) {
+	 		listener.enterUnaryModExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitUnaryModExpression) {
-	 		listener.exitUnaryModExpression(this);
+	    if(listener.exitUnaryModExpressionLabel) {
+	 		listener.exitUnaryModExpressionLabel(this);
 		}
 	}
 }
@@ -10517,6 +12216,18 @@ export class MinBinaryExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_minBinaryExpression;
+	}
+	public copyFrom(ctx: MinBinaryExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class MinBinaryExpressionLabelContext extends MinBinaryExpressionContext {
+	constructor(parser: wcpsParser, ctx: MinBinaryExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public MIN(): TerminalNode {
 		return this.getToken(wcpsParser.MIN, 0);
@@ -10536,17 +12247,14 @@ export class MinBinaryExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_minBinaryExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterMinBinaryExpression) {
-	 		listener.enterMinBinaryExpression(this);
+	    if(listener.enterMinBinaryExpressionLabel) {
+	 		listener.enterMinBinaryExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitMinBinaryExpression) {
-	 		listener.exitMinBinaryExpression(this);
+	    if(listener.exitMinBinaryExpressionLabel) {
+	 		listener.exitMinBinaryExpressionLabel(this);
 		}
 	}
 }
@@ -10556,6 +12264,18 @@ export class MaxBinaryExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_maxBinaryExpression;
+	}
+	public copyFrom(ctx: MaxBinaryExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class MaxBinaryExpressionLabelContext extends MaxBinaryExpressionContext {
+	constructor(parser: wcpsParser, ctx: MaxBinaryExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public MAX(): TerminalNode {
 		return this.getToken(wcpsParser.MAX, 0);
@@ -10575,17 +12295,14 @@ export class MaxBinaryExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_maxBinaryExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterMaxBinaryExpression) {
-	 		listener.enterMaxBinaryExpression(this);
+	    if(listener.enterMaxBinaryExpressionLabel) {
+	 		listener.enterMaxBinaryExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitMaxBinaryExpression) {
-	 		listener.exitMaxBinaryExpression(this);
+	    if(listener.exitMaxBinaryExpressionLabel) {
+	 		listener.exitMaxBinaryExpressionLabel(this);
 		}
 	}
 }
@@ -10595,6 +12312,18 @@ export class UnaryBooleanExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_unaryBooleanExpression;
+	}
+	public copyFrom(ctx: UnaryBooleanExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class NotUnaryBooleanExpressionLabelContext extends UnaryBooleanExpressionContext {
+	constructor(parser: wcpsParser, ctx: UnaryBooleanExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public NOT(): TerminalNode {
 		return this.getToken(wcpsParser.NOT, 0);
@@ -10608,11 +12337,36 @@ export class UnaryBooleanExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterNotUnaryBooleanExpressionLabel) {
+	 		listener.enterNotUnaryBooleanExpressionLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitNotUnaryBooleanExpressionLabel) {
+	 		listener.exitNotUnaryBooleanExpressionLabel(this);
+		}
+	}
+}
+export class BitUnaryBooleanExpressionLabelContext extends UnaryBooleanExpressionContext {
+	constructor(parser: wcpsParser, ctx: UnaryBooleanExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public BIT(): TerminalNode {
 		return this.getToken(wcpsParser.BIT, 0);
 	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
 	public COMMA(): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, 0);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
 	public numericalScalarExpression(): NumericalScalarExpressionContext {
 		return this.getTypedRuleContext(NumericalScalarExpressionContext, 0) as NumericalScalarExpressionContext;
@@ -10620,17 +12374,14 @@ export class UnaryBooleanExpressionContext extends ParserRuleContext {
 	public coverageVariableName(): CoverageVariableNameContext {
 		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_unaryBooleanExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterUnaryBooleanExpression) {
-	 		listener.enterUnaryBooleanExpression(this);
+	    if(listener.enterBitUnaryBooleanExpressionLabel) {
+	 		listener.enterBitUnaryBooleanExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitUnaryBooleanExpression) {
-	 		listener.exitUnaryBooleanExpression(this);
+	    if(listener.exitBitUnaryBooleanExpressionLabel) {
+	 		listener.exitBitUnaryBooleanExpressionLabel(this);
 		}
 	}
 }
@@ -10668,6 +12419,18 @@ export class CastExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_castExpression;
+	}
+	public copyFrom(ctx: CastExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CastExpressionLabelContext extends CastExpressionContext {
+	constructor(parser: wcpsParser, ctx: CastExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public LEFT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
 	}
@@ -10680,17 +12443,14 @@ export class CastExpressionContext extends ParserRuleContext {
 	public coverageExpression(): CoverageExpressionContext {
 		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_castExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCastExpression) {
-	 		listener.enterCastExpression(this);
+	    if(listener.enterCastExpressionLabel) {
+	 		listener.enterCastExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCastExpression) {
-	 		listener.exitCastExpression(this);
+	    if(listener.exitCastExpressionLabel) {
+	 		listener.exitCastExpressionLabel(this);
 		}
 	}
 }
@@ -10728,6 +12488,18 @@ export class RangeConstructorExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_rangeConstructorExpression;
+	}
+	public copyFrom(ctx: RangeConstructorExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class RangeConstructorExpressionLabelContext extends RangeConstructorExpressionContext {
+	constructor(parser: wcpsParser, ctx: RangeConstructorExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public LEFT_BRACE(): TerminalNode {
 		return this.getToken(wcpsParser.LEFT_BRACE, 0);
 	}
@@ -10737,17 +12509,14 @@ export class RangeConstructorExpressionContext extends ParserRuleContext {
 	public RIGHT_BRACE(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_BRACE, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_rangeConstructorExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterRangeConstructorExpression) {
-	 		listener.enterRangeConstructorExpression(this);
+	    if(listener.enterRangeConstructorExpressionLabel) {
+	 		listener.enterRangeConstructorExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitRangeConstructorExpression) {
-	 		listener.exitRangeConstructorExpression(this);
+	    if(listener.exitRangeConstructorExpressionLabel) {
+	 		listener.exitRangeConstructorExpressionLabel(this);
 		}
 	}
 }
@@ -10758,6 +12527,18 @@ export class RangeConstructorElementContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_rangeConstructorElement;
+	}
+	public copyFrom(ctx: RangeConstructorElementContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class RangeConstructorElementLabelContext extends RangeConstructorElementContext {
+	constructor(parser: wcpsParser, ctx: RangeConstructorElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public fieldName(): FieldNameContext {
 		return this.getTypedRuleContext(FieldNameContext, 0) as FieldNameContext;
 	}
@@ -10767,17 +12548,14 @@ export class RangeConstructorElementContext extends ParserRuleContext {
 	public coverageExpression(): CoverageExpressionContext {
 		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_rangeConstructorElement;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterRangeConstructorElement) {
-	 		listener.enterRangeConstructorElement(this);
+	    if(listener.enterRangeConstructorElementLabel) {
+	 		listener.enterRangeConstructorElementLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitRangeConstructorElement) {
-	 		listener.exitRangeConstructorElement(this);
+	    if(listener.exitRangeConstructorElementLabel) {
+	 		listener.exitRangeConstructorElementLabel(this);
 		}
 	}
 }
@@ -10787,6 +12565,18 @@ export class RangeConstructorElementListContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_rangeConstructorElementList;
+	}
+	public copyFrom(ctx: RangeConstructorElementListContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class RangeConstructorElementListLabelContext extends RangeConstructorElementListContext {
+	constructor(parser: wcpsParser, ctx: RangeConstructorElementListContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public rangeConstructorElement_list(): RangeConstructorElementContext[] {
 		return this.getTypedRuleContexts(RangeConstructorElementContext) as RangeConstructorElementContext[];
@@ -10800,17 +12590,14 @@ export class RangeConstructorElementListContext extends ParserRuleContext {
 	public SEMICOLON(i: number): TerminalNode {
 		return this.getToken(wcpsParser.SEMICOLON, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_rangeConstructorElementList;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterRangeConstructorElementList) {
-	 		listener.enterRangeConstructorElementList(this);
+	    if(listener.enterRangeConstructorElementListLabel) {
+	 		listener.enterRangeConstructorElementListLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitRangeConstructorElementList) {
-	 		listener.exitRangeConstructorElementList(this);
+	    if(listener.exitRangeConstructorElementListLabel) {
+	 		listener.exitRangeConstructorElementListLabel(this);
 		}
 	}
 }
@@ -10820,6 +12607,18 @@ export class RangeConstructorSwitchCaseExpressionContext extends ParserRuleConte
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_rangeConstructorSwitchCaseExpression;
+	}
+	public copyFrom(ctx: RangeConstructorSwitchCaseExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class RangeConstructorSwitchCaseExpressionLabelContext extends RangeConstructorSwitchCaseExpressionContext {
+	constructor(parser: wcpsParser, ctx: RangeConstructorSwitchCaseExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public LEFT_BRACE(): TerminalNode {
 		return this.getToken(wcpsParser.LEFT_BRACE, 0);
@@ -10851,17 +12650,14 @@ export class RangeConstructorSwitchCaseExpressionContext extends ParserRuleConte
 	public SEMICOLON(i: number): TerminalNode {
 		return this.getToken(wcpsParser.SEMICOLON, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_rangeConstructorSwitchCaseExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterRangeConstructorSwitchCaseExpression) {
-	 		listener.enterRangeConstructorSwitchCaseExpression(this);
+	    if(listener.enterRangeConstructorSwitchCaseExpressionLabel) {
+	 		listener.enterRangeConstructorSwitchCaseExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitRangeConstructorSwitchCaseExpression) {
-	 		listener.exitRangeConstructorSwitchCaseExpression(this);
+	    if(listener.exitRangeConstructorSwitchCaseExpressionLabel) {
+	 		listener.exitRangeConstructorSwitchCaseExpressionLabel(this);
 		}
 	}
 }
@@ -10871,6 +12667,18 @@ export class DimensionPointListContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_dimensionPointList;
+	}
+	public copyFrom(ctx: DimensionPointListContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DimensionPointListLabelContext extends DimensionPointListContext {
+	constructor(parser: wcpsParser, ctx: DimensionPointListContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public dimensionPointElement_list(): DimensionPointElementContext[] {
 		return this.getTypedRuleContexts(DimensionPointElementContext) as DimensionPointElementContext[];
@@ -10884,17 +12692,14 @@ export class DimensionPointListContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_dimensionPointList;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDimensionPointList) {
-	 		listener.enterDimensionPointList(this);
+	    if(listener.enterDimensionPointListLabel) {
+	 		listener.enterDimensionPointListLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDimensionPointList) {
-	 		listener.exitDimensionPointList(this);
+	    if(listener.exitDimensionPointListLabel) {
+	 		listener.exitDimensionPointListLabel(this);
 		}
 	}
 }
@@ -10904,6 +12709,18 @@ export class DimensionPointElementContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_dimensionPointElement;
+	}
+	public copyFrom(ctx: DimensionPointElementContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DimensionPointElementLabelContext extends DimensionPointElementContext {
+	constructor(parser: wcpsParser, ctx: DimensionPointElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public axisName(): AxisNameContext {
 		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
@@ -10923,17 +12740,14 @@ export class DimensionPointElementContext extends ParserRuleContext {
 	public crsName(): CrsNameContext {
 		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_dimensionPointElement;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDimensionPointElement) {
-	 		listener.enterDimensionPointElement(this);
+	    if(listener.enterDimensionPointElementLabel) {
+	 		listener.enterDimensionPointElementLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDimensionPointElement) {
-	 		listener.exitDimensionPointElement(this);
+	    if(listener.exitDimensionPointElementLabel) {
+	 		listener.exitDimensionPointElementLabel(this);
 		}
 	}
 }
@@ -10977,6 +12791,18 @@ export class ScaleDimensionPointElementContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_scaleDimensionPointElement;
+	}
+	public copyFrom(ctx: ScaleDimensionPointElementContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class SliceScaleDimensionPointElementLabelContext extends ScaleDimensionPointElementContext {
+	constructor(parser: wcpsParser, ctx: ScaleDimensionPointElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public axisName(): AxisNameContext {
 		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
 	}
@@ -10989,17 +12815,14 @@ export class ScaleDimensionPointElementContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_scaleDimensionPointElement;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterScaleDimensionPointElement) {
-	 		listener.enterScaleDimensionPointElement(this);
+	    if(listener.enterSliceScaleDimensionPointElementLabel) {
+	 		listener.enterSliceScaleDimensionPointElementLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitScaleDimensionPointElement) {
-	 		listener.exitScaleDimensionPointElement(this);
+	    if(listener.exitSliceScaleDimensionPointElementLabel) {
+	 		listener.exitSliceScaleDimensionPointElementLabel(this);
 		}
 	}
 }
@@ -11009,6 +12832,18 @@ export class ScaleDimensionPointListContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_scaleDimensionPointList;
+	}
+	public copyFrom(ctx: ScaleDimensionPointListContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ScaleDimensionPointListLabelContext extends ScaleDimensionPointListContext {
+	constructor(parser: wcpsParser, ctx: ScaleDimensionPointListContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public scaleDimensionPointElement_list(): ScaleDimensionPointElementContext[] {
 		return this.getTypedRuleContexts(ScaleDimensionPointElementContext) as ScaleDimensionPointElementContext[];
@@ -11022,17 +12857,14 @@ export class ScaleDimensionPointListContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_scaleDimensionPointList;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterScaleDimensionPointList) {
-	 		listener.enterScaleDimensionPointList(this);
+	    if(listener.enterScaleDimensionPointListLabel) {
+	 		listener.enterScaleDimensionPointListLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitScaleDimensionPointList) {
-	 		listener.exitScaleDimensionPointList(this);
+	    if(listener.exitScaleDimensionPointListLabel) {
+	 		listener.exitScaleDimensionPointListLabel(this);
 		}
 	}
 }
@@ -11042,6 +12874,18 @@ export class ScaleDimensionIntervalListContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_scaleDimensionIntervalList;
+	}
+	public copyFrom(ctx: ScaleDimensionIntervalListContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ScaleDimensionIntervalListLabelContext extends ScaleDimensionIntervalListContext {
+	constructor(parser: wcpsParser, ctx: ScaleDimensionIntervalListContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public scaleDimensionIntervalElement_list(): ScaleDimensionIntervalElementContext[] {
 		return this.getTypedRuleContexts(ScaleDimensionIntervalElementContext) as ScaleDimensionIntervalElementContext[];
@@ -11055,17 +12899,14 @@ export class ScaleDimensionIntervalListContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_scaleDimensionIntervalList;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterScaleDimensionIntervalList) {
-	 		listener.enterScaleDimensionIntervalList(this);
+	    if(listener.enterScaleDimensionIntervalListLabel) {
+	 		listener.enterScaleDimensionIntervalListLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitScaleDimensionIntervalList) {
-	 		listener.exitScaleDimensionIntervalList(this);
+	    if(listener.exitScaleDimensionIntervalListLabel) {
+	 		listener.exitScaleDimensionIntervalListLabel(this);
 		}
 	}
 }
@@ -11075,6 +12916,18 @@ export class ScaleDimensionIntervalElementContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_scaleDimensionIntervalElement;
+	}
+	public copyFrom(ctx: ScaleDimensionIntervalElementContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class TrimScaleDimensionIntervalElementLabelContext extends ScaleDimensionIntervalElementContext {
+	constructor(parser: wcpsParser, ctx: ScaleDimensionIntervalElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public axisName(): AxisNameContext {
 		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
@@ -11094,17 +12947,14 @@ export class ScaleDimensionIntervalElementContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_scaleDimensionIntervalElement;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterScaleDimensionIntervalElement) {
-	 		listener.enterScaleDimensionIntervalElement(this);
+	    if(listener.enterTrimScaleDimensionIntervalElementLabel) {
+	 		listener.enterTrimScaleDimensionIntervalElementLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitScaleDimensionIntervalElement) {
-	 		listener.exitScaleDimensionIntervalElement(this);
+	    if(listener.exitTrimScaleDimensionIntervalElementLabel) {
+	 		listener.exitTrimScaleDimensionIntervalElementLabel(this);
 		}
 	}
 }
@@ -11114,6 +12964,18 @@ export class DimensionBoundConcatenationElementContext extends ParserRuleContext
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_dimensionBoundConcatenationElement;
+	}
+	public copyFrom(ctx: DimensionBoundConcatenationElementContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DimensionBoundConcatenationElementLabelContext extends DimensionBoundConcatenationElementContext {
+	constructor(parser: wcpsParser, ctx: DimensionBoundConcatenationElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public coverageExpression_list(): CoverageExpressionContext[] {
 		return this.getTypedRuleContexts(CoverageExpressionContext) as CoverageExpressionContext[];
@@ -11139,17 +13001,14 @@ export class DimensionBoundConcatenationElementContext extends ParserRuleContext
 	public DOT(i: number): TerminalNode {
 		return this.getToken(wcpsParser.DOT, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_dimensionBoundConcatenationElement;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDimensionBoundConcatenationElement) {
-	 		listener.enterDimensionBoundConcatenationElement(this);
+	    if(listener.enterDimensionBoundConcatenationElementLabel) {
+	 		listener.enterDimensionBoundConcatenationElementLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDimensionBoundConcatenationElement) {
-	 		listener.exitDimensionBoundConcatenationElement(this);
+	    if(listener.exitDimensionBoundConcatenationElementLabel) {
+	 		listener.exitDimensionBoundConcatenationElementLabel(this);
 		}
 	}
 }
@@ -11159,6 +13018,86 @@ export class DimensionIntervalElementContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_dimensionIntervalElement;
+	}
+	public copyFrom(ctx: DimensionIntervalElementContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class SliceDimensionIntervalElementLabelContext extends DimensionIntervalElementContext {
+	constructor(parser: wcpsParser, ctx: DimensionIntervalElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public axisName(): AxisNameContext {
+		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public dimensionBoundConcatenationElement(): DimensionBoundConcatenationElementContext {
+		return this.getTypedRuleContext(DimensionBoundConcatenationElementContext, 0) as DimensionBoundConcatenationElementContext;
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public COLON(): TerminalNode {
+		return this.getToken(wcpsParser.COLON, 0);
+	}
+	public crsName(): CrsNameContext {
+		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterSliceDimensionIntervalElementLabel) {
+	 		listener.enterSliceDimensionIntervalElementLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitSliceDimensionIntervalElementLabel) {
+	 		listener.exitSliceDimensionIntervalElementLabel(this);
+		}
+	}
+}
+export class TrimDimensionIntervalByImageCrsDomainElementLabelContext extends DimensionIntervalElementContext {
+	constructor(parser: wcpsParser, ctx: DimensionIntervalElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public axisName(): AxisNameContext {
+		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public imageCrsDomainByDimensionExpression(): ImageCrsDomainByDimensionExpressionContext {
+		return this.getTypedRuleContext(ImageCrsDomainByDimensionExpressionContext, 0) as ImageCrsDomainByDimensionExpressionContext;
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public COLON(): TerminalNode {
+		return this.getToken(wcpsParser.COLON, 0);
+	}
+	public crsName(): CrsNameContext {
+		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterTrimDimensionIntervalByImageCrsDomainElementLabel) {
+	 		listener.enterTrimDimensionIntervalByImageCrsDomainElementLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitTrimDimensionIntervalByImageCrsDomainElementLabel) {
+	 		listener.exitTrimDimensionIntervalByImageCrsDomainElementLabel(this);
+		}
+	}
+}
+export class TrimDimensionIntervalElementLabelContext extends DimensionIntervalElementContext {
+	constructor(parser: wcpsParser, ctx: DimensionIntervalElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public axisName(): AxisNameContext {
 		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
@@ -11184,20 +13123,14 @@ export class DimensionIntervalElementContext extends ParserRuleContext {
 	public crsName(): CrsNameContext {
 		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
 	}
-	public imageCrsDomainByDimensionExpression(): ImageCrsDomainByDimensionExpressionContext {
-		return this.getTypedRuleContext(ImageCrsDomainByDimensionExpressionContext, 0) as ImageCrsDomainByDimensionExpressionContext;
-	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_dimensionIntervalElement;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDimensionIntervalElement) {
-	 		listener.enterDimensionIntervalElement(this);
+	    if(listener.enterTrimDimensionIntervalElementLabel) {
+	 		listener.enterTrimDimensionIntervalElementLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDimensionIntervalElement) {
-	 		listener.exitDimensionIntervalElement(this);
+	    if(listener.exitTrimDimensionIntervalElementLabel) {
+	 		listener.exitTrimDimensionIntervalElementLabel(this);
 		}
 	}
 }
@@ -11337,6 +13270,18 @@ export class WktPointsContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_wktPoints;
+	}
+	public copyFrom(ctx: WktPointsContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class WktPointsLabelContext extends WktPointsContext {
+	constructor(parser: wcpsParser, ctx: WktPointsContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public constant_list(): ConstantContext[] {
 		return this.getTypedRuleContexts(ConstantContext) as ConstantContext[];
 	}
@@ -11349,17 +13294,14 @@ export class WktPointsContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_wktPoints;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterWktPoints) {
-	 		listener.enterWktPoints(this);
+	    if(listener.enterWktPointsLabel) {
+	 		listener.enterWktPointsLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitWktPoints) {
-	 		listener.exitWktPoints(this);
+	    if(listener.exitWktPointsLabel) {
+	 		listener.exitWktPointsLabel(this);
 		}
 	}
 }
@@ -11369,6 +13311,18 @@ export class WktPointElementListContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_wktPointElementList;
+	}
+	public copyFrom(ctx: WktPointElementListContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class WKTPointElementListLabelContext extends WktPointElementListContext {
+	constructor(parser: wcpsParser, ctx: WktPointElementListContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public LEFT_PARENTHESIS_list(): TerminalNode[] {
 	    	return this.getTokens(wcpsParser.LEFT_PARENTHESIS);
@@ -11394,17 +13348,14 @@ export class WktPointElementListContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_wktPointElementList;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterWktPointElementList) {
-	 		listener.enterWktPointElementList(this);
+	    if(listener.enterWKTPointElementListLabel) {
+	 		listener.enterWKTPointElementListLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitWktPointElementList) {
-	 		listener.exitWktPointElementList(this);
+	    if(listener.exitWKTPointElementListLabel) {
+	 		listener.exitWKTPointElementListLabel(this);
 		}
 	}
 }
@@ -11415,23 +13366,32 @@ export class WktLineStringContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_wktLineString;
+	}
+	public copyFrom(ctx: WktLineStringContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class WKTLineStringLabelContext extends WktLineStringContext {
+	constructor(parser: wcpsParser, ctx: WktLineStringContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public LINESTRING(): TerminalNode {
 		return this.getToken(wcpsParser.LINESTRING, 0);
 	}
 	public wktPointElementList(): WktPointElementListContext {
 		return this.getTypedRuleContext(WktPointElementListContext, 0) as WktPointElementListContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_wktLineString;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterWktLineString) {
-	 		listener.enterWktLineString(this);
+	    if(listener.enterWKTLineStringLabel) {
+	 		listener.enterWKTLineStringLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitWktLineString) {
-	 		listener.exitWktLineString(this);
+	    if(listener.exitWKTLineStringLabel) {
+	 		listener.exitWKTLineStringLabel(this);
 		}
 	}
 }
@@ -11441,6 +13401,18 @@ export class WktPolygonContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_wktPolygon;
+	}
+	public copyFrom(ctx: WktPolygonContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class WKTPolygonLabelContext extends WktPolygonContext {
+	constructor(parser: wcpsParser, ctx: WktPolygonContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public POLYGON(): TerminalNode {
 		return this.getToken(wcpsParser.POLYGON, 0);
@@ -11454,17 +13426,14 @@ export class WktPolygonContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_wktPolygon;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterWktPolygon) {
-	 		listener.enterWktPolygon(this);
+	    if(listener.enterWKTPolygonLabel) {
+	 		listener.enterWKTPolygonLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitWktPolygon) {
-	 		listener.exitWktPolygon(this);
+	    if(listener.exitWKTPolygonLabel) {
+	 		listener.exitWKTPolygonLabel(this);
 		}
 	}
 }
@@ -11474,6 +13443,18 @@ export class WktMultipolygonContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_wktMultipolygon;
+	}
+	public copyFrom(ctx: WktMultipolygonContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class WKTMultipolygonLabelContext extends WktMultipolygonContext {
+	constructor(parser: wcpsParser, ctx: WktMultipolygonContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public MULTIPOLYGON(): TerminalNode {
 		return this.getToken(wcpsParser.MULTIPOLYGON, 0);
@@ -11502,17 +13483,14 @@ export class WktMultipolygonContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_wktMultipolygon;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterWktMultipolygon) {
-	 		listener.enterWktMultipolygon(this);
+	    if(listener.enterWKTMultipolygonLabel) {
+	 		listener.enterWKTMultipolygonLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitWktMultipolygon) {
-	 		listener.exitWktMultipolygon(this);
+	    if(listener.exitWKTMultipolygonLabel) {
+	 		listener.exitWKTMultipolygonLabel(this);
 		}
 	}
 }
@@ -11523,20 +13501,29 @@ export class WktCoverageExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
-	public coverageExpression(): CoverageExpressionContext {
-		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
-	}
     public get ruleIndex(): number {
     	return wcpsParser.RULE_wktCoverageExpression;
 	}
+	public copyFrom(ctx: WktCoverageExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class WKTCoverageExpressionLabelContext extends WktCoverageExpressionContext {
+	constructor(parser: wcpsParser, ctx: WktCoverageExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageExpression(): CoverageExpressionContext {
+		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
+	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterWktCoverageExpression) {
-	 		listener.enterWktCoverageExpression(this);
+	    if(listener.enterWKTCoverageExpressionLabel) {
+	 		listener.enterWKTCoverageExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitWktCoverageExpression) {
-	 		listener.exitWktCoverageExpression(this);
+	    if(listener.exitWKTCoverageExpressionLabel) {
+	 		listener.exitWKTCoverageExpressionLabel(this);
 		}
 	}
 }
@@ -11546,6 +13533,18 @@ export class WktExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_wktExpression;
+	}
+	public copyFrom(ctx: WktExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class WKTExpressionLabelContext extends WktExpressionContext {
+	constructor(parser: wcpsParser, ctx: WktExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public coverageExpression(): CoverageExpressionContext {
 		return this.getTypedRuleContext(CoverageExpressionContext, 0) as CoverageExpressionContext;
@@ -11559,17 +13558,14 @@ export class WktExpressionContext extends ParserRuleContext {
 	public wktMultipolygon(): WktMultipolygonContext {
 		return this.getTypedRuleContext(WktMultipolygonContext, 0) as WktMultipolygonContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_wktExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterWktExpression) {
-	 		listener.enterWktExpression(this);
+	    if(listener.enterWKTExpressionLabel) {
+	 		listener.enterWKTExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitWktExpression) {
-	 		listener.exitWktExpression(this);
+	    if(listener.exitWKTExpressionLabel) {
+	 		listener.exitWKTExpressionLabel(this);
 		}
 	}
 }
@@ -11628,6 +13624,18 @@ export class ClipCurtainExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_clipCurtainExpression;
+	}
+	public copyFrom(ctx: ClipCurtainExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ClipCurtainExpressionLabelContext extends ClipCurtainExpressionContext {
+	constructor(parser: wcpsParser, ctx: ClipCurtainExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public CLIP(): TerminalNode {
 		return this.getToken(wcpsParser.CLIP, 0);
 	}
@@ -11670,17 +13678,14 @@ export class ClipCurtainExpressionContext extends ParserRuleContext {
 	public crsName(): CrsNameContext {
 		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_clipCurtainExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterClipCurtainExpression) {
-	 		listener.enterClipCurtainExpression(this);
+	    if(listener.enterClipCurtainExpressionLabel) {
+	 		listener.enterClipCurtainExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitClipCurtainExpression) {
-	 		listener.exitClipCurtainExpression(this);
+	    if(listener.exitClipCurtainExpressionLabel) {
+	 		listener.exitClipCurtainExpressionLabel(this);
 		}
 	}
 }
@@ -11787,6 +13792,18 @@ export class ClipCorridorExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_clipCorridorExpression;
+	}
+	public copyFrom(ctx: ClipCorridorExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ClipCorridorExpressionLabelContext extends ClipCorridorExpressionContext {
+	constructor(parser: wcpsParser, ctx: ClipCorridorExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public CLIP(): TerminalNode {
 		return this.getToken(wcpsParser.CLIP, 0);
 	}
@@ -11835,17 +13852,14 @@ export class ClipCorridorExpressionContext extends ParserRuleContext {
 	public crsName(): CrsNameContext {
 		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_clipCorridorExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterClipCorridorExpression) {
-	 		listener.enterClipCorridorExpression(this);
+	    if(listener.enterClipCorridorExpressionLabel) {
+	 		listener.enterClipCorridorExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitClipCorridorExpression) {
-	 		listener.exitClipCorridorExpression(this);
+	    if(listener.exitClipCorridorExpressionLabel) {
+	 		listener.exitClipCorridorExpressionLabel(this);
 		}
 	}
 }
@@ -11855,6 +13869,18 @@ export class ClipWKTExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_clipWKTExpression;
+	}
+	public copyFrom(ctx: ClipWKTExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ClipWKTExpressionLabelContext extends ClipWKTExpressionContext {
+	constructor(parser: wcpsParser, ctx: ClipWKTExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public CLIP(): TerminalNode {
 		return this.getToken(wcpsParser.CLIP, 0);
@@ -11883,17 +13909,14 @@ export class ClipWKTExpressionContext extends ParserRuleContext {
 	public WITH_COORDINATES(): TerminalNode {
 		return this.getToken(wcpsParser.WITH_COORDINATES, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_clipWKTExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterClipWKTExpression) {
-	 		listener.enterClipWKTExpression(this);
+	    if(listener.enterClipWKTExpressionLabel) {
+	 		listener.enterClipWKTExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitClipWKTExpression) {
-	 		listener.exitClipWKTExpression(this);
+	    if(listener.exitClipWKTExpressionLabel) {
+	 		listener.exitClipWKTExpressionLabel(this);
 		}
 	}
 }
@@ -11903,6 +13926,18 @@ export class CrsTransformExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_crsTransformExpression;
+	}
+	public copyFrom(ctx: CrsTransformExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CrsTransformExpressionLabelContext extends CrsTransformExpressionContext {
+	constructor(parser: wcpsParser, ctx: CrsTransformExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public CRS_TRANSFORM(): TerminalNode {
 		return this.getToken(wcpsParser.CRS_TRANSFORM, 0);
@@ -11949,17 +13984,14 @@ export class CrsTransformExpressionContext extends ParserRuleContext {
 	public interpolationType(): InterpolationTypeContext {
 		return this.getTypedRuleContext(InterpolationTypeContext, 0) as InterpolationTypeContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_crsTransformExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCrsTransformExpression) {
-	 		listener.enterCrsTransformExpression(this);
+	    if(listener.enterCrsTransformExpressionLabel) {
+	 		listener.enterCrsTransformExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCrsTransformExpression) {
-	 		listener.exitCrsTransformExpression(this);
+	    if(listener.exitCrsTransformExpressionLabel) {
+	 		listener.exitCrsTransformExpressionLabel(this);
 		}
 	}
 }
@@ -11969,6 +14001,18 @@ export class CrsTransformShorthandExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_crsTransformShorthandExpression;
+	}
+	public copyFrom(ctx: CrsTransformShorthandExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CrsTransformShorthandExpressionLabelContext extends CrsTransformShorthandExpressionContext {
+	constructor(parser: wcpsParser, ctx: CrsTransformShorthandExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public CRS_TRANSFORM(): TerminalNode {
 		return this.getToken(wcpsParser.CRS_TRANSFORM, 0);
@@ -12015,17 +14059,14 @@ export class CrsTransformShorthandExpressionContext extends ParserRuleContext {
 	public interpolationType(): InterpolationTypeContext {
 		return this.getTypedRuleContext(InterpolationTypeContext, 0) as InterpolationTypeContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_crsTransformShorthandExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCrsTransformShorthandExpression) {
-	 		listener.enterCrsTransformShorthandExpression(this);
+	    if(listener.enterCrsTransformShorthandExpressionLabel) {
+	 		listener.enterCrsTransformShorthandExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCrsTransformShorthandExpression) {
-	 		listener.exitCrsTransformShorthandExpression(this);
+	    if(listener.exitCrsTransformShorthandExpressionLabel) {
+	 		listener.exitCrsTransformShorthandExpressionLabel(this);
 		}
 	}
 }
@@ -12035,6 +14076,18 @@ export class PolygonizeExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_polygonizeExpression;
+	}
+	public copyFrom(ctx: PolygonizeExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class PolygonizeExpressionLabelContext extends PolygonizeExpressionContext {
+	constructor(parser: wcpsParser, ctx: PolygonizeExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public POLYGONIZE(): TerminalNode {
 		return this.getToken(wcpsParser.POLYGONIZE, 0);
@@ -12057,17 +14110,14 @@ export class PolygonizeExpressionContext extends ParserRuleContext {
 	public INTEGER(): TerminalNode {
 		return this.getToken(wcpsParser.INTEGER, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_polygonizeExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterPolygonizeExpression) {
-	 		listener.enterPolygonizeExpression(this);
+	    if(listener.enterPolygonizeExpressionLabel) {
+	 		listener.enterPolygonizeExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitPolygonizeExpression) {
-	 		listener.exitPolygonizeExpression(this);
+	    if(listener.exitPolygonizeExpressionLabel) {
+	 		listener.exitPolygonizeExpressionLabel(this);
 		}
 	}
 }
@@ -12077,6 +14127,18 @@ export class DimensionCrsListContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_dimensionCrsList;
+	}
+	public copyFrom(ctx: DimensionCrsListContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DimensionCrsListLabelContext extends DimensionCrsListContext {
+	constructor(parser: wcpsParser, ctx: DimensionCrsListContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public LEFT_BRACE(): TerminalNode {
 		return this.getToken(wcpsParser.LEFT_BRACE, 0);
@@ -12096,17 +14158,14 @@ export class DimensionCrsListContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_dimensionCrsList;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDimensionCrsList) {
-	 		listener.enterDimensionCrsList(this);
+	    if(listener.enterDimensionCrsListLabel) {
+	 		listener.enterDimensionCrsListLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDimensionCrsList) {
-	 		listener.exitDimensionCrsList(this);
+	    if(listener.exitDimensionCrsListLabel) {
+	 		listener.exitDimensionCrsListLabel(this);
 		}
 	}
 }
@@ -12116,6 +14175,18 @@ export class DimensionGeoXYResolutionsListContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_dimensionGeoXYResolutionsList;
+	}
+	public copyFrom(ctx: DimensionGeoXYResolutionsListContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DimensionGeoXYResolutionsListLabelContext extends DimensionGeoXYResolutionsListContext {
+	constructor(parser: wcpsParser, ctx: DimensionGeoXYResolutionsListContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public dimensionGeoXYResolution_list(): DimensionGeoXYResolutionContext[] {
 		return this.getTypedRuleContexts(DimensionGeoXYResolutionContext) as DimensionGeoXYResolutionContext[];
@@ -12129,17 +14200,14 @@ export class DimensionGeoXYResolutionsListContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_dimensionGeoXYResolutionsList;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDimensionGeoXYResolutionsList) {
-	 		listener.enterDimensionGeoXYResolutionsList(this);
+	    if(listener.enterDimensionGeoXYResolutionsListLabel) {
+	 		listener.enterDimensionGeoXYResolutionsListLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDimensionGeoXYResolutionsList) {
-	 		listener.exitDimensionGeoXYResolutionsList(this);
+	    if(listener.exitDimensionGeoXYResolutionsListLabel) {
+	 		listener.exitDimensionGeoXYResolutionsListLabel(this);
 		}
 	}
 }
@@ -12180,6 +14248,18 @@ export class DimensionCrsElementContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_dimensionCrsElement;
+	}
+	public copyFrom(ctx: DimensionCrsElementContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class DimensionCrsElementLabelContext extends DimensionCrsElementContext {
+	constructor(parser: wcpsParser, ctx: DimensionCrsElementContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public axisName(): AxisNameContext {
 		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
 	}
@@ -12189,17 +14269,14 @@ export class DimensionCrsElementContext extends ParserRuleContext {
 	public crsName(): CrsNameContext {
 		return this.getTypedRuleContext(CrsNameContext, 0) as CrsNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_dimensionCrsElement;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterDimensionCrsElement) {
-	 		listener.enterDimensionCrsElement(this);
+	    if(listener.enterDimensionCrsElementLabel) {
+	 		listener.enterDimensionCrsElementLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitDimensionCrsElement) {
-	 		listener.exitDimensionCrsElement(this);
+	    if(listener.exitDimensionCrsElementLabel) {
+	 		listener.exitDimensionCrsElementLabel(this);
 		}
 	}
 }
@@ -12210,20 +14287,29 @@ export class InterpolationTypeContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
-	public COVERAGE_VARIABLE_NAME(): TerminalNode {
-		return this.getToken(wcpsParser.COVERAGE_VARIABLE_NAME, 0);
-	}
     public get ruleIndex(): number {
     	return wcpsParser.RULE_interpolationType;
 	}
+	public copyFrom(ctx: InterpolationTypeContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class InterpolationTypeLabelContext extends InterpolationTypeContext {
+	constructor(parser: wcpsParser, ctx: InterpolationTypeContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public COVERAGE_VARIABLE_NAME(): TerminalNode {
+		return this.getToken(wcpsParser.COVERAGE_VARIABLE_NAME, 0);
+	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterInterpolationType) {
-	 		listener.enterInterpolationType(this);
+	    if(listener.enterInterpolationTypeLabel) {
+	 		listener.enterInterpolationTypeLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitInterpolationType) {
-	 		listener.exitInterpolationType(this);
+	    if(listener.exitInterpolationTypeLabel) {
+	 		listener.exitInterpolationTypeLabel(this);
 		}
 	}
 }
@@ -12233,6 +14319,18 @@ export class CoverageConstructorExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_coverageConstructorExpression;
+	}
+	public copyFrom(ctx: CoverageConstructorExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CoverageConstructorExpressionLabelContext extends CoverageConstructorExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageConstructorExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public COVERAGE(): TerminalNode {
 		return this.getToken(wcpsParser.COVERAGE, 0);
@@ -12261,17 +14359,14 @@ export class CoverageConstructorExpressionContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_coverageConstructorExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCoverageConstructorExpression) {
-	 		listener.enterCoverageConstructorExpression(this);
+	    if(listener.enterCoverageConstructorExpressionLabel) {
+	 		listener.enterCoverageConstructorExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCoverageConstructorExpression) {
-	 		listener.exitCoverageConstructorExpression(this);
+	    if(listener.exitCoverageConstructorExpressionLabel) {
+	 		listener.exitCoverageConstructorExpressionLabel(this);
 		}
 	}
 }
@@ -12281,6 +14376,18 @@ export class AxisIteratorContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_axisIterator;
+	}
+	public copyFrom(ctx: AxisIteratorContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class AxisIteratorDomainIntervalsLabelContext extends AxisIteratorContext {
+	constructor(parser: wcpsParser, ctx: AxisIteratorContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public coverageVariableName(): CoverageVariableNameContext {
 		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
@@ -12297,11 +14404,8 @@ export class AxisIteratorContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-	public COLON_list(): TerminalNode[] {
-	    	return this.getTokens(wcpsParser.COLON);
-	}
-	public COLON(i: number): TerminalNode {
-		return this.getToken(wcpsParser.COLON, i);
+	public COLON(): TerminalNode {
+		return this.getToken(wcpsParser.COLON, 0);
 	}
 	public regularTimeStep(): RegularTimeStepContext {
 		return this.getTypedRuleContext(RegularTimeStepContext, 0) as RegularTimeStepContext;
@@ -12312,11 +14416,88 @@ export class AxisIteratorContext extends ParserRuleContext {
 	public DESC(): TerminalNode {
 		return this.getToken(wcpsParser.DESC, 0);
 	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterAxisIteratorDomainIntervalsLabel) {
+	 		listener.enterAxisIteratorDomainIntervalsLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitAxisIteratorDomainIntervalsLabel) {
+	 		listener.exitAxisIteratorDomainIntervalsLabel(this);
+		}
+	}
+}
+export class AxisIteratorLabelContext extends AxisIteratorContext {
+	constructor(parser: wcpsParser, ctx: AxisIteratorContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public axisName(): AxisNameContext {
+		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
 	public dimensionBoundConcatenationElement_list(): DimensionBoundConcatenationElementContext[] {
 		return this.getTypedRuleContexts(DimensionBoundConcatenationElementContext) as DimensionBoundConcatenationElementContext[];
 	}
 	public dimensionBoundConcatenationElement(i: number): DimensionBoundConcatenationElementContext {
 		return this.getTypedRuleContext(DimensionBoundConcatenationElementContext, i) as DimensionBoundConcatenationElementContext;
+	}
+	public COLON_list(): TerminalNode[] {
+	    	return this.getTokens(wcpsParser.COLON);
+	}
+	public COLON(i: number): TerminalNode {
+		return this.getToken(wcpsParser.COLON, i);
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
+	}
+	public regularTimeStep(): RegularTimeStepContext {
+		return this.getTypedRuleContext(RegularTimeStepContext, 0) as RegularTimeStepContext;
+	}
+	public ASC(): TerminalNode {
+		return this.getToken(wcpsParser.ASC, 0);
+	}
+	public DESC(): TerminalNode {
+		return this.getToken(wcpsParser.DESC, 0);
+	}
+	public enterRule(listener: wcpsListener): void {
+	    if(listener.enterAxisIteratorLabel) {
+	 		listener.enterAxisIteratorLabel(this);
+		}
+	}
+	public exitRule(listener: wcpsListener): void {
+	    if(listener.exitAxisIteratorLabel) {
+	 		listener.exitAxisIteratorLabel(this);
+		}
+	}
+}
+export class AxisIteratorEnumerationListLabelContext extends AxisIteratorContext {
+	constructor(parser: wcpsParser, ctx: AxisIteratorContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public coverageVariableName(): CoverageVariableNameContext {
+		return this.getTypedRuleContext(CoverageVariableNameContext, 0) as CoverageVariableNameContext;
+	}
+	public axisName(): AxisNameContext {
+		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
+	}
+	public LEFT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.LEFT_PARENTHESIS, 0);
+	}
+	public dimensionBoundConcatenationElement_list(): DimensionBoundConcatenationElementContext[] {
+		return this.getTypedRuleContexts(DimensionBoundConcatenationElementContext) as DimensionBoundConcatenationElementContext[];
+	}
+	public dimensionBoundConcatenationElement(i: number): DimensionBoundConcatenationElementContext {
+		return this.getTypedRuleContext(DimensionBoundConcatenationElementContext, i) as DimensionBoundConcatenationElementContext;
+	}
+	public RIGHT_PARENTHESIS(): TerminalNode {
+		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
 	public COMMA_list(): TerminalNode[] {
 	    	return this.getTokens(wcpsParser.COMMA);
@@ -12324,17 +14505,20 @@ export class AxisIteratorContext extends ParserRuleContext {
 	public COMMA(i: number): TerminalNode {
 		return this.getToken(wcpsParser.COMMA, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_axisIterator;
+	public ASC(): TerminalNode {
+		return this.getToken(wcpsParser.ASC, 0);
+	}
+	public DESC(): TerminalNode {
+		return this.getToken(wcpsParser.DESC, 0);
 	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterAxisIterator) {
-	 		listener.enterAxisIterator(this);
+	    if(listener.enterAxisIteratorEnumerationListLabel) {
+	 		listener.enterAxisIteratorEnumerationListLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitAxisIterator) {
-	 		listener.exitAxisIterator(this);
+	    if(listener.exitAxisIteratorEnumerationListLabel) {
+	 		listener.exitAxisIteratorEnumerationListLabel(this);
 		}
 	}
 }
@@ -12369,6 +14553,18 @@ export class IntervalExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_intervalExpression;
+	}
+	public copyFrom(ctx: IntervalExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class IntervalExpressionLabelContext extends IntervalExpressionContext {
+	constructor(parser: wcpsParser, ctx: IntervalExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public scalarExpression_list(): ScalarExpressionContext[] {
 		return this.getTypedRuleContexts(ScalarExpressionContext) as ScalarExpressionContext[];
 	}
@@ -12378,17 +14574,14 @@ export class IntervalExpressionContext extends ParserRuleContext {
 	public COLON(): TerminalNode {
 		return this.getToken(wcpsParser.COLON, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_intervalExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterIntervalExpression) {
-	 		listener.enterIntervalExpression(this);
+	    if(listener.enterIntervalExpressionLabel) {
+	 		listener.enterIntervalExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitIntervalExpression) {
-	 		listener.exitIntervalExpression(this);
+	    if(listener.exitIntervalExpressionLabel) {
+	 		listener.exitIntervalExpressionLabel(this);
 		}
 	}
 }
@@ -12398,6 +14591,18 @@ export class CoverageConstantExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_coverageConstantExpression;
+	}
+	public copyFrom(ctx: CoverageConstantExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class CoverageConstantExpressionLabelContext extends CoverageConstantExpressionContext {
+	constructor(parser: wcpsParser, ctx: CoverageConstantExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public COVERAGE(): TerminalNode {
 		return this.getToken(wcpsParser.COVERAGE, 0);
@@ -12444,17 +14649,14 @@ export class CoverageConstantExpressionContext extends ParserRuleContext {
 	public SEMICOLON(i: number): TerminalNode {
 		return this.getToken(wcpsParser.SEMICOLON, i);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_coverageConstantExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterCoverageConstantExpression) {
-	 		listener.enterCoverageConstantExpression(this);
+	    if(listener.enterCoverageConstantExpressionLabel) {
+	 		listener.enterCoverageConstantExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitCoverageConstantExpression) {
-	 		listener.exitCoverageConstantExpression(this);
+	    if(listener.exitCoverageConstantExpressionLabel) {
+	 		listener.exitCoverageConstantExpressionLabel(this);
 		}
 	}
 }
@@ -12465,20 +14667,29 @@ export class AxisSpecContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
-	public dimensionIntervalElement(): DimensionIntervalElementContext {
-		return this.getTypedRuleContext(DimensionIntervalElementContext, 0) as DimensionIntervalElementContext;
-	}
     public get ruleIndex(): number {
     	return wcpsParser.RULE_axisSpec;
 	}
+	public copyFrom(ctx: AxisSpecContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class AxisSpecLabelContext extends AxisSpecContext {
+	constructor(parser: wcpsParser, ctx: AxisSpecContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
+	public dimensionIntervalElement(): DimensionIntervalElementContext {
+		return this.getTypedRuleContext(DimensionIntervalElementContext, 0) as DimensionIntervalElementContext;
+	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterAxisSpec) {
-	 		listener.enterAxisSpec(this);
+	    if(listener.enterAxisSpecLabel) {
+	 		listener.enterAxisSpecLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitAxisSpec) {
-	 		listener.exitAxisSpec(this);
+	    if(listener.exitAxisSpecLabel) {
+	 		listener.exitAxisSpecLabel(this);
 		}
 	}
 }
@@ -12582,6 +14793,18 @@ export class ReduceBooleanExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_reduceBooleanExpression;
+	}
+	public copyFrom(ctx: ReduceBooleanExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ReduceBooleanExpressionLabelContext extends ReduceBooleanExpressionContext {
+	constructor(parser: wcpsParser, ctx: ReduceBooleanExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public reduceBooleanExpressionOperator(): ReduceBooleanExpressionOperatorContext {
 		return this.getTypedRuleContext(ReduceBooleanExpressionOperatorContext, 0) as ReduceBooleanExpressionOperatorContext;
 	}
@@ -12594,17 +14817,14 @@ export class ReduceBooleanExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_reduceBooleanExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterReduceBooleanExpression) {
-	 		listener.enterReduceBooleanExpression(this);
+	    if(listener.enterReduceBooleanExpressionLabel) {
+	 		listener.enterReduceBooleanExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitReduceBooleanExpression) {
-	 		listener.exitReduceBooleanExpression(this);
+	    if(listener.exitReduceBooleanExpressionLabel) {
+	 		listener.exitReduceBooleanExpressionLabel(this);
 		}
 	}
 }
@@ -12614,6 +14834,18 @@ export class ReduceNumericalExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_reduceNumericalExpression;
+	}
+	public copyFrom(ctx: ReduceNumericalExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class ReduceNumericalExpressionLabelContext extends ReduceNumericalExpressionContext {
+	constructor(parser: wcpsParser, ctx: ReduceNumericalExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public reduceNumericalExpressionOperator(): ReduceNumericalExpressionOperatorContext {
 		return this.getTypedRuleContext(ReduceNumericalExpressionOperatorContext, 0) as ReduceNumericalExpressionOperatorContext;
@@ -12627,17 +14859,14 @@ export class ReduceNumericalExpressionContext extends ParserRuleContext {
 	public RIGHT_PARENTHESIS(): TerminalNode {
 		return this.getToken(wcpsParser.RIGHT_PARENTHESIS, 0);
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_reduceNumericalExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterReduceNumericalExpression) {
-	 		listener.enterReduceNumericalExpression(this);
+	    if(listener.enterReduceNumericalExpressionLabel) {
+	 		listener.enterReduceNumericalExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitReduceNumericalExpression) {
-	 		listener.exitReduceNumericalExpression(this);
+	    if(listener.exitReduceNumericalExpressionLabel) {
+	 		listener.exitReduceNumericalExpressionLabel(this);
 		}
 	}
 }
@@ -12717,6 +14946,18 @@ export class GeneralCondenseExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_generalCondenseExpression;
+	}
+	public copyFrom(ctx: GeneralCondenseExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class GeneralCondenseExpressionLabelContext extends GeneralCondenseExpressionContext {
+	constructor(parser: wcpsParser, ctx: GeneralCondenseExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public CONDENSE(): TerminalNode {
 		return this.getToken(wcpsParser.CONDENSE, 0);
 	}
@@ -12747,17 +14988,14 @@ export class GeneralCondenseExpressionContext extends ParserRuleContext {
 	public whereClause(): WhereClauseContext {
 		return this.getTypedRuleContext(WhereClauseContext, 0) as WhereClauseContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_generalCondenseExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterGeneralCondenseExpression) {
-	 		listener.enterGeneralCondenseExpression(this);
+	    if(listener.enterGeneralCondenseExpressionLabel) {
+	 		listener.enterGeneralCondenseExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitGeneralCondenseExpression) {
-	 		listener.exitGeneralCondenseExpression(this);
+	    if(listener.exitGeneralCondenseExpressionLabel) {
+	 		listener.exitGeneralCondenseExpressionLabel(this);
 		}
 	}
 }
@@ -12767,6 +15005,18 @@ export class FlipExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_flipExpression;
+	}
+	public copyFrom(ctx: FlipExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class FlipExpressionLabelContext extends FlipExpressionContext {
+	constructor(parser: wcpsParser, ctx: FlipExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public FLIP(): TerminalNode {
 		return this.getToken(wcpsParser.FLIP, 0);
@@ -12780,17 +15030,14 @@ export class FlipExpressionContext extends ParserRuleContext {
 	public axisName(): AxisNameContext {
 		return this.getTypedRuleContext(AxisNameContext, 0) as AxisNameContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_flipExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterFlipExpression) {
-	 		listener.enterFlipExpression(this);
+	    if(listener.enterFlipExpressionLabel) {
+	 		listener.enterFlipExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitFlipExpression) {
-	 		listener.exitFlipExpression(this);
+	    if(listener.exitFlipExpressionLabel) {
+	 		listener.exitFlipExpressionLabel(this);
 		}
 	}
 }
@@ -12800,6 +15047,18 @@ export class SortExpressionContext extends ParserRuleContext {
 	constructor(parser?: wcpsParser, parent?: ParserRuleContext, invokingState?: number) {
 		super(parent, invokingState);
     	this.parser = parser;
+	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_sortExpression;
+	}
+	public copyFrom(ctx: SortExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class SortExpressionLabelContext extends SortExpressionContext {
+	constructor(parser: wcpsParser, ctx: SortExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
 	}
 	public SORT(): TerminalNode {
 		return this.getToken(wcpsParser.SORT, 0);
@@ -12822,17 +15081,14 @@ export class SortExpressionContext extends ParserRuleContext {
 	public sortingOrder(): SortingOrderContext {
 		return this.getTypedRuleContext(SortingOrderContext, 0) as SortingOrderContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_sortExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterSortExpression) {
-	 		listener.enterSortExpression(this);
+	    if(listener.enterSortExpressionLabel) {
+	 		listener.enterSortExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitSortExpression) {
-	 		listener.exitSortExpression(this);
+	    if(listener.exitSortExpressionLabel) {
+	 		listener.exitSortExpressionLabel(this);
 		}
 	}
 }
@@ -12843,6 +15099,18 @@ export class SwitchCaseExpressionContext extends ParserRuleContext {
 		super(parent, invokingState);
     	this.parser = parser;
 	}
+    public get ruleIndex(): number {
+    	return wcpsParser.RULE_switchCaseExpression;
+	}
+	public copyFrom(ctx: SwitchCaseExpressionContext): void {
+		super.copyFrom(ctx);
+	}
+}
+export class SwitchCaseExpressionLabelContext extends SwitchCaseExpressionContext {
+	constructor(parser: wcpsParser, ctx: SwitchCaseExpressionContext) {
+		super(parser, ctx.parentCtx, ctx.invokingState);
+		super.copyFrom(ctx);
+	}
 	public SWITCH(): TerminalNode {
 		return this.getToken(wcpsParser.SWITCH, 0);
 	}
@@ -12852,17 +15120,14 @@ export class SwitchCaseExpressionContext extends ParserRuleContext {
 	public switchCaseDefaultElement(): SwitchCaseDefaultElementContext {
 		return this.getTypedRuleContext(SwitchCaseDefaultElementContext, 0) as SwitchCaseDefaultElementContext;
 	}
-    public get ruleIndex(): number {
-    	return wcpsParser.RULE_switchCaseExpression;
-	}
 	public enterRule(listener: wcpsListener): void {
-	    if(listener.enterSwitchCaseExpression) {
-	 		listener.enterSwitchCaseExpression(this);
+	    if(listener.enterSwitchCaseExpressionLabel) {
+	 		listener.enterSwitchCaseExpressionLabel(this);
 		}
 	}
 	public exitRule(listener: wcpsListener): void {
-	    if(listener.exitSwitchCaseExpression) {
-	 		listener.exitSwitchCaseExpression(this);
+	    if(listener.exitSwitchCaseExpressionLabel) {
+	 		listener.exitSwitchCaseExpressionLabel(this);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import { EncodedCoverageExpressionContext, ForClauseContext, LetClauseContext, NumericalScalarExpressionContext, ReturnClauseContext, WhereClauseContext } from './grammar/wcpsParser';
+import { EncodedCoverageExpressionContext, ForClauseContext, LetClauseContext, ReturnClauseContext, WhereClauseContext } from './grammar/wcpsParser';
 
 export function beautifyForClause(node: ForClauseContext): string {
     const coverageVariableName = node.coverageVariableName().getText();
@@ -62,49 +62,41 @@ export function BeautifyLetClause(node: LetClauseContext): string {
 
 export function BeautifyWhereClause(node: WhereClauseContext): string {
     const coverageName = node.coverageExpression().coverageExpression_list().map(node => node.getText());
-
-
-    const comparison = node.coverageExpression().numericalComparissonOperator() != null;
-    const arithmetic = node.coverageExpression().unaryArithmeticExpression() != null;
-
+    const comparison = node.coverageExpression().numericalComparissonOperator().getText();
     const hasLeft = node.LEFT_PARENTHESIS() != null;
     const hasRight = node.RIGHT_PARENTHESIS() != null;
-    
-    let operator = "";
-    if (comparison) {
-        operator = node.coverageExpression().numericalComparissonOperator().getText();
-    } else if (arithmetic) {
-        operator = node.coverageExpression().unaryArithmeticExpression().getText();
-    }
 
     let whereClause = 'where ';
     if (hasLeft) whereClause += '( ';
-    whereClause += coverageName.join(` ${operator} `);
+    whereClause += coverageName[0];
+    whereClause += " ";
+    whereClause += comparison;
+    whereClause += " ";
+    whereClause += coverageName[1];
     if (hasRight) whereClause += ' )';
 
     return whereClause;
 }
 
 export function BeautifyReturnClause(node: ReturnClauseContext): string {
-    // variables for encoded expression
-    const encodedExpression = node.processingExpression().encodedCoverageExpression();
-    const hasLeft = encodedExpression.LEFT_PARENTHESIS() != null;
-    const hasRight = encodedExpression.RIGHT_PARENTHESIS() != null;
-    const encodeEquation = encodedExpression.coverageExpression().coverageExpression_list().map(node => node.getText());
-    const encodeString = encodedExpression.STRING_LITERAL();
+
+    const encodedExpression = node.processingExpression().encodedCoverageExpression() != null;
+    const hasLeft = node.LEFT_PARENTHESIS() != null;
+    const hasRight = node.RIGHT_PARENTHESIS() != null;
+    const encodeEquation = node.processingExpression().encodedCoverageExpression().coverageExpression().coverageExpression_list().map(node => node.getText());
 
     let returnClause = 'return\n    ';
+    if (hasLeft) returnClause += '( ';
     if (encodedExpression) {
-        returnClause += "encode";
-        if (hasLeft) returnClause += '(\n        ';
+        returnClause += "encode(";
         returnClause += encodeEquation[0].toString();
         returnClause += " ";
-        returnClause += encodedExpression.coverageExpression().coverageArithmeticOperator().getText();
+        returnClause += node.processingExpression().encodedCoverageExpression().coverageExpression().coverageArithmeticOperator().getText();
         returnClause += " ";
         returnClause += encodeEquation[1].toString();
-        if (encodeString != null) returnClause += ",\n        " + encodeString.getText();
-        if (hasRight) returnClause += '\n    )';
+            returnClause += ")";
     }
+    if (hasRight) returnClause += ' )';
 
     return returnClause;
 }

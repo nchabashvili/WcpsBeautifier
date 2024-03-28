@@ -18,15 +18,9 @@ import WCPSParser, {
 } from './grammar/wcpsParser';
 import { BeautifyLetClause, BeautifyReturnClause, BeautifyWhereClause, beautifyForClause } from './utils';
 
-//const input = `FOR $c IN (mean_summer_airtemp), $z IN (what_is_this), $f IN (nice,goodbye,third) LET $a:=$c[Lat(20:30),Long(40:45)], $b:=$c+2,$z:=[$z(0:20),$f(5:30),$j(3:30)] WHERE $a>25 RETURN encode($a+$b,"png")`;
-const input = `for $cov in (CoverageName)
-let $nir := $cov.nir, $red := $cov.red
-return
-  encode(
-    ($nir - $red) / ($nir + $red),
-    "application/json"
-  )
-`
+const input = `
+FOR $c IN (mean_summer_airtemp), $z IN (what_is_this), $f IN (nice,goodbye,third) LET $a:=$c[Lat(20:30),Long(40:45)], $b:=$c+2,$z:=[$z(0:20),$f(5:30),$j(3:30)] WHERE $a>25 RETURN encode($a+$b,"png")`;
+
 const charStream = new CharStream(input);
 const lexer = new WCPSLexer(charStream);
 const tokens = new CommonTokenStream(lexer);

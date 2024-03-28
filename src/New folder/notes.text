@@ -1,0 +1,15 @@
+implementation 
+
+1. recieved grammar from [name];
+2. removed labels from the grammar file to access clauses easily
+3. created a parser from the grammar File using antl;
+4. started working in index.ts.
+5. wrote an example query that consisted of for, let, where, and return clauses;
+6. first started working on beautifing the for section of the query;
+7. using ForClauseListContext from the parser i accessed data in it and wrote a function that recives the list of forClauses that finds all of the elements in it structures it and returns in as a string;
+8. finally the strings get joined using the standard formating structure and get pushed to public variable output which will outputthe final formatted query;
+9. then started implementing letClause beautifier;
+10. the start of implementation is similar to forclause but in this case we need to determen which form of let clause we are getting 
+the two possibilities are letClauseWithDimensionIntervalList and letClauseWithCoverageExpression.
+11. the structure of these two clauses differ so we determine which one it is with a if statement. 
+12. after this we write syntax for both of these cases similar to how we did it for forClause.

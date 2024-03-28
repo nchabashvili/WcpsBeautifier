@@ -3,7 +3,7 @@
 import {ParseTreeListener} from "antlr4";
 
 
-import { WcpsQueryLabelContext } from "./wcpsParser";
+import { WcpsQueryContext } from "./wcpsParser";
 import { ForClauseListContext } from "./wcpsParser";
 import { CoverageIdForClauseContext } from "./wcpsParser";
 import { ForClauseContext } from "./wcpsParser";
@@ -15,178 +15,112 @@ import { WhereClauseContext } from "./wcpsParser";
 import { ReturnClauseContext } from "./wcpsParser";
 import { DomainPropertyValueExtractionContext } from "./wcpsParser";
 import { DomainIntervalsContext } from "./wcpsParser";
-import { GeoXYAxisLabelAndDomainResolutionLabelContext } from "./wcpsParser";
-import { CoverageVariableNameLabelContext } from "./wcpsParser";
+import { GeoXYAxisLabelAndDomainResolutionContext } from "./wcpsParser";
+import { CoverageVariableNameContext } from "./wcpsParser";
 import { ProcessingExpressionContext } from "./wcpsParser";
-import { ScalarValueCoverageExpressionLabelContext } from "./wcpsParser";
+import { ScalarValueCoverageExpressionContext } from "./wcpsParser";
 import { ScalarExpressionContext } from "./wcpsParser";
-import { BooleanBinaryScalarLabelContext } from "./wcpsParser";
-import { BooleanReduceExpressionContext } from "./wcpsParser";
-import { BooleanUnaryScalarLabelContext } from "./wcpsParser";
-import { BooleanStringComparisonScalarContext } from "./wcpsParser";
-import { BooleanConstantLabelContext } from "./wcpsParser";
-import { BooleanNumericalComparisonScalarLabelContext } from "./wcpsParser";
+import { BooleanScalarExpressionContext } from "./wcpsParser";
 import { BooleanUnaryOperatorContext } from "./wcpsParser";
 import { BooleanConstantContext } from "./wcpsParser";
 import { BooleanOperatorContext } from "./wcpsParser";
 import { NumericalComparissonOperatorContext } from "./wcpsParser";
 import { StringOperatorContext } from "./wcpsParser";
-import { StringScalarExpressionLabelContext } from "./wcpsParser";
-import { StarExpressionLabelContext } from "./wcpsParser";
+import { StringScalarExpressionContext } from "./wcpsParser";
+import { StarExpressionContext } from "./wcpsParser";
 import { BooleanSwitchCaseCoverageExpressionContext } from "./wcpsParser";
 import { BooleanSwitchCaseCombinedExpressionContext } from "./wcpsParser";
-import { NumericalTrigonometricScalarExpressionLabelContext } from "./wcpsParser";
-import { NumericalNanNumberExpressionLabelContext } from "./wcpsParser";
-import { NumericalRealNumberExpressionLabelContext } from "./wcpsParser";
-import { NumericalCondenseExpressionLabelContext } from "./wcpsParser";
-import { NumericalUnaryScalarExpressionLabelContext } from "./wcpsParser";
-import { NumericalBinaryScalarExpressionLabelContext } from "./wcpsParser";
-import { NumericalComplexNumberConstantContext } from "./wcpsParser";
-import { ComplexNumberConstantLabelContext } from "./wcpsParser";
+import { NumericalScalarExpressionContext } from "./wcpsParser";
+import { ComplexNumberConstantContext } from "./wcpsParser";
 import { NumericalOperatorContext } from "./wcpsParser";
 import { NumericalUnaryOperationContext } from "./wcpsParser";
 import { TrigonometricOperatorContext } from "./wcpsParser";
 import { GetComponentExpressionContext } from "./wcpsParser";
-import { CoverageExpressionNullSetRetrievingLabelContext } from "./wcpsParser";
-import { CoverageIdentifierExpressionLabelContext } from "./wcpsParser";
-import { CellCountExpressionLabelContext } from "./wcpsParser";
-import { CoverageCrsSetExpressionLabelContext } from "./wcpsParser";
-import { DomainExpressionLabelContext } from "./wcpsParser";
-import { ImageCrsDomainByDimensionExpressionLabelContext } from "./wcpsParser";
-import { ImageCrsDomainExpressionLabelContext } from "./wcpsParser";
-import { ImageCrsExpressionLabelContext } from "./wcpsParser";
-import { DescribeCoverageExpressionLabelContext } from "./wcpsParser";
+import { CoverageExpressionNullSetRetrievingContext } from "./wcpsParser";
+import { CoverageIdentifierExpressionContext } from "./wcpsParser";
+import { CellCountExpressionContext } from "./wcpsParser";
+import { CoverageCrsSetExpressionContext } from "./wcpsParser";
+import { DomainExpressionContext } from "./wcpsParser";
+import { ImageCrsDomainByDimensionExpressionContext } from "./wcpsParser";
+import { ImageCrsDomainExpressionContext } from "./wcpsParser";
+import { ImageCrsExpressionContext } from "./wcpsParser";
+import { DescribeCoverageExpressionContext } from "./wcpsParser";
 import { PositionalParamaterContext } from "./wcpsParser";
 import { ExtraParamsContext } from "./wcpsParser";
-import { EncodedCoverageExpressionLabelContext } from "./wcpsParser";
-import { DecodedCoverageExpressionLabelContext } from "./wcpsParser";
-import { CoverageExpressionCrsTransformShorthandLabelContext } from "./wcpsParser";
-import { CoverageExpressionDynamicallyChangingNullValuesLabelContext } from "./wcpsParser";
-import { CoverageExpressionUdfExpressionContext } from "./wcpsParser";
-import { CoverageExpressionScaleByImageCrsDomainLabelContext } from "./wcpsParser";
-import { CoverageExpressionScaleByDimensionIntervalsLabelContext } from "./wcpsParser";
-import { CoverageExpressionDynamicallyChangingNullMaskDiscardLabelContext } from "./wcpsParser";
-import { CoverageExpressionOverlayLabelContext } from "./wcpsParser";
-import { CoverageExpressionComparissonLabelContext } from "./wcpsParser";
-import { CoverageExpressionShortHandSubsetWithLetClauseVariableLabelContext } from "./wcpsParser";
-import { CoverageExpressionUnaryBooleanLabelContext } from "./wcpsParser";
-import { CoverageExpressionVariableNameLabelContext } from "./wcpsParser";
-import { CoverageExpressionGeoXYAxisLabelAndDomainResolutionContext } from "./wcpsParser";
-import { CoverageExpressionRangeConstructorLabelContext } from "./wcpsParser";
-import { CoverageExpressionExtendByDomainIntervalsLabelContext } from "./wcpsParser";
-import { CoverageExpressionCastLabelContext } from "./wcpsParser";
-import { CoverageExpressionPowerLabelContext } from "./wcpsParser";
-import { CoverageExpresisonFlipLabelContext } from "./wcpsParser";
-import { CoverageExpressionDynamicallyChangingNullMaskLabelContext } from "./wcpsParser";
-import { CoverageExpressionExtendLabelContext } from "./wcpsParser";
-import { CoverageExpressionSwitchCaseLabelContext } from "./wcpsParser";
-import { CoverageExpressionTimeTruncatorLabelContext } from "./wcpsParser";
-import { CoverageExpressionModLabelContext } from "./wcpsParser";
-import { CoverageExpressionTrigonometricLabelContext } from "./wcpsParser";
-import { CoverageExpressionDynamicallyChangingNullValuesFromLabelContext } from "./wcpsParser";
-import { CoverageExpressionCoverageLabelContext } from "./wcpsParser";
-import { CoverageExpressionConstantLabelContext } from "./wcpsParser";
-import { CoverageExpressionShorthandSliceLabelContext } from "./wcpsParser";
-import { CoverageExpressionSortLabelContext } from "./wcpsParser";
-import { CoverageExpressionShorthandSubsetLabelContext } from "./wcpsParser";
-import { CoverageExpressionArithmeticLabelContext } from "./wcpsParser";
-import { CoverageExpressionExponentialLabelContext } from "./wcpsParser";
-import { CoverageExpressionPolygonizeLabelContext } from "./wcpsParser";
-import { CoverageExpressionLogicLabelContext } from "./wcpsParser";
-import { CoverageExpressionSliceLabelContext } from "./wcpsParser";
-import { CoverageExpressionClipCurtainLabelContext } from "./wcpsParser";
-import { CoverageExpressionRangeSubsettingLabelContext } from "./wcpsParser";
-import { CoverageExpressionMaxBinaryLabelContext } from "./wcpsParser";
-import { CoverageExpressionDomainIntervalsLabelContext } from "./wcpsParser";
-import { CoverageExpressionScaleByFactorLabelContext } from "./wcpsParser";
-import { CoverageIsNullExpressionContext } from "./wcpsParser";
-import { CoverageExpressionClipWKTLabelContext } from "./wcpsParser";
-import { CoverageExpressionScalarLabelContext } from "./wcpsParser";
-import { CoverageExpressionTrimCoverageLabelContext } from "./wcpsParser";
-import { CoverageExpressionMinBinaryLabelContext } from "./wcpsParser";
-import { CoverageExpressionConstructorLabelContext } from "./wcpsParser";
-import { CoverageExpressionCrsTransformLabelContext } from "./wcpsParser";
-import { CoverageExpressionDecodeLabelContext } from "./wcpsParser";
-import { CoverageExpressionScaleByFactorListLabelContext } from "./wcpsParser";
-import { CoverageExpressionTimeExtractorLabelContext } from "./wcpsParser";
-import { CoverageExpressionUnaryArithmeticLabelContext } from "./wcpsParser";
-import { CoverageExpressionClipCorridorLabelContext } from "./wcpsParser";
+import { EncodedCoverageExpressionContext } from "./wcpsParser";
+import { DecodeCoverageExpressionContext } from "./wcpsParser";
+import { CoverageExpressionContext } from "./wcpsParser";
 import { CoverageArithmeticOperatorContext } from "./wcpsParser";
 import { UnaryArithmeticExpressionOperatorContext } from "./wcpsParser";
-import { UnaryCoverageArithmeticExpressionLabelContext } from "./wcpsParser";
-import { TrigonometricExpressionLabelContext } from "./wcpsParser";
+import { UnaryArithmeticExpressionContext } from "./wcpsParser";
+import { TrigonometricExpressionContext } from "./wcpsParser";
 import { ExponentialExpressionOperatorContext } from "./wcpsParser";
-import { ExponentialExpressionLabelContext } from "./wcpsParser";
-import { UnaryPowerExpressionLabelContext } from "./wcpsParser";
-import { UnaryModExpressionLabelContext } from "./wcpsParser";
-import { MinBinaryExpressionLabelContext } from "./wcpsParser";
-import { MaxBinaryExpressionLabelContext } from "./wcpsParser";
-import { NotUnaryBooleanExpressionLabelContext } from "./wcpsParser";
-import { BitUnaryBooleanExpressionLabelContext } from "./wcpsParser";
+import { ExponentialExpressionContext } from "./wcpsParser";
+import { UnaryPowerExpressionContext } from "./wcpsParser";
+import { UnaryModExpressionContext } from "./wcpsParser";
+import { MinBinaryExpressionContext } from "./wcpsParser";
+import { MaxBinaryExpressionContext } from "./wcpsParser";
+import { UnaryBooleanExpressionContext } from "./wcpsParser";
 import { RangeTypeContext } from "./wcpsParser";
-import { CastExpressionLabelContext } from "./wcpsParser";
+import { CastExpressionContext } from "./wcpsParser";
 import { FieldNameContext } from "./wcpsParser";
-import { RangeConstructorExpressionLabelContext } from "./wcpsParser";
-import { RangeConstructorElementLabelContext } from "./wcpsParser";
-import { RangeConstructorElementListLabelContext } from "./wcpsParser";
-import { RangeConstructorSwitchCaseExpressionLabelContext } from "./wcpsParser";
-import { DimensionPointListLabelContext } from "./wcpsParser";
-import { DimensionPointElementLabelContext } from "./wcpsParser";
+import { RangeConstructorExpressionContext } from "./wcpsParser";
+import { RangeConstructorElementContext } from "./wcpsParser";
+import { RangeConstructorElementListContext } from "./wcpsParser";
+import { RangeConstructorSwitchCaseExpressionContext } from "./wcpsParser";
+import { DimensionPointListContext } from "./wcpsParser";
+import { DimensionPointElementContext } from "./wcpsParser";
 import { DimensionIntervalListContext } from "./wcpsParser";
-import { SliceScaleDimensionPointElementLabelContext } from "./wcpsParser";
-import { ScaleDimensionPointListLabelContext } from "./wcpsParser";
-import { ScaleDimensionIntervalListLabelContext } from "./wcpsParser";
-import { TrimScaleDimensionIntervalElementLabelContext } from "./wcpsParser";
-import { DimensionBoundConcatenationElementLabelContext } from "./wcpsParser";
-import { TrimDimensionIntervalElementLabelContext } from "./wcpsParser";
-import { TrimDimensionIntervalByImageCrsDomainElementLabelContext } from "./wcpsParser";
-import { SliceDimensionIntervalElementLabelContext } from "./wcpsParser";
+import { ScaleDimensionPointElementContext } from "./wcpsParser";
+import { ScaleDimensionPointListContext } from "./wcpsParser";
+import { ScaleDimensionIntervalListContext } from "./wcpsParser";
+import { ScaleDimensionIntervalElementContext } from "./wcpsParser";
+import { DimensionBoundConcatenationElementContext } from "./wcpsParser";
+import { DimensionIntervalElementContext } from "./wcpsParser";
 import { TimeIntervalElementContext } from "./wcpsParser";
 import { TimeExtractorElementContext } from "./wcpsParser";
 import { TimeTruncatorElementContext } from "./wcpsParser";
-import { WktPointsLabelContext } from "./wcpsParser";
-import { WKTPointElementListLabelContext } from "./wcpsParser";
-import { WKTLineStringLabelContext } from "./wcpsParser";
-import { WKTPolygonLabelContext } from "./wcpsParser";
-import { WKTMultipolygonLabelContext } from "./wcpsParser";
-import { WKTCoverageExpressionLabelContext } from "./wcpsParser";
-import { WKTExpressionLabelContext } from "./wcpsParser";
+import { WktPointsContext } from "./wcpsParser";
+import { WktPointElementListContext } from "./wcpsParser";
+import { WktLineStringContext } from "./wcpsParser";
+import { WktPolygonContext } from "./wcpsParser";
+import { WktMultipolygonContext } from "./wcpsParser";
+import { WktCoverageExpressionContext } from "./wcpsParser";
+import { WktExpressionContext } from "./wcpsParser";
 import { CurtainProjectionAxisLabel1Context } from "./wcpsParser";
 import { CurtainProjectionAxisLabel2Context } from "./wcpsParser";
-import { ClipCurtainExpressionLabelContext } from "./wcpsParser";
+import { ClipCurtainExpressionContext } from "./wcpsParser";
 import { CorridorProjectionAxisLabel1Context } from "./wcpsParser";
 import { CorridorProjectionAxisLabel2Context } from "./wcpsParser";
 import { CorridorWKTLabel1Context } from "./wcpsParser";
 import { CorridorWKTLabel2Context } from "./wcpsParser";
-import { ClipCorridorExpressionLabelContext } from "./wcpsParser";
-import { ClipWKTExpressionLabelContext } from "./wcpsParser";
-import { CrsTransformExpressionLabelContext } from "./wcpsParser";
-import { CrsTransformShorthandExpressionLabelContext } from "./wcpsParser";
-import { PolygonizeExpressionLabelContext } from "./wcpsParser";
-import { DimensionCrsListLabelContext } from "./wcpsParser";
-import { DimensionGeoXYResolutionsListLabelContext } from "./wcpsParser";
+import { ClipCorridorExpressionContext } from "./wcpsParser";
+import { ClipWKTExpressionContext } from "./wcpsParser";
+import { CrsTransformExpressionContext } from "./wcpsParser";
+import { CrsTransformShorthandExpressionContext } from "./wcpsParser";
+import { PolygonizeExpressionContext } from "./wcpsParser";
+import { DimensionCrsListContext } from "./wcpsParser";
+import { DimensionGeoXYResolutionsListContext } from "./wcpsParser";
 import { DimensionGeoXYResolutionContext } from "./wcpsParser";
-import { DimensionCrsElementLabelContext } from "./wcpsParser";
-import { InterpolationTypeLabelContext } from "./wcpsParser";
-import { CoverageConstructorExpressionLabelContext } from "./wcpsParser";
-import { AxisIteratorDomainIntervalsLabelContext } from "./wcpsParser";
-import { AxisIteratorLabelContext } from "./wcpsParser";
-import { AxisIteratorEnumerationListLabelContext } from "./wcpsParser";
+import { DimensionCrsElementContext } from "./wcpsParser";
+import { InterpolationTypeContext } from "./wcpsParser";
+import { CoverageConstructorExpressionContext } from "./wcpsParser";
+import { AxisIteratorContext } from "./wcpsParser";
 import { RegularTimeStepContext } from "./wcpsParser";
-import { IntervalExpressionLabelContext } from "./wcpsParser";
-import { CoverageConstantExpressionLabelContext } from "./wcpsParser";
-import { AxisSpecLabelContext } from "./wcpsParser";
+import { IntervalExpressionContext } from "./wcpsParser";
+import { CoverageConstantExpressionContext } from "./wcpsParser";
+import { AxisSpecContext } from "./wcpsParser";
 import { CondenseExpressionContext } from "./wcpsParser";
 import { ReduceBooleanExpressionOperatorContext } from "./wcpsParser";
 import { ReduceNumericalExpressionOperatorContext } from "./wcpsParser";
-import { ReduceBooleanExpressionLabelContext } from "./wcpsParser";
-import { ReduceNumericalExpressionLabelContext } from "./wcpsParser";
+import { ReduceBooleanExpressionContext } from "./wcpsParser";
+import { ReduceNumericalExpressionContext } from "./wcpsParser";
 import { ReduceExpressionContext } from "./wcpsParser";
 import { CondenseExpressionOperatorContext } from "./wcpsParser";
-import { GeneralCondenseExpressionLabelContext } from "./wcpsParser";
-import { FlipExpressionLabelContext } from "./wcpsParser";
-import { SortExpressionLabelContext } from "./wcpsParser";
-import { SwitchCaseExpressionLabelContext } from "./wcpsParser";
+import { GeneralCondenseExpressionContext } from "./wcpsParser";
+import { FlipExpressionContext } from "./wcpsParser";
+import { SortExpressionContext } from "./wcpsParser";
+import { SwitchCaseExpressionContext } from "./wcpsParser";
 import { SwitchCaseElementContext } from "./wcpsParser";
 import { SwitchCaseElementListContext } from "./wcpsParser";
 import { SwitchCaseDefaultElementContext } from "./wcpsParser";
@@ -214,17 +148,15 @@ import { NullMaskDiscardContext } from "./wcpsParser";
  */
 export default class wcpsListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by the `WcpsQueryLabel`
-	 * labeled alternative in `wcpsParser.wcpsQuery`.
+	 * Enter a parse tree produced by `wcpsParser.wcpsQuery`.
 	 * @param ctx the parse tree
 	 */
-	enterWcpsQueryLabel?: (ctx: WcpsQueryLabelContext) => void;
+	enterWcpsQuery?: (ctx: WcpsQueryContext) => void;
 	/**
-	 * Exit a parse tree produced by the `WcpsQueryLabel`
-	 * labeled alternative in `wcpsParser.wcpsQuery`.
+	 * Exit a parse tree produced by `wcpsParser.wcpsQuery`.
 	 * @param ctx the parse tree
 	 */
-	exitWcpsQueryLabel?: (ctx: WcpsQueryLabelContext) => void;
+	exitWcpsQuery?: (ctx: WcpsQueryContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.forClauseList`.
 	 * @param ctx the parse tree
@@ -336,29 +268,25 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitDomainIntervals?: (ctx: DomainIntervalsContext) => void;
 	/**
-	 * Enter a parse tree produced by the `GeoXYAxisLabelAndDomainResolutionLabel`
-	 * labeled alternative in `wcpsParser.geoXYAxisLabelAndDomainResolution`.
+	 * Enter a parse tree produced by `wcpsParser.geoXYAxisLabelAndDomainResolution`.
 	 * @param ctx the parse tree
 	 */
-	enterGeoXYAxisLabelAndDomainResolutionLabel?: (ctx: GeoXYAxisLabelAndDomainResolutionLabelContext) => void;
+	enterGeoXYAxisLabelAndDomainResolution?: (ctx: GeoXYAxisLabelAndDomainResolutionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `GeoXYAxisLabelAndDomainResolutionLabel`
-	 * labeled alternative in `wcpsParser.geoXYAxisLabelAndDomainResolution`.
+	 * Exit a parse tree produced by `wcpsParser.geoXYAxisLabelAndDomainResolution`.
 	 * @param ctx the parse tree
 	 */
-	exitGeoXYAxisLabelAndDomainResolutionLabel?: (ctx: GeoXYAxisLabelAndDomainResolutionLabelContext) => void;
+	exitGeoXYAxisLabelAndDomainResolution?: (ctx: GeoXYAxisLabelAndDomainResolutionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CoverageVariableNameLabel`
-	 * labeled alternative in `wcpsParser.coverageVariableName`.
+	 * Enter a parse tree produced by `wcpsParser.coverageVariableName`.
 	 * @param ctx the parse tree
 	 */
-	enterCoverageVariableNameLabel?: (ctx: CoverageVariableNameLabelContext) => void;
+	enterCoverageVariableName?: (ctx: CoverageVariableNameContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CoverageVariableNameLabel`
-	 * labeled alternative in `wcpsParser.coverageVariableName`.
+	 * Exit a parse tree produced by `wcpsParser.coverageVariableName`.
 	 * @param ctx the parse tree
 	 */
-	exitCoverageVariableNameLabel?: (ctx: CoverageVariableNameLabelContext) => void;
+	exitCoverageVariableName?: (ctx: CoverageVariableNameContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.processingExpression`.
 	 * @param ctx the parse tree
@@ -370,17 +298,15 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitProcessingExpression?: (ctx: ProcessingExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `scalarValueCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.scalarValueCoverageExpression`.
+	 * Enter a parse tree produced by `wcpsParser.scalarValueCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterScalarValueCoverageExpressionLabel?: (ctx: ScalarValueCoverageExpressionLabelContext) => void;
+	enterScalarValueCoverageExpression?: (ctx: ScalarValueCoverageExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `scalarValueCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.scalarValueCoverageExpression`.
+	 * Exit a parse tree produced by `wcpsParser.scalarValueCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitScalarValueCoverageExpressionLabel?: (ctx: ScalarValueCoverageExpressionLabelContext) => void;
+	exitScalarValueCoverageExpression?: (ctx: ScalarValueCoverageExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.scalarExpression`.
 	 * @param ctx the parse tree
@@ -392,77 +318,15 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitScalarExpression?: (ctx: ScalarExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `BooleanBinaryScalarLabel`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
+	 * Enter a parse tree produced by `wcpsParser.booleanScalarExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterBooleanBinaryScalarLabel?: (ctx: BooleanBinaryScalarLabelContext) => void;
+	enterBooleanScalarExpression?: (ctx: BooleanScalarExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `BooleanBinaryScalarLabel`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
+	 * Exit a parse tree produced by `wcpsParser.booleanScalarExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitBooleanBinaryScalarLabel?: (ctx: BooleanBinaryScalarLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `BooleanReduceExpression`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterBooleanReduceExpression?: (ctx: BooleanReduceExpressionContext) => void;
-	/**
-	 * Exit a parse tree produced by the `BooleanReduceExpression`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitBooleanReduceExpression?: (ctx: BooleanReduceExpressionContext) => void;
-	/**
-	 * Enter a parse tree produced by the `BooleanUnaryScalarLabel`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterBooleanUnaryScalarLabel?: (ctx: BooleanUnaryScalarLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `BooleanUnaryScalarLabel`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitBooleanUnaryScalarLabel?: (ctx: BooleanUnaryScalarLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `BooleanStringComparisonScalar`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterBooleanStringComparisonScalar?: (ctx: BooleanStringComparisonScalarContext) => void;
-	/**
-	 * Exit a parse tree produced by the `BooleanStringComparisonScalar`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitBooleanStringComparisonScalar?: (ctx: BooleanStringComparisonScalarContext) => void;
-	/**
-	 * Enter a parse tree produced by the `BooleanConstantLabel`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterBooleanConstantLabel?: (ctx: BooleanConstantLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `BooleanConstantLabel`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitBooleanConstantLabel?: (ctx: BooleanConstantLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `BooleanNumericalComparisonScalarLabel`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterBooleanNumericalComparisonScalarLabel?: (ctx: BooleanNumericalComparisonScalarLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `BooleanNumericalComparisonScalarLabel`
-	 * labeled alternative in `wcpsParser.booleanScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitBooleanNumericalComparisonScalarLabel?: (ctx: BooleanNumericalComparisonScalarLabelContext) => void;
+	exitBooleanScalarExpression?: (ctx: BooleanScalarExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.booleanUnaryOperator`.
 	 * @param ctx the parse tree
@@ -514,29 +378,25 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitStringOperator?: (ctx: StringOperatorContext) => void;
 	/**
-	 * Enter a parse tree produced by the `StringScalarExpressionLabel`
-	 * labeled alternative in `wcpsParser.stringScalarExpression`.
+	 * Enter a parse tree produced by `wcpsParser.stringScalarExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterStringScalarExpressionLabel?: (ctx: StringScalarExpressionLabelContext) => void;
+	enterStringScalarExpression?: (ctx: StringScalarExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `StringScalarExpressionLabel`
-	 * labeled alternative in `wcpsParser.stringScalarExpression`.
+	 * Exit a parse tree produced by `wcpsParser.stringScalarExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitStringScalarExpressionLabel?: (ctx: StringScalarExpressionLabelContext) => void;
+	exitStringScalarExpression?: (ctx: StringScalarExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `StarExpressionLabel`
-	 * labeled alternative in `wcpsParser.starExpression`.
+	 * Enter a parse tree produced by `wcpsParser.starExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterStarExpressionLabel?: (ctx: StarExpressionLabelContext) => void;
+	enterStarExpression?: (ctx: StarExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `StarExpressionLabel`
-	 * labeled alternative in `wcpsParser.starExpression`.
+	 * Exit a parse tree produced by `wcpsParser.starExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitStarExpressionLabel?: (ctx: StarExpressionLabelContext) => void;
+	exitStarExpression?: (ctx: StarExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.booleanSwitchCaseCoverageExpression`.
 	 * @param ctx the parse tree
@@ -558,101 +418,25 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitBooleanSwitchCaseCombinedExpression?: (ctx: BooleanSwitchCaseCombinedExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `NumericalTrigonometricScalarExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
+	 * Enter a parse tree produced by `wcpsParser.numericalScalarExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterNumericalTrigonometricScalarExpressionLabel?: (ctx: NumericalTrigonometricScalarExpressionLabelContext) => void;
+	enterNumericalScalarExpression?: (ctx: NumericalScalarExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `NumericalTrigonometricScalarExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
+	 * Exit a parse tree produced by `wcpsParser.numericalScalarExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitNumericalTrigonometricScalarExpressionLabel?: (ctx: NumericalTrigonometricScalarExpressionLabelContext) => void;
+	exitNumericalScalarExpression?: (ctx: NumericalScalarExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `NumericalNanNumberExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
+	 * Enter a parse tree produced by `wcpsParser.complexNumberConstant`.
 	 * @param ctx the parse tree
 	 */
-	enterNumericalNanNumberExpressionLabel?: (ctx: NumericalNanNumberExpressionLabelContext) => void;
+	enterComplexNumberConstant?: (ctx: ComplexNumberConstantContext) => void;
 	/**
-	 * Exit a parse tree produced by the `NumericalNanNumberExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
+	 * Exit a parse tree produced by `wcpsParser.complexNumberConstant`.
 	 * @param ctx the parse tree
 	 */
-	exitNumericalNanNumberExpressionLabel?: (ctx: NumericalNanNumberExpressionLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `NumericalRealNumberExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterNumericalRealNumberExpressionLabel?: (ctx: NumericalRealNumberExpressionLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `NumericalRealNumberExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitNumericalRealNumberExpressionLabel?: (ctx: NumericalRealNumberExpressionLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `NumericalCondenseExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterNumericalCondenseExpressionLabel?: (ctx: NumericalCondenseExpressionLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `NumericalCondenseExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitNumericalCondenseExpressionLabel?: (ctx: NumericalCondenseExpressionLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `NumericalUnaryScalarExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterNumericalUnaryScalarExpressionLabel?: (ctx: NumericalUnaryScalarExpressionLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `NumericalUnaryScalarExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitNumericalUnaryScalarExpressionLabel?: (ctx: NumericalUnaryScalarExpressionLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `NumericalBinaryScalarExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterNumericalBinaryScalarExpressionLabel?: (ctx: NumericalBinaryScalarExpressionLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `NumericalBinaryScalarExpressionLabel`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitNumericalBinaryScalarExpressionLabel?: (ctx: NumericalBinaryScalarExpressionLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `NumericalComplexNumberConstant`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterNumericalComplexNumberConstant?: (ctx: NumericalComplexNumberConstantContext) => void;
-	/**
-	 * Exit a parse tree produced by the `NumericalComplexNumberConstant`
-	 * labeled alternative in `wcpsParser.numericalScalarExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitNumericalComplexNumberConstant?: (ctx: NumericalComplexNumberConstantContext) => void;
-	/**
-	 * Enter a parse tree produced by the `ComplexNumberConstantLabel`
-	 * labeled alternative in `wcpsParser.complexNumberConstant`.
-	 * @param ctx the parse tree
-	 */
-	enterComplexNumberConstantLabel?: (ctx: ComplexNumberConstantLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `ComplexNumberConstantLabel`
-	 * labeled alternative in `wcpsParser.complexNumberConstant`.
-	 * @param ctx the parse tree
-	 */
-	exitComplexNumberConstantLabel?: (ctx: ComplexNumberConstantLabelContext) => void;
+	exitComplexNumberConstant?: (ctx: ComplexNumberConstantContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.numericalOperator`.
 	 * @param ctx the parse tree
@@ -694,113 +478,95 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitGetComponentExpression?: (ctx: GetComponentExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CoverageExpressionNullSetRetrievingLabel`
-	 * labeled alternative in `wcpsParser.coverageExpressionNullSetRetrieving`.
+	 * Enter a parse tree produced by `wcpsParser.coverageExpressionNullSetRetrieving`.
 	 * @param ctx the parse tree
 	 */
-	enterCoverageExpressionNullSetRetrievingLabel?: (ctx: CoverageExpressionNullSetRetrievingLabelContext) => void;
+	enterCoverageExpressionNullSetRetrieving?: (ctx: CoverageExpressionNullSetRetrievingContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CoverageExpressionNullSetRetrievingLabel`
-	 * labeled alternative in `wcpsParser.coverageExpressionNullSetRetrieving`.
+	 * Exit a parse tree produced by `wcpsParser.coverageExpressionNullSetRetrieving`.
 	 * @param ctx the parse tree
 	 */
-	exitCoverageExpressionNullSetRetrievingLabel?: (ctx: CoverageExpressionNullSetRetrievingLabelContext) => void;
+	exitCoverageExpressionNullSetRetrieving?: (ctx: CoverageExpressionNullSetRetrievingContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CoverageIdentifierExpressionLabel`
-	 * labeled alternative in `wcpsParser.coverageIdentifierExpression`.
+	 * Enter a parse tree produced by `wcpsParser.coverageIdentifierExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCoverageIdentifierExpressionLabel?: (ctx: CoverageIdentifierExpressionLabelContext) => void;
+	enterCoverageIdentifierExpression?: (ctx: CoverageIdentifierExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CoverageIdentifierExpressionLabel`
-	 * labeled alternative in `wcpsParser.coverageIdentifierExpression`.
+	 * Exit a parse tree produced by `wcpsParser.coverageIdentifierExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCoverageIdentifierExpressionLabel?: (ctx: CoverageIdentifierExpressionLabelContext) => void;
+	exitCoverageIdentifierExpression?: (ctx: CoverageIdentifierExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CellCountExpressionLabel`
-	 * labeled alternative in `wcpsParser.cellCountExpression`.
+	 * Enter a parse tree produced by `wcpsParser.cellCountExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCellCountExpressionLabel?: (ctx: CellCountExpressionLabelContext) => void;
+	enterCellCountExpression?: (ctx: CellCountExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CellCountExpressionLabel`
-	 * labeled alternative in `wcpsParser.cellCountExpression`.
+	 * Exit a parse tree produced by `wcpsParser.cellCountExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCellCountExpressionLabel?: (ctx: CellCountExpressionLabelContext) => void;
+	exitCellCountExpression?: (ctx: CellCountExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CoverageCrsSetExpressionLabel`
-	 * labeled alternative in `wcpsParser.coverageCrsSetExpression`.
+	 * Enter a parse tree produced by `wcpsParser.coverageCrsSetExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCoverageCrsSetExpressionLabel?: (ctx: CoverageCrsSetExpressionLabelContext) => void;
+	enterCoverageCrsSetExpression?: (ctx: CoverageCrsSetExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CoverageCrsSetExpressionLabel`
-	 * labeled alternative in `wcpsParser.coverageCrsSetExpression`.
+	 * Exit a parse tree produced by `wcpsParser.coverageCrsSetExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCoverageCrsSetExpressionLabel?: (ctx: CoverageCrsSetExpressionLabelContext) => void;
+	exitCoverageCrsSetExpression?: (ctx: CoverageCrsSetExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DomainExpressionLabel`
-	 * labeled alternative in `wcpsParser.domainExpression`.
+	 * Enter a parse tree produced by `wcpsParser.domainExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterDomainExpressionLabel?: (ctx: DomainExpressionLabelContext) => void;
+	enterDomainExpression?: (ctx: DomainExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DomainExpressionLabel`
-	 * labeled alternative in `wcpsParser.domainExpression`.
+	 * Exit a parse tree produced by `wcpsParser.domainExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitDomainExpressionLabel?: (ctx: DomainExpressionLabelContext) => void;
+	exitDomainExpression?: (ctx: DomainExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `imageCrsDomainByDimensionExpressionLabel`
-	 * labeled alternative in `wcpsParser.imageCrsDomainByDimensionExpression`.
+	 * Enter a parse tree produced by `wcpsParser.imageCrsDomainByDimensionExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterImageCrsDomainByDimensionExpressionLabel?: (ctx: ImageCrsDomainByDimensionExpressionLabelContext) => void;
+	enterImageCrsDomainByDimensionExpression?: (ctx: ImageCrsDomainByDimensionExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `imageCrsDomainByDimensionExpressionLabel`
-	 * labeled alternative in `wcpsParser.imageCrsDomainByDimensionExpression`.
+	 * Exit a parse tree produced by `wcpsParser.imageCrsDomainByDimensionExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitImageCrsDomainByDimensionExpressionLabel?: (ctx: ImageCrsDomainByDimensionExpressionLabelContext) => void;
+	exitImageCrsDomainByDimensionExpression?: (ctx: ImageCrsDomainByDimensionExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `imageCrsDomainExpressionLabel`
-	 * labeled alternative in `wcpsParser.imageCrsDomainExpression`.
+	 * Enter a parse tree produced by `wcpsParser.imageCrsDomainExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterImageCrsDomainExpressionLabel?: (ctx: ImageCrsDomainExpressionLabelContext) => void;
+	enterImageCrsDomainExpression?: (ctx: ImageCrsDomainExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `imageCrsDomainExpressionLabel`
-	 * labeled alternative in `wcpsParser.imageCrsDomainExpression`.
+	 * Exit a parse tree produced by `wcpsParser.imageCrsDomainExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitImageCrsDomainExpressionLabel?: (ctx: ImageCrsDomainExpressionLabelContext) => void;
+	exitImageCrsDomainExpression?: (ctx: ImageCrsDomainExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `imageCrsExpressionLabel`
-	 * labeled alternative in `wcpsParser.imageCrsExpression`.
+	 * Enter a parse tree produced by `wcpsParser.imageCrsExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterImageCrsExpressionLabel?: (ctx: ImageCrsExpressionLabelContext) => void;
+	enterImageCrsExpression?: (ctx: ImageCrsExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `imageCrsExpressionLabel`
-	 * labeled alternative in `wcpsParser.imageCrsExpression`.
+	 * Exit a parse tree produced by `wcpsParser.imageCrsExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitImageCrsExpressionLabel?: (ctx: ImageCrsExpressionLabelContext) => void;
+	exitImageCrsExpression?: (ctx: ImageCrsExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DescribeCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.describeCoverageExpression`.
+	 * Enter a parse tree produced by `wcpsParser.describeCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterDescribeCoverageExpressionLabel?: (ctx: DescribeCoverageExpressionLabelContext) => void;
+	enterDescribeCoverageExpression?: (ctx: DescribeCoverageExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DescribeCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.describeCoverageExpression`.
+	 * Exit a parse tree produced by `wcpsParser.describeCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitDescribeCoverageExpressionLabel?: (ctx: DescribeCoverageExpressionLabelContext) => void;
+	exitDescribeCoverageExpression?: (ctx: DescribeCoverageExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.positionalParamater`.
 	 * @param ctx the parse tree
@@ -822,641 +588,35 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitExtraParams?: (ctx: ExtraParamsContext) => void;
 	/**
-	 * Enter a parse tree produced by the `EncodedCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.encodedCoverageExpression`.
+	 * Enter a parse tree produced by `wcpsParser.encodedCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterEncodedCoverageExpressionLabel?: (ctx: EncodedCoverageExpressionLabelContext) => void;
+	enterEncodedCoverageExpression?: (ctx: EncodedCoverageExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `EncodedCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.encodedCoverageExpression`.
+	 * Exit a parse tree produced by `wcpsParser.encodedCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitEncodedCoverageExpressionLabel?: (ctx: EncodedCoverageExpressionLabelContext) => void;
+	exitEncodedCoverageExpression?: (ctx: EncodedCoverageExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DecodedCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.decodeCoverageExpression`.
+	 * Enter a parse tree produced by `wcpsParser.decodeCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterDecodedCoverageExpressionLabel?: (ctx: DecodedCoverageExpressionLabelContext) => void;
+	enterDecodeCoverageExpression?: (ctx: DecodeCoverageExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DecodedCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.decodeCoverageExpression`.
+	 * Exit a parse tree produced by `wcpsParser.decodeCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitDecodedCoverageExpressionLabel?: (ctx: DecodedCoverageExpressionLabelContext) => void;
+	exitDecodeCoverageExpression?: (ctx: DecodeCoverageExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CoverageExpressionCrsTransformShorthandLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
+	 * Enter a parse tree produced by `wcpsParser.coverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCoverageExpressionCrsTransformShorthandLabel?: (ctx: CoverageExpressionCrsTransformShorthandLabelContext) => void;
+	enterCoverageExpression?: (ctx: CoverageExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CoverageExpressionCrsTransformShorthandLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
+	 * Exit a parse tree produced by `wcpsParser.coverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCoverageExpressionCrsTransformShorthandLabel?: (ctx: CoverageExpressionCrsTransformShorthandLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionDynamicallyChangingNullValuesLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionDynamicallyChangingNullValuesLabel?: (ctx: CoverageExpressionDynamicallyChangingNullValuesLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionDynamicallyChangingNullValuesLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionDynamicallyChangingNullValuesLabel?: (ctx: CoverageExpressionDynamicallyChangingNullValuesLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionUdfExpression`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionUdfExpression?: (ctx: CoverageExpressionUdfExpressionContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionUdfExpression`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionUdfExpression?: (ctx: CoverageExpressionUdfExpressionContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionScaleByImageCrsDomainLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionScaleByImageCrsDomainLabel?: (ctx: CoverageExpressionScaleByImageCrsDomainLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionScaleByImageCrsDomainLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionScaleByImageCrsDomainLabel?: (ctx: CoverageExpressionScaleByImageCrsDomainLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionScaleByDimensionIntervalsLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionScaleByDimensionIntervalsLabel?: (ctx: CoverageExpressionScaleByDimensionIntervalsLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionScaleByDimensionIntervalsLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionScaleByDimensionIntervalsLabel?: (ctx: CoverageExpressionScaleByDimensionIntervalsLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionDynamicallyChangingNullMaskDiscardLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionDynamicallyChangingNullMaskDiscardLabel?: (ctx: CoverageExpressionDynamicallyChangingNullMaskDiscardLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionDynamicallyChangingNullMaskDiscardLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionDynamicallyChangingNullMaskDiscardLabel?: (ctx: CoverageExpressionDynamicallyChangingNullMaskDiscardLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionOverlayLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionOverlayLabel?: (ctx: CoverageExpressionOverlayLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionOverlayLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionOverlayLabel?: (ctx: CoverageExpressionOverlayLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionComparissonLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionComparissonLabel?: (ctx: CoverageExpressionComparissonLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionComparissonLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionComparissonLabel?: (ctx: CoverageExpressionComparissonLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `coverageExpressionShortHandSubsetWithLetClauseVariableLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionShortHandSubsetWithLetClauseVariableLabel?: (ctx: CoverageExpressionShortHandSubsetWithLetClauseVariableLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `coverageExpressionShortHandSubsetWithLetClauseVariableLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionShortHandSubsetWithLetClauseVariableLabel?: (ctx: CoverageExpressionShortHandSubsetWithLetClauseVariableLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionUnaryBooleanLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionUnaryBooleanLabel?: (ctx: CoverageExpressionUnaryBooleanLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionUnaryBooleanLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionUnaryBooleanLabel?: (ctx: CoverageExpressionUnaryBooleanLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionVariableNameLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionVariableNameLabel?: (ctx: CoverageExpressionVariableNameLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionVariableNameLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionVariableNameLabel?: (ctx: CoverageExpressionVariableNameLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionGeoXYAxisLabelAndDomainResolution`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionGeoXYAxisLabelAndDomainResolution?: (ctx: CoverageExpressionGeoXYAxisLabelAndDomainResolutionContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionGeoXYAxisLabelAndDomainResolution`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionGeoXYAxisLabelAndDomainResolution?: (ctx: CoverageExpressionGeoXYAxisLabelAndDomainResolutionContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionRangeConstructorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionRangeConstructorLabel?: (ctx: CoverageExpressionRangeConstructorLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionRangeConstructorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionRangeConstructorLabel?: (ctx: CoverageExpressionRangeConstructorLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionExtendByDomainIntervalsLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionExtendByDomainIntervalsLabel?: (ctx: CoverageExpressionExtendByDomainIntervalsLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionExtendByDomainIntervalsLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionExtendByDomainIntervalsLabel?: (ctx: CoverageExpressionExtendByDomainIntervalsLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionCastLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionCastLabel?: (ctx: CoverageExpressionCastLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionCastLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionCastLabel?: (ctx: CoverageExpressionCastLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionPowerLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionPowerLabel?: (ctx: CoverageExpressionPowerLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionPowerLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionPowerLabel?: (ctx: CoverageExpressionPowerLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `coverageExpresisonFlipLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpresisonFlipLabel?: (ctx: CoverageExpresisonFlipLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `coverageExpresisonFlipLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpresisonFlipLabel?: (ctx: CoverageExpresisonFlipLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionDynamicallyChangingNullMaskLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionDynamicallyChangingNullMaskLabel?: (ctx: CoverageExpressionDynamicallyChangingNullMaskLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionDynamicallyChangingNullMaskLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionDynamicallyChangingNullMaskLabel?: (ctx: CoverageExpressionDynamicallyChangingNullMaskLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionExtendLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionExtendLabel?: (ctx: CoverageExpressionExtendLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionExtendLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionExtendLabel?: (ctx: CoverageExpressionExtendLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionSwitchCaseLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionSwitchCaseLabel?: (ctx: CoverageExpressionSwitchCaseLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionSwitchCaseLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionSwitchCaseLabel?: (ctx: CoverageExpressionSwitchCaseLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionTimeTruncatorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionTimeTruncatorLabel?: (ctx: CoverageExpressionTimeTruncatorLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionTimeTruncatorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionTimeTruncatorLabel?: (ctx: CoverageExpressionTimeTruncatorLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionModLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionModLabel?: (ctx: CoverageExpressionModLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionModLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionModLabel?: (ctx: CoverageExpressionModLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionTrigonometricLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionTrigonometricLabel?: (ctx: CoverageExpressionTrigonometricLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionTrigonometricLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionTrigonometricLabel?: (ctx: CoverageExpressionTrigonometricLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionDynamicallyChangingNullValuesFromLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionDynamicallyChangingNullValuesFromLabel?: (ctx: CoverageExpressionDynamicallyChangingNullValuesFromLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionDynamicallyChangingNullValuesFromLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionDynamicallyChangingNullValuesFromLabel?: (ctx: CoverageExpressionDynamicallyChangingNullValuesFromLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionCoverageLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionCoverageLabel?: (ctx: CoverageExpressionCoverageLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionCoverageLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionCoverageLabel?: (ctx: CoverageExpressionCoverageLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionConstantLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionConstantLabel?: (ctx: CoverageExpressionConstantLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionConstantLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionConstantLabel?: (ctx: CoverageExpressionConstantLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionShorthandSliceLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionShorthandSliceLabel?: (ctx: CoverageExpressionShorthandSliceLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionShorthandSliceLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionShorthandSliceLabel?: (ctx: CoverageExpressionShorthandSliceLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `coverageExpressionSortLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionSortLabel?: (ctx: CoverageExpressionSortLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `coverageExpressionSortLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionSortLabel?: (ctx: CoverageExpressionSortLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionShorthandSubsetLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionShorthandSubsetLabel?: (ctx: CoverageExpressionShorthandSubsetLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionShorthandSubsetLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionShorthandSubsetLabel?: (ctx: CoverageExpressionShorthandSubsetLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionArithmeticLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionArithmeticLabel?: (ctx: CoverageExpressionArithmeticLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionArithmeticLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionArithmeticLabel?: (ctx: CoverageExpressionArithmeticLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionExponentialLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionExponentialLabel?: (ctx: CoverageExpressionExponentialLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionExponentialLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionExponentialLabel?: (ctx: CoverageExpressionExponentialLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `coverageExpressionPolygonizeLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionPolygonizeLabel?: (ctx: CoverageExpressionPolygonizeLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `coverageExpressionPolygonizeLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionPolygonizeLabel?: (ctx: CoverageExpressionPolygonizeLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionLogicLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionLogicLabel?: (ctx: CoverageExpressionLogicLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionLogicLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionLogicLabel?: (ctx: CoverageExpressionLogicLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionSliceLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionSliceLabel?: (ctx: CoverageExpressionSliceLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionSliceLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionSliceLabel?: (ctx: CoverageExpressionSliceLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionClipCurtainLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionClipCurtainLabel?: (ctx: CoverageExpressionClipCurtainLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionClipCurtainLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionClipCurtainLabel?: (ctx: CoverageExpressionClipCurtainLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionRangeSubsettingLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionRangeSubsettingLabel?: (ctx: CoverageExpressionRangeSubsettingLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionRangeSubsettingLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionRangeSubsettingLabel?: (ctx: CoverageExpressionRangeSubsettingLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionMaxBinaryLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionMaxBinaryLabel?: (ctx: CoverageExpressionMaxBinaryLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionMaxBinaryLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionMaxBinaryLabel?: (ctx: CoverageExpressionMaxBinaryLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionDomainIntervalsLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionDomainIntervalsLabel?: (ctx: CoverageExpressionDomainIntervalsLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionDomainIntervalsLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionDomainIntervalsLabel?: (ctx: CoverageExpressionDomainIntervalsLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionScaleByFactorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionScaleByFactorLabel?: (ctx: CoverageExpressionScaleByFactorLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionScaleByFactorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionScaleByFactorLabel?: (ctx: CoverageExpressionScaleByFactorLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageIsNullExpression`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageIsNullExpression?: (ctx: CoverageIsNullExpressionContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageIsNullExpression`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageIsNullExpression?: (ctx: CoverageIsNullExpressionContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionClipWKTLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionClipWKTLabel?: (ctx: CoverageExpressionClipWKTLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionClipWKTLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionClipWKTLabel?: (ctx: CoverageExpressionClipWKTLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionScalarLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionScalarLabel?: (ctx: CoverageExpressionScalarLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionScalarLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionScalarLabel?: (ctx: CoverageExpressionScalarLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionTrimCoverageLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionTrimCoverageLabel?: (ctx: CoverageExpressionTrimCoverageLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionTrimCoverageLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionTrimCoverageLabel?: (ctx: CoverageExpressionTrimCoverageLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionMinBinaryLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionMinBinaryLabel?: (ctx: CoverageExpressionMinBinaryLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionMinBinaryLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionMinBinaryLabel?: (ctx: CoverageExpressionMinBinaryLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionConstructorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionConstructorLabel?: (ctx: CoverageExpressionConstructorLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionConstructorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionConstructorLabel?: (ctx: CoverageExpressionConstructorLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionCrsTransformLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionCrsTransformLabel?: (ctx: CoverageExpressionCrsTransformLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionCrsTransformLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionCrsTransformLabel?: (ctx: CoverageExpressionCrsTransformLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionDecodeLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionDecodeLabel?: (ctx: CoverageExpressionDecodeLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionDecodeLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionDecodeLabel?: (ctx: CoverageExpressionDecodeLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionScaleByFactorListLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionScaleByFactorListLabel?: (ctx: CoverageExpressionScaleByFactorListLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionScaleByFactorListLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionScaleByFactorListLabel?: (ctx: CoverageExpressionScaleByFactorListLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionTimeExtractorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionTimeExtractorLabel?: (ctx: CoverageExpressionTimeExtractorLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionTimeExtractorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionTimeExtractorLabel?: (ctx: CoverageExpressionTimeExtractorLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionUnaryArithmeticLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionUnaryArithmeticLabel?: (ctx: CoverageExpressionUnaryArithmeticLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionUnaryArithmeticLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionUnaryArithmeticLabel?: (ctx: CoverageExpressionUnaryArithmeticLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `CoverageExpressionClipCorridorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterCoverageExpressionClipCorridorLabel?: (ctx: CoverageExpressionClipCorridorLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CoverageExpressionClipCorridorLabel`
-	 * labeled alternative in `wcpsParser.coverageExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitCoverageExpressionClipCorridorLabel?: (ctx: CoverageExpressionClipCorridorLabelContext) => void;
+	exitCoverageExpression?: (ctx: CoverageExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.coverageArithmeticOperator`.
 	 * @param ctx the parse tree
@@ -1478,29 +638,25 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitUnaryArithmeticExpressionOperator?: (ctx: UnaryArithmeticExpressionOperatorContext) => void;
 	/**
-	 * Enter a parse tree produced by the `UnaryCoverageArithmeticExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryArithmeticExpression`.
+	 * Enter a parse tree produced by `wcpsParser.unaryArithmeticExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterUnaryCoverageArithmeticExpressionLabel?: (ctx: UnaryCoverageArithmeticExpressionLabelContext) => void;
+	enterUnaryArithmeticExpression?: (ctx: UnaryArithmeticExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `UnaryCoverageArithmeticExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryArithmeticExpression`.
+	 * Exit a parse tree produced by `wcpsParser.unaryArithmeticExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitUnaryCoverageArithmeticExpressionLabel?: (ctx: UnaryCoverageArithmeticExpressionLabelContext) => void;
+	exitUnaryArithmeticExpression?: (ctx: UnaryArithmeticExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `TrigonometricExpressionLabel`
-	 * labeled alternative in `wcpsParser.trigonometricExpression`.
+	 * Enter a parse tree produced by `wcpsParser.trigonometricExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterTrigonometricExpressionLabel?: (ctx: TrigonometricExpressionLabelContext) => void;
+	enterTrigonometricExpression?: (ctx: TrigonometricExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `TrigonometricExpressionLabel`
-	 * labeled alternative in `wcpsParser.trigonometricExpression`.
+	 * Exit a parse tree produced by `wcpsParser.trigonometricExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitTrigonometricExpressionLabel?: (ctx: TrigonometricExpressionLabelContext) => void;
+	exitTrigonometricExpression?: (ctx: TrigonometricExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.exponentialExpressionOperator`.
 	 * @param ctx the parse tree
@@ -1512,89 +668,65 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitExponentialExpressionOperator?: (ctx: ExponentialExpressionOperatorContext) => void;
 	/**
-	 * Enter a parse tree produced by the `ExponentialExpressionLabel`
-	 * labeled alternative in `wcpsParser.exponentialExpression`.
+	 * Enter a parse tree produced by `wcpsParser.exponentialExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterExponentialExpressionLabel?: (ctx: ExponentialExpressionLabelContext) => void;
+	enterExponentialExpression?: (ctx: ExponentialExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ExponentialExpressionLabel`
-	 * labeled alternative in `wcpsParser.exponentialExpression`.
+	 * Exit a parse tree produced by `wcpsParser.exponentialExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitExponentialExpressionLabel?: (ctx: ExponentialExpressionLabelContext) => void;
+	exitExponentialExpression?: (ctx: ExponentialExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `UnaryPowerExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryPowerExpression`.
+	 * Enter a parse tree produced by `wcpsParser.unaryPowerExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterUnaryPowerExpressionLabel?: (ctx: UnaryPowerExpressionLabelContext) => void;
+	enterUnaryPowerExpression?: (ctx: UnaryPowerExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `UnaryPowerExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryPowerExpression`.
+	 * Exit a parse tree produced by `wcpsParser.unaryPowerExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitUnaryPowerExpressionLabel?: (ctx: UnaryPowerExpressionLabelContext) => void;
+	exitUnaryPowerExpression?: (ctx: UnaryPowerExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `UnaryModExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryModExpression`.
+	 * Enter a parse tree produced by `wcpsParser.unaryModExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterUnaryModExpressionLabel?: (ctx: UnaryModExpressionLabelContext) => void;
+	enterUnaryModExpression?: (ctx: UnaryModExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `UnaryModExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryModExpression`.
+	 * Exit a parse tree produced by `wcpsParser.unaryModExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitUnaryModExpressionLabel?: (ctx: UnaryModExpressionLabelContext) => void;
+	exitUnaryModExpression?: (ctx: UnaryModExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `minBinaryExpressionLabel`
-	 * labeled alternative in `wcpsParser.minBinaryExpression`.
+	 * Enter a parse tree produced by `wcpsParser.minBinaryExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterMinBinaryExpressionLabel?: (ctx: MinBinaryExpressionLabelContext) => void;
+	enterMinBinaryExpression?: (ctx: MinBinaryExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `minBinaryExpressionLabel`
-	 * labeled alternative in `wcpsParser.minBinaryExpression`.
+	 * Exit a parse tree produced by `wcpsParser.minBinaryExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitMinBinaryExpressionLabel?: (ctx: MinBinaryExpressionLabelContext) => void;
+	exitMinBinaryExpression?: (ctx: MinBinaryExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `maxBinaryExpressionLabel`
-	 * labeled alternative in `wcpsParser.maxBinaryExpression`.
+	 * Enter a parse tree produced by `wcpsParser.maxBinaryExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterMaxBinaryExpressionLabel?: (ctx: MaxBinaryExpressionLabelContext) => void;
+	enterMaxBinaryExpression?: (ctx: MaxBinaryExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `maxBinaryExpressionLabel`
-	 * labeled alternative in `wcpsParser.maxBinaryExpression`.
+	 * Exit a parse tree produced by `wcpsParser.maxBinaryExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitMaxBinaryExpressionLabel?: (ctx: MaxBinaryExpressionLabelContext) => void;
+	exitMaxBinaryExpression?: (ctx: MaxBinaryExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `NotUnaryBooleanExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryBooleanExpression`.
+	 * Enter a parse tree produced by `wcpsParser.unaryBooleanExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterNotUnaryBooleanExpressionLabel?: (ctx: NotUnaryBooleanExpressionLabelContext) => void;
+	enterUnaryBooleanExpression?: (ctx: UnaryBooleanExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `NotUnaryBooleanExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryBooleanExpression`.
+	 * Exit a parse tree produced by `wcpsParser.unaryBooleanExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitNotUnaryBooleanExpressionLabel?: (ctx: NotUnaryBooleanExpressionLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `BitUnaryBooleanExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryBooleanExpression`.
-	 * @param ctx the parse tree
-	 */
-	enterBitUnaryBooleanExpressionLabel?: (ctx: BitUnaryBooleanExpressionLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `BitUnaryBooleanExpressionLabel`
-	 * labeled alternative in `wcpsParser.unaryBooleanExpression`.
-	 * @param ctx the parse tree
-	 */
-	exitBitUnaryBooleanExpressionLabel?: (ctx: BitUnaryBooleanExpressionLabelContext) => void;
+	exitUnaryBooleanExpression?: (ctx: UnaryBooleanExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.rangeType`.
 	 * @param ctx the parse tree
@@ -1606,17 +738,15 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitRangeType?: (ctx: RangeTypeContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CastExpressionLabel`
-	 * labeled alternative in `wcpsParser.castExpression`.
+	 * Enter a parse tree produced by `wcpsParser.castExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCastExpressionLabel?: (ctx: CastExpressionLabelContext) => void;
+	enterCastExpression?: (ctx: CastExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CastExpressionLabel`
-	 * labeled alternative in `wcpsParser.castExpression`.
+	 * Exit a parse tree produced by `wcpsParser.castExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCastExpressionLabel?: (ctx: CastExpressionLabelContext) => void;
+	exitCastExpression?: (ctx: CastExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.fieldName`.
 	 * @param ctx the parse tree
@@ -1628,77 +758,65 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitFieldName?: (ctx: FieldNameContext) => void;
 	/**
-	 * Enter a parse tree produced by the `RangeConstructorExpressionLabel`
-	 * labeled alternative in `wcpsParser.rangeConstructorExpression`.
+	 * Enter a parse tree produced by `wcpsParser.rangeConstructorExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterRangeConstructorExpressionLabel?: (ctx: RangeConstructorExpressionLabelContext) => void;
+	enterRangeConstructorExpression?: (ctx: RangeConstructorExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `RangeConstructorExpressionLabel`
-	 * labeled alternative in `wcpsParser.rangeConstructorExpression`.
+	 * Exit a parse tree produced by `wcpsParser.rangeConstructorExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitRangeConstructorExpressionLabel?: (ctx: RangeConstructorExpressionLabelContext) => void;
+	exitRangeConstructorExpression?: (ctx: RangeConstructorExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `rangeConstructorElementLabel`
-	 * labeled alternative in `wcpsParser.rangeConstructorElement`.
+	 * Enter a parse tree produced by `wcpsParser.rangeConstructorElement`.
 	 * @param ctx the parse tree
 	 */
-	enterRangeConstructorElementLabel?: (ctx: RangeConstructorElementLabelContext) => void;
+	enterRangeConstructorElement?: (ctx: RangeConstructorElementContext) => void;
 	/**
-	 * Exit a parse tree produced by the `rangeConstructorElementLabel`
-	 * labeled alternative in `wcpsParser.rangeConstructorElement`.
+	 * Exit a parse tree produced by `wcpsParser.rangeConstructorElement`.
 	 * @param ctx the parse tree
 	 */
-	exitRangeConstructorElementLabel?: (ctx: RangeConstructorElementLabelContext) => void;
+	exitRangeConstructorElement?: (ctx: RangeConstructorElementContext) => void;
 	/**
-	 * Enter a parse tree produced by the `rangeConstructorElementListLabel`
-	 * labeled alternative in `wcpsParser.rangeConstructorElementList`.
+	 * Enter a parse tree produced by `wcpsParser.rangeConstructorElementList`.
 	 * @param ctx the parse tree
 	 */
-	enterRangeConstructorElementListLabel?: (ctx: RangeConstructorElementListLabelContext) => void;
+	enterRangeConstructorElementList?: (ctx: RangeConstructorElementListContext) => void;
 	/**
-	 * Exit a parse tree produced by the `rangeConstructorElementListLabel`
-	 * labeled alternative in `wcpsParser.rangeConstructorElementList`.
+	 * Exit a parse tree produced by `wcpsParser.rangeConstructorElementList`.
 	 * @param ctx the parse tree
 	 */
-	exitRangeConstructorElementListLabel?: (ctx: RangeConstructorElementListLabelContext) => void;
+	exitRangeConstructorElementList?: (ctx: RangeConstructorElementListContext) => void;
 	/**
-	 * Enter a parse tree produced by the `RangeConstructorSwitchCaseExpressionLabel`
-	 * labeled alternative in `wcpsParser.rangeConstructorSwitchCaseExpression`.
+	 * Enter a parse tree produced by `wcpsParser.rangeConstructorSwitchCaseExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterRangeConstructorSwitchCaseExpressionLabel?: (ctx: RangeConstructorSwitchCaseExpressionLabelContext) => void;
+	enterRangeConstructorSwitchCaseExpression?: (ctx: RangeConstructorSwitchCaseExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `RangeConstructorSwitchCaseExpressionLabel`
-	 * labeled alternative in `wcpsParser.rangeConstructorSwitchCaseExpression`.
+	 * Exit a parse tree produced by `wcpsParser.rangeConstructorSwitchCaseExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitRangeConstructorSwitchCaseExpressionLabel?: (ctx: RangeConstructorSwitchCaseExpressionLabelContext) => void;
+	exitRangeConstructorSwitchCaseExpression?: (ctx: RangeConstructorSwitchCaseExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DimensionPointListLabel`
-	 * labeled alternative in `wcpsParser.dimensionPointList`.
+	 * Enter a parse tree produced by `wcpsParser.dimensionPointList`.
 	 * @param ctx the parse tree
 	 */
-	enterDimensionPointListLabel?: (ctx: DimensionPointListLabelContext) => void;
+	enterDimensionPointList?: (ctx: DimensionPointListContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DimensionPointListLabel`
-	 * labeled alternative in `wcpsParser.dimensionPointList`.
+	 * Exit a parse tree produced by `wcpsParser.dimensionPointList`.
 	 * @param ctx the parse tree
 	 */
-	exitDimensionPointListLabel?: (ctx: DimensionPointListLabelContext) => void;
+	exitDimensionPointList?: (ctx: DimensionPointListContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DimensionPointElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionPointElement`.
+	 * Enter a parse tree produced by `wcpsParser.dimensionPointElement`.
 	 * @param ctx the parse tree
 	 */
-	enterDimensionPointElementLabel?: (ctx: DimensionPointElementLabelContext) => void;
+	enterDimensionPointElement?: (ctx: DimensionPointElementContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DimensionPointElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionPointElement`.
+	 * Exit a parse tree produced by `wcpsParser.dimensionPointElement`.
 	 * @param ctx the parse tree
 	 */
-	exitDimensionPointElementLabel?: (ctx: DimensionPointElementLabelContext) => void;
+	exitDimensionPointElement?: (ctx: DimensionPointElementContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.dimensionIntervalList`.
 	 * @param ctx the parse tree
@@ -1710,101 +828,65 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitDimensionIntervalList?: (ctx: DimensionIntervalListContext) => void;
 	/**
-	 * Enter a parse tree produced by the `SliceScaleDimensionPointElementLabel`
-	 * labeled alternative in `wcpsParser.scaleDimensionPointElement`.
+	 * Enter a parse tree produced by `wcpsParser.scaleDimensionPointElement`.
 	 * @param ctx the parse tree
 	 */
-	enterSliceScaleDimensionPointElementLabel?: (ctx: SliceScaleDimensionPointElementLabelContext) => void;
+	enterScaleDimensionPointElement?: (ctx: ScaleDimensionPointElementContext) => void;
 	/**
-	 * Exit a parse tree produced by the `SliceScaleDimensionPointElementLabel`
-	 * labeled alternative in `wcpsParser.scaleDimensionPointElement`.
+	 * Exit a parse tree produced by `wcpsParser.scaleDimensionPointElement`.
 	 * @param ctx the parse tree
 	 */
-	exitSliceScaleDimensionPointElementLabel?: (ctx: SliceScaleDimensionPointElementLabelContext) => void;
+	exitScaleDimensionPointElement?: (ctx: ScaleDimensionPointElementContext) => void;
 	/**
-	 * Enter a parse tree produced by the `ScaleDimensionPointListLabel`
-	 * labeled alternative in `wcpsParser.scaleDimensionPointList`.
+	 * Enter a parse tree produced by `wcpsParser.scaleDimensionPointList`.
 	 * @param ctx the parse tree
 	 */
-	enterScaleDimensionPointListLabel?: (ctx: ScaleDimensionPointListLabelContext) => void;
+	enterScaleDimensionPointList?: (ctx: ScaleDimensionPointListContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ScaleDimensionPointListLabel`
-	 * labeled alternative in `wcpsParser.scaleDimensionPointList`.
+	 * Exit a parse tree produced by `wcpsParser.scaleDimensionPointList`.
 	 * @param ctx the parse tree
 	 */
-	exitScaleDimensionPointListLabel?: (ctx: ScaleDimensionPointListLabelContext) => void;
+	exitScaleDimensionPointList?: (ctx: ScaleDimensionPointListContext) => void;
 	/**
-	 * Enter a parse tree produced by the `ScaleDimensionIntervalListLabel`
-	 * labeled alternative in `wcpsParser.scaleDimensionIntervalList`.
+	 * Enter a parse tree produced by `wcpsParser.scaleDimensionIntervalList`.
 	 * @param ctx the parse tree
 	 */
-	enterScaleDimensionIntervalListLabel?: (ctx: ScaleDimensionIntervalListLabelContext) => void;
+	enterScaleDimensionIntervalList?: (ctx: ScaleDimensionIntervalListContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ScaleDimensionIntervalListLabel`
-	 * labeled alternative in `wcpsParser.scaleDimensionIntervalList`.
+	 * Exit a parse tree produced by `wcpsParser.scaleDimensionIntervalList`.
 	 * @param ctx the parse tree
 	 */
-	exitScaleDimensionIntervalListLabel?: (ctx: ScaleDimensionIntervalListLabelContext) => void;
+	exitScaleDimensionIntervalList?: (ctx: ScaleDimensionIntervalListContext) => void;
 	/**
-	 * Enter a parse tree produced by the `TrimScaleDimensionIntervalElementLabel`
-	 * labeled alternative in `wcpsParser.scaleDimensionIntervalElement`.
+	 * Enter a parse tree produced by `wcpsParser.scaleDimensionIntervalElement`.
 	 * @param ctx the parse tree
 	 */
-	enterTrimScaleDimensionIntervalElementLabel?: (ctx: TrimScaleDimensionIntervalElementLabelContext) => void;
+	enterScaleDimensionIntervalElement?: (ctx: ScaleDimensionIntervalElementContext) => void;
 	/**
-	 * Exit a parse tree produced by the `TrimScaleDimensionIntervalElementLabel`
-	 * labeled alternative in `wcpsParser.scaleDimensionIntervalElement`.
+	 * Exit a parse tree produced by `wcpsParser.scaleDimensionIntervalElement`.
 	 * @param ctx the parse tree
 	 */
-	exitTrimScaleDimensionIntervalElementLabel?: (ctx: TrimScaleDimensionIntervalElementLabelContext) => void;
+	exitScaleDimensionIntervalElement?: (ctx: ScaleDimensionIntervalElementContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DimensionBoundConcatenationElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionBoundConcatenationElement`.
+	 * Enter a parse tree produced by `wcpsParser.dimensionBoundConcatenationElement`.
 	 * @param ctx the parse tree
 	 */
-	enterDimensionBoundConcatenationElementLabel?: (ctx: DimensionBoundConcatenationElementLabelContext) => void;
+	enterDimensionBoundConcatenationElement?: (ctx: DimensionBoundConcatenationElementContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DimensionBoundConcatenationElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionBoundConcatenationElement`.
+	 * Exit a parse tree produced by `wcpsParser.dimensionBoundConcatenationElement`.
 	 * @param ctx the parse tree
 	 */
-	exitDimensionBoundConcatenationElementLabel?: (ctx: DimensionBoundConcatenationElementLabelContext) => void;
+	exitDimensionBoundConcatenationElement?: (ctx: DimensionBoundConcatenationElementContext) => void;
 	/**
-	 * Enter a parse tree produced by the `TrimDimensionIntervalElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionIntervalElement`.
+	 * Enter a parse tree produced by `wcpsParser.dimensionIntervalElement`.
 	 * @param ctx the parse tree
 	 */
-	enterTrimDimensionIntervalElementLabel?: (ctx: TrimDimensionIntervalElementLabelContext) => void;
+	enterDimensionIntervalElement?: (ctx: DimensionIntervalElementContext) => void;
 	/**
-	 * Exit a parse tree produced by the `TrimDimensionIntervalElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionIntervalElement`.
+	 * Exit a parse tree produced by `wcpsParser.dimensionIntervalElement`.
 	 * @param ctx the parse tree
 	 */
-	exitTrimDimensionIntervalElementLabel?: (ctx: TrimDimensionIntervalElementLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `TrimDimensionIntervalByImageCrsDomainElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionIntervalElement`.
-	 * @param ctx the parse tree
-	 */
-	enterTrimDimensionIntervalByImageCrsDomainElementLabel?: (ctx: TrimDimensionIntervalByImageCrsDomainElementLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `TrimDimensionIntervalByImageCrsDomainElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionIntervalElement`.
-	 * @param ctx the parse tree
-	 */
-	exitTrimDimensionIntervalByImageCrsDomainElementLabel?: (ctx: TrimDimensionIntervalByImageCrsDomainElementLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `SliceDimensionIntervalElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionIntervalElement`.
-	 * @param ctx the parse tree
-	 */
-	enterSliceDimensionIntervalElementLabel?: (ctx: SliceDimensionIntervalElementLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `SliceDimensionIntervalElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionIntervalElement`.
-	 * @param ctx the parse tree
-	 */
-	exitSliceDimensionIntervalElementLabel?: (ctx: SliceDimensionIntervalElementLabelContext) => void;
+	exitDimensionIntervalElement?: (ctx: DimensionIntervalElementContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.timeIntervalElement`.
 	 * @param ctx the parse tree
@@ -1836,89 +918,75 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitTimeTruncatorElement?: (ctx: TimeTruncatorElementContext) => void;
 	/**
-	 * Enter a parse tree produced by the `wktPointsLabel`
-	 * labeled alternative in `wcpsParser.wktPoints`.
+	 * Enter a parse tree produced by `wcpsParser.wktPoints`.
 	 * @param ctx the parse tree
 	 */
-	enterWktPointsLabel?: (ctx: WktPointsLabelContext) => void;
+	enterWktPoints?: (ctx: WktPointsContext) => void;
 	/**
-	 * Exit a parse tree produced by the `wktPointsLabel`
-	 * labeled alternative in `wcpsParser.wktPoints`.
+	 * Exit a parse tree produced by `wcpsParser.wktPoints`.
 	 * @param ctx the parse tree
 	 */
-	exitWktPointsLabel?: (ctx: WktPointsLabelContext) => void;
+	exitWktPoints?: (ctx: WktPointsContext) => void;
 	/**
-	 * Enter a parse tree produced by the `WKTPointElementListLabel`
-	 * labeled alternative in `wcpsParser.wktPointElementList`.
+	 * Enter a parse tree produced by `wcpsParser.wktPointElementList`.
 	 * @param ctx the parse tree
 	 */
-	enterWKTPointElementListLabel?: (ctx: WKTPointElementListLabelContext) => void;
+	enterWktPointElementList?: (ctx: WktPointElementListContext) => void;
 	/**
-	 * Exit a parse tree produced by the `WKTPointElementListLabel`
-	 * labeled alternative in `wcpsParser.wktPointElementList`.
+	 * Exit a parse tree produced by `wcpsParser.wktPointElementList`.
 	 * @param ctx the parse tree
 	 */
-	exitWKTPointElementListLabel?: (ctx: WKTPointElementListLabelContext) => void;
+	exitWktPointElementList?: (ctx: WktPointElementListContext) => void;
 	/**
-	 * Enter a parse tree produced by the `WKTLineStringLabel`
-	 * labeled alternative in `wcpsParser.wktLineString`.
+	 * Enter a parse tree produced by `wcpsParser.wktLineString`.
 	 * @param ctx the parse tree
 	 */
-	enterWKTLineStringLabel?: (ctx: WKTLineStringLabelContext) => void;
+	enterWktLineString?: (ctx: WktLineStringContext) => void;
 	/**
-	 * Exit a parse tree produced by the `WKTLineStringLabel`
-	 * labeled alternative in `wcpsParser.wktLineString`.
+	 * Exit a parse tree produced by `wcpsParser.wktLineString`.
 	 * @param ctx the parse tree
 	 */
-	exitWKTLineStringLabel?: (ctx: WKTLineStringLabelContext) => void;
+	exitWktLineString?: (ctx: WktLineStringContext) => void;
 	/**
-	 * Enter a parse tree produced by the `WKTPolygonLabel`
-	 * labeled alternative in `wcpsParser.wktPolygon`.
+	 * Enter a parse tree produced by `wcpsParser.wktPolygon`.
 	 * @param ctx the parse tree
 	 */
-	enterWKTPolygonLabel?: (ctx: WKTPolygonLabelContext) => void;
+	enterWktPolygon?: (ctx: WktPolygonContext) => void;
 	/**
-	 * Exit a parse tree produced by the `WKTPolygonLabel`
-	 * labeled alternative in `wcpsParser.wktPolygon`.
+	 * Exit a parse tree produced by `wcpsParser.wktPolygon`.
 	 * @param ctx the parse tree
 	 */
-	exitWKTPolygonLabel?: (ctx: WKTPolygonLabelContext) => void;
+	exitWktPolygon?: (ctx: WktPolygonContext) => void;
 	/**
-	 * Enter a parse tree produced by the `WKTMultipolygonLabel`
-	 * labeled alternative in `wcpsParser.wktMultipolygon`.
+	 * Enter a parse tree produced by `wcpsParser.wktMultipolygon`.
 	 * @param ctx the parse tree
 	 */
-	enterWKTMultipolygonLabel?: (ctx: WKTMultipolygonLabelContext) => void;
+	enterWktMultipolygon?: (ctx: WktMultipolygonContext) => void;
 	/**
-	 * Exit a parse tree produced by the `WKTMultipolygonLabel`
-	 * labeled alternative in `wcpsParser.wktMultipolygon`.
+	 * Exit a parse tree produced by `wcpsParser.wktMultipolygon`.
 	 * @param ctx the parse tree
 	 */
-	exitWKTMultipolygonLabel?: (ctx: WKTMultipolygonLabelContext) => void;
+	exitWktMultipolygon?: (ctx: WktMultipolygonContext) => void;
 	/**
-	 * Enter a parse tree produced by the `WKTCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.wktCoverageExpression`.
+	 * Enter a parse tree produced by `wcpsParser.wktCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterWKTCoverageExpressionLabel?: (ctx: WKTCoverageExpressionLabelContext) => void;
+	enterWktCoverageExpression?: (ctx: WktCoverageExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `WKTCoverageExpressionLabel`
-	 * labeled alternative in `wcpsParser.wktCoverageExpression`.
+	 * Exit a parse tree produced by `wcpsParser.wktCoverageExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitWKTCoverageExpressionLabel?: (ctx: WKTCoverageExpressionLabelContext) => void;
+	exitWktCoverageExpression?: (ctx: WktCoverageExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `WKTExpressionLabel`
-	 * labeled alternative in `wcpsParser.wktExpression`.
+	 * Enter a parse tree produced by `wcpsParser.wktExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterWKTExpressionLabel?: (ctx: WKTExpressionLabelContext) => void;
+	enterWktExpression?: (ctx: WktExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `WKTExpressionLabel`
-	 * labeled alternative in `wcpsParser.wktExpression`.
+	 * Exit a parse tree produced by `wcpsParser.wktExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitWKTExpressionLabel?: (ctx: WKTExpressionLabelContext) => void;
+	exitWktExpression?: (ctx: WktExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.curtainProjectionAxisLabel1`.
 	 * @param ctx the parse tree
@@ -1940,17 +1008,15 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitCurtainProjectionAxisLabel2?: (ctx: CurtainProjectionAxisLabel2Context) => void;
 	/**
-	 * Enter a parse tree produced by the `ClipCurtainExpressionLabel`
-	 * labeled alternative in `wcpsParser.clipCurtainExpression`.
+	 * Enter a parse tree produced by `wcpsParser.clipCurtainExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterClipCurtainExpressionLabel?: (ctx: ClipCurtainExpressionLabelContext) => void;
+	enterClipCurtainExpression?: (ctx: ClipCurtainExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ClipCurtainExpressionLabel`
-	 * labeled alternative in `wcpsParser.clipCurtainExpression`.
+	 * Exit a parse tree produced by `wcpsParser.clipCurtainExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitClipCurtainExpressionLabel?: (ctx: ClipCurtainExpressionLabelContext) => void;
+	exitClipCurtainExpression?: (ctx: ClipCurtainExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.corridorProjectionAxisLabel1`.
 	 * @param ctx the parse tree
@@ -1992,89 +1058,75 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitCorridorWKTLabel2?: (ctx: CorridorWKTLabel2Context) => void;
 	/**
-	 * Enter a parse tree produced by the `ClipCorridorExpressionLabel`
-	 * labeled alternative in `wcpsParser.clipCorridorExpression`.
+	 * Enter a parse tree produced by `wcpsParser.clipCorridorExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterClipCorridorExpressionLabel?: (ctx: ClipCorridorExpressionLabelContext) => void;
+	enterClipCorridorExpression?: (ctx: ClipCorridorExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ClipCorridorExpressionLabel`
-	 * labeled alternative in `wcpsParser.clipCorridorExpression`.
+	 * Exit a parse tree produced by `wcpsParser.clipCorridorExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitClipCorridorExpressionLabel?: (ctx: ClipCorridorExpressionLabelContext) => void;
+	exitClipCorridorExpression?: (ctx: ClipCorridorExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `ClipWKTExpressionLabel`
-	 * labeled alternative in `wcpsParser.clipWKTExpression`.
+	 * Enter a parse tree produced by `wcpsParser.clipWKTExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterClipWKTExpressionLabel?: (ctx: ClipWKTExpressionLabelContext) => void;
+	enterClipWKTExpression?: (ctx: ClipWKTExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ClipWKTExpressionLabel`
-	 * labeled alternative in `wcpsParser.clipWKTExpression`.
+	 * Exit a parse tree produced by `wcpsParser.clipWKTExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitClipWKTExpressionLabel?: (ctx: ClipWKTExpressionLabelContext) => void;
+	exitClipWKTExpression?: (ctx: ClipWKTExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CrsTransformExpressionLabel`
-	 * labeled alternative in `wcpsParser.crsTransformExpression`.
+	 * Enter a parse tree produced by `wcpsParser.crsTransformExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCrsTransformExpressionLabel?: (ctx: CrsTransformExpressionLabelContext) => void;
+	enterCrsTransformExpression?: (ctx: CrsTransformExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CrsTransformExpressionLabel`
-	 * labeled alternative in `wcpsParser.crsTransformExpression`.
+	 * Exit a parse tree produced by `wcpsParser.crsTransformExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCrsTransformExpressionLabel?: (ctx: CrsTransformExpressionLabelContext) => void;
+	exitCrsTransformExpression?: (ctx: CrsTransformExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CrsTransformShorthandExpressionLabel`
-	 * labeled alternative in `wcpsParser.crsTransformShorthandExpression`.
+	 * Enter a parse tree produced by `wcpsParser.crsTransformShorthandExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCrsTransformShorthandExpressionLabel?: (ctx: CrsTransformShorthandExpressionLabelContext) => void;
+	enterCrsTransformShorthandExpression?: (ctx: CrsTransformShorthandExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CrsTransformShorthandExpressionLabel`
-	 * labeled alternative in `wcpsParser.crsTransformShorthandExpression`.
+	 * Exit a parse tree produced by `wcpsParser.crsTransformShorthandExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCrsTransformShorthandExpressionLabel?: (ctx: CrsTransformShorthandExpressionLabelContext) => void;
+	exitCrsTransformShorthandExpression?: (ctx: CrsTransformShorthandExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `PolygonizeExpressionLabel`
-	 * labeled alternative in `wcpsParser.polygonizeExpression`.
+	 * Enter a parse tree produced by `wcpsParser.polygonizeExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterPolygonizeExpressionLabel?: (ctx: PolygonizeExpressionLabelContext) => void;
+	enterPolygonizeExpression?: (ctx: PolygonizeExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `PolygonizeExpressionLabel`
-	 * labeled alternative in `wcpsParser.polygonizeExpression`.
+	 * Exit a parse tree produced by `wcpsParser.polygonizeExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitPolygonizeExpressionLabel?: (ctx: PolygonizeExpressionLabelContext) => void;
+	exitPolygonizeExpression?: (ctx: PolygonizeExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DimensionCrsListLabel`
-	 * labeled alternative in `wcpsParser.dimensionCrsList`.
+	 * Enter a parse tree produced by `wcpsParser.dimensionCrsList`.
 	 * @param ctx the parse tree
 	 */
-	enterDimensionCrsListLabel?: (ctx: DimensionCrsListLabelContext) => void;
+	enterDimensionCrsList?: (ctx: DimensionCrsListContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DimensionCrsListLabel`
-	 * labeled alternative in `wcpsParser.dimensionCrsList`.
+	 * Exit a parse tree produced by `wcpsParser.dimensionCrsList`.
 	 * @param ctx the parse tree
 	 */
-	exitDimensionCrsListLabel?: (ctx: DimensionCrsListLabelContext) => void;
+	exitDimensionCrsList?: (ctx: DimensionCrsListContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DimensionGeoXYResolutionsListLabel`
-	 * labeled alternative in `wcpsParser.dimensionGeoXYResolutionsList`.
+	 * Enter a parse tree produced by `wcpsParser.dimensionGeoXYResolutionsList`.
 	 * @param ctx the parse tree
 	 */
-	enterDimensionGeoXYResolutionsListLabel?: (ctx: DimensionGeoXYResolutionsListLabelContext) => void;
+	enterDimensionGeoXYResolutionsList?: (ctx: DimensionGeoXYResolutionsListContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DimensionGeoXYResolutionsListLabel`
-	 * labeled alternative in `wcpsParser.dimensionGeoXYResolutionsList`.
+	 * Exit a parse tree produced by `wcpsParser.dimensionGeoXYResolutionsList`.
 	 * @param ctx the parse tree
 	 */
-	exitDimensionGeoXYResolutionsListLabel?: (ctx: DimensionGeoXYResolutionsListLabelContext) => void;
+	exitDimensionGeoXYResolutionsList?: (ctx: DimensionGeoXYResolutionsListContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.dimensionGeoXYResolution`.
 	 * @param ctx the parse tree
@@ -2086,77 +1138,45 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitDimensionGeoXYResolution?: (ctx: DimensionGeoXYResolutionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `DimensionCrsElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionCrsElement`.
+	 * Enter a parse tree produced by `wcpsParser.dimensionCrsElement`.
 	 * @param ctx the parse tree
 	 */
-	enterDimensionCrsElementLabel?: (ctx: DimensionCrsElementLabelContext) => void;
+	enterDimensionCrsElement?: (ctx: DimensionCrsElementContext) => void;
 	/**
-	 * Exit a parse tree produced by the `DimensionCrsElementLabel`
-	 * labeled alternative in `wcpsParser.dimensionCrsElement`.
+	 * Exit a parse tree produced by `wcpsParser.dimensionCrsElement`.
 	 * @param ctx the parse tree
 	 */
-	exitDimensionCrsElementLabel?: (ctx: DimensionCrsElementLabelContext) => void;
+	exitDimensionCrsElement?: (ctx: DimensionCrsElementContext) => void;
 	/**
-	 * Enter a parse tree produced by the `InterpolationTypeLabel`
-	 * labeled alternative in `wcpsParser.interpolationType`.
+	 * Enter a parse tree produced by `wcpsParser.interpolationType`.
 	 * @param ctx the parse tree
 	 */
-	enterInterpolationTypeLabel?: (ctx: InterpolationTypeLabelContext) => void;
+	enterInterpolationType?: (ctx: InterpolationTypeContext) => void;
 	/**
-	 * Exit a parse tree produced by the `InterpolationTypeLabel`
-	 * labeled alternative in `wcpsParser.interpolationType`.
+	 * Exit a parse tree produced by `wcpsParser.interpolationType`.
 	 * @param ctx the parse tree
 	 */
-	exitInterpolationTypeLabel?: (ctx: InterpolationTypeLabelContext) => void;
+	exitInterpolationType?: (ctx: InterpolationTypeContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CoverageConstructorExpressionLabel`
-	 * labeled alternative in `wcpsParser.coverageConstructorExpression`.
+	 * Enter a parse tree produced by `wcpsParser.coverageConstructorExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCoverageConstructorExpressionLabel?: (ctx: CoverageConstructorExpressionLabelContext) => void;
+	enterCoverageConstructorExpression?: (ctx: CoverageConstructorExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CoverageConstructorExpressionLabel`
-	 * labeled alternative in `wcpsParser.coverageConstructorExpression`.
+	 * Exit a parse tree produced by `wcpsParser.coverageConstructorExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCoverageConstructorExpressionLabel?: (ctx: CoverageConstructorExpressionLabelContext) => void;
+	exitCoverageConstructorExpression?: (ctx: CoverageConstructorExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `AxisIteratorDomainIntervalsLabel`
-	 * labeled alternative in `wcpsParser.axisIterator`.
+	 * Enter a parse tree produced by `wcpsParser.axisIterator`.
 	 * @param ctx the parse tree
 	 */
-	enterAxisIteratorDomainIntervalsLabel?: (ctx: AxisIteratorDomainIntervalsLabelContext) => void;
+	enterAxisIterator?: (ctx: AxisIteratorContext) => void;
 	/**
-	 * Exit a parse tree produced by the `AxisIteratorDomainIntervalsLabel`
-	 * labeled alternative in `wcpsParser.axisIterator`.
+	 * Exit a parse tree produced by `wcpsParser.axisIterator`.
 	 * @param ctx the parse tree
 	 */
-	exitAxisIteratorDomainIntervalsLabel?: (ctx: AxisIteratorDomainIntervalsLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `AxisIteratorLabel`
-	 * labeled alternative in `wcpsParser.axisIterator`.
-	 * @param ctx the parse tree
-	 */
-	enterAxisIteratorLabel?: (ctx: AxisIteratorLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `AxisIteratorLabel`
-	 * labeled alternative in `wcpsParser.axisIterator`.
-	 * @param ctx the parse tree
-	 */
-	exitAxisIteratorLabel?: (ctx: AxisIteratorLabelContext) => void;
-	/**
-	 * Enter a parse tree produced by the `AxisIteratorEnumerationListLabel`
-	 * labeled alternative in `wcpsParser.axisIterator`.
-	 * @param ctx the parse tree
-	 */
-	enterAxisIteratorEnumerationListLabel?: (ctx: AxisIteratorEnumerationListLabelContext) => void;
-	/**
-	 * Exit a parse tree produced by the `AxisIteratorEnumerationListLabel`
-	 * labeled alternative in `wcpsParser.axisIterator`.
-	 * @param ctx the parse tree
-	 */
-	exitAxisIteratorEnumerationListLabel?: (ctx: AxisIteratorEnumerationListLabelContext) => void;
+	exitAxisIterator?: (ctx: AxisIteratorContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.regularTimeStep`.
 	 * @param ctx the parse tree
@@ -2168,41 +1188,35 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitRegularTimeStep?: (ctx: RegularTimeStepContext) => void;
 	/**
-	 * Enter a parse tree produced by the `IntervalExpressionLabel`
-	 * labeled alternative in `wcpsParser.intervalExpression`.
+	 * Enter a parse tree produced by `wcpsParser.intervalExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterIntervalExpressionLabel?: (ctx: IntervalExpressionLabelContext) => void;
+	enterIntervalExpression?: (ctx: IntervalExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `IntervalExpressionLabel`
-	 * labeled alternative in `wcpsParser.intervalExpression`.
+	 * Exit a parse tree produced by `wcpsParser.intervalExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitIntervalExpressionLabel?: (ctx: IntervalExpressionLabelContext) => void;
+	exitIntervalExpression?: (ctx: IntervalExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `CoverageConstantExpressionLabel`
-	 * labeled alternative in `wcpsParser.coverageConstantExpression`.
+	 * Enter a parse tree produced by `wcpsParser.coverageConstantExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterCoverageConstantExpressionLabel?: (ctx: CoverageConstantExpressionLabelContext) => void;
+	enterCoverageConstantExpression?: (ctx: CoverageConstantExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `CoverageConstantExpressionLabel`
-	 * labeled alternative in `wcpsParser.coverageConstantExpression`.
+	 * Exit a parse tree produced by `wcpsParser.coverageConstantExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitCoverageConstantExpressionLabel?: (ctx: CoverageConstantExpressionLabelContext) => void;
+	exitCoverageConstantExpression?: (ctx: CoverageConstantExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `AxisSpecLabel`
-	 * labeled alternative in `wcpsParser.axisSpec`.
+	 * Enter a parse tree produced by `wcpsParser.axisSpec`.
 	 * @param ctx the parse tree
 	 */
-	enterAxisSpecLabel?: (ctx: AxisSpecLabelContext) => void;
+	enterAxisSpec?: (ctx: AxisSpecContext) => void;
 	/**
-	 * Exit a parse tree produced by the `AxisSpecLabel`
-	 * labeled alternative in `wcpsParser.axisSpec`.
+	 * Exit a parse tree produced by `wcpsParser.axisSpec`.
 	 * @param ctx the parse tree
 	 */
-	exitAxisSpecLabel?: (ctx: AxisSpecLabelContext) => void;
+	exitAxisSpec?: (ctx: AxisSpecContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.condenseExpression`.
 	 * @param ctx the parse tree
@@ -2234,29 +1248,25 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitReduceNumericalExpressionOperator?: (ctx: ReduceNumericalExpressionOperatorContext) => void;
 	/**
-	 * Enter a parse tree produced by the `ReduceBooleanExpressionLabel`
-	 * labeled alternative in `wcpsParser.reduceBooleanExpression`.
+	 * Enter a parse tree produced by `wcpsParser.reduceBooleanExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterReduceBooleanExpressionLabel?: (ctx: ReduceBooleanExpressionLabelContext) => void;
+	enterReduceBooleanExpression?: (ctx: ReduceBooleanExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ReduceBooleanExpressionLabel`
-	 * labeled alternative in `wcpsParser.reduceBooleanExpression`.
+	 * Exit a parse tree produced by `wcpsParser.reduceBooleanExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitReduceBooleanExpressionLabel?: (ctx: ReduceBooleanExpressionLabelContext) => void;
+	exitReduceBooleanExpression?: (ctx: ReduceBooleanExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `ReduceNumericalExpressionLabel`
-	 * labeled alternative in `wcpsParser.reduceNumericalExpression`.
+	 * Enter a parse tree produced by `wcpsParser.reduceNumericalExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterReduceNumericalExpressionLabel?: (ctx: ReduceNumericalExpressionLabelContext) => void;
+	enterReduceNumericalExpression?: (ctx: ReduceNumericalExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `ReduceNumericalExpressionLabel`
-	 * labeled alternative in `wcpsParser.reduceNumericalExpression`.
+	 * Exit a parse tree produced by `wcpsParser.reduceNumericalExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitReduceNumericalExpressionLabel?: (ctx: ReduceNumericalExpressionLabelContext) => void;
+	exitReduceNumericalExpression?: (ctx: ReduceNumericalExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.reduceExpression`.
 	 * @param ctx the parse tree
@@ -2278,53 +1288,45 @@ export default class wcpsListener extends ParseTreeListener {
 	 */
 	exitCondenseExpressionOperator?: (ctx: CondenseExpressionOperatorContext) => void;
 	/**
-	 * Enter a parse tree produced by the `GeneralCondenseExpressionLabel`
-	 * labeled alternative in `wcpsParser.generalCondenseExpression`.
+	 * Enter a parse tree produced by `wcpsParser.generalCondenseExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterGeneralCondenseExpressionLabel?: (ctx: GeneralCondenseExpressionLabelContext) => void;
+	enterGeneralCondenseExpression?: (ctx: GeneralCondenseExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `GeneralCondenseExpressionLabel`
-	 * labeled alternative in `wcpsParser.generalCondenseExpression`.
+	 * Exit a parse tree produced by `wcpsParser.generalCondenseExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitGeneralCondenseExpressionLabel?: (ctx: GeneralCondenseExpressionLabelContext) => void;
+	exitGeneralCondenseExpression?: (ctx: GeneralCondenseExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `flipExpressionLabel`
-	 * labeled alternative in `wcpsParser.flipExpression`.
+	 * Enter a parse tree produced by `wcpsParser.flipExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterFlipExpressionLabel?: (ctx: FlipExpressionLabelContext) => void;
+	enterFlipExpression?: (ctx: FlipExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `flipExpressionLabel`
-	 * labeled alternative in `wcpsParser.flipExpression`.
+	 * Exit a parse tree produced by `wcpsParser.flipExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitFlipExpressionLabel?: (ctx: FlipExpressionLabelContext) => void;
+	exitFlipExpression?: (ctx: FlipExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `sortExpressionLabel`
-	 * labeled alternative in `wcpsParser.sortExpression`.
+	 * Enter a parse tree produced by `wcpsParser.sortExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterSortExpressionLabel?: (ctx: SortExpressionLabelContext) => void;
+	enterSortExpression?: (ctx: SortExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `sortExpressionLabel`
-	 * labeled alternative in `wcpsParser.sortExpression`.
+	 * Exit a parse tree produced by `wcpsParser.sortExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitSortExpressionLabel?: (ctx: SortExpressionLabelContext) => void;
+	exitSortExpression?: (ctx: SortExpressionContext) => void;
 	/**
-	 * Enter a parse tree produced by the `switchCaseExpressionLabel`
-	 * labeled alternative in `wcpsParser.switchCaseExpression`.
+	 * Enter a parse tree produced by `wcpsParser.switchCaseExpression`.
 	 * @param ctx the parse tree
 	 */
-	enterSwitchCaseExpressionLabel?: (ctx: SwitchCaseExpressionLabelContext) => void;
+	enterSwitchCaseExpression?: (ctx: SwitchCaseExpressionContext) => void;
 	/**
-	 * Exit a parse tree produced by the `switchCaseExpressionLabel`
-	 * labeled alternative in `wcpsParser.switchCaseExpression`.
+	 * Exit a parse tree produced by `wcpsParser.switchCaseExpression`.
 	 * @param ctx the parse tree
 	 */
-	exitSwitchCaseExpressionLabel?: (ctx: SwitchCaseExpressionLabelContext) => void;
+	exitSwitchCaseExpression?: (ctx: SwitchCaseExpressionContext) => void;
 	/**
 	 * Enter a parse tree produced by `wcpsParser.switchCaseElement`.
 	 * @param ctx the parse tree

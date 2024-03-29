@@ -404,143 +404,70 @@ decodeCoverageExpression: DECODE LEFT_PARENTHESIS
  * See subclauses
  */
 coverageExpression: udfExpression 
-
-
                   |coverageExpression booleanOperator coverageExpression
-
-
                   | coverageExpression LEFT_BRACKET dimensionPointList RIGHT_BRACKET
-
-                  | SLICE LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE dimensionPointList RIGHT_BRACE
-                          RIGHT_PARENTHESIS
-
+                  | SLICE LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE dimensionPointList RIGHT_BRACE RIGHT_PARENTHESIS
                   | coverageExpression LEFT_BRACKET dimensionIntervalList RIGHT_BRACKET
-
                   | coverageExpression LEFT_BRACKET coverageVariableName RIGHT_BRACKET
-
-                  | TRIM LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE dimensionIntervalList RIGHT_BRACE
-                    RIGHT_PARENTHESIS
-
+                  | TRIM LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE dimensionIntervalList RIGHT_BRACE RIGHT_PARENTHESIS
                   | LEFT_PARENTHESIS coverageExpression RIGHT_PARENTHESIS
-
                   | scalarExpression
-
-
-		          | domainIntervals
-
+		              | domainIntervals
                   | timeExtractorElement
-
                   | timeTruncatorElement
-
-
                   | geoXYAxisLabelAndDomainResolution
-
-
-
                   | coverageExpression DOT fieldName
-
-
-		          | coverageConstructorExpression
-
+		              | coverageConstructorExpression
                   | coverageVariableName
-
                   | coverageExpression numericalComparissonOperator coverageExpression
-
                   | coverageExpression coverageArithmeticOperator coverageExpression
-
-
                   | coverageConstantExpression
-
                   | decodeCoverageExpression
-
-
-
                   | EXTEND LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE ( dimensionIntervalList  | coverageVariableName )  RIGHT_BRACE
                     RIGHT_PARENTHESIS
-
                   | EXTEND LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE ( domainIntervals  | coverageVariableName )  RIGHT_BRACE
                     RIGHT_PARENTHESIS
-
                   | unaryArithmeticExpression
-
                   | trigonometricExpression
-
                   | exponentialExpression
-
                   | minBinaryExpression
-  		
                   | maxBinaryExpression
-  		
-		          | unaryPowerExpression
-
-		          | unaryModExpression
-
+		              | unaryPowerExpression
+		              | unaryModExpression
                   | unaryBooleanExpression
-
                   | castExpression
-
                   | rangeConstructorExpression
-
                   | clipWKTExpression
-
                   | clipCurtainExpression
-
                   | clipCorridorExpression
-
                   | crsTransformExpression
-
                   | crsTransformShorthandExpression
-
-		          | switchCaseExpression
-
-		          | SCALE LEFT_PARENTHESIS
-		                coverageExpression COMMA LEFT_BRACE ( domainIntervals | coverageVariableName ) RIGHT_BRACE
+                  | switchCaseExpression
+                  | SCALE LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE ( domainIntervals | coverageVariableName ) RIGHT_BRACE
                     RIGHT_PARENTHESIS
-
-
                   | SCALE LEFT_PARENTHESIS
                         coverageExpression COMMA LEFT_BRACE? ( scalarExpression | coverageVariableName ) RIGHT_BRACE?
                     RIGHT_PARENTHESIS
-
-
                   | SCALE LEFT_PARENTHESIS
                         coverageExpression COMMA LEFT_BRACE ( scaleDimensionPointList | coverageVariableName ) RIGHT_BRACE
                     RIGHT_PARENTHESIS
-
-
                   | SCALE LEFT_PARENTHESIS
                         coverageExpression COMMA LEFT_BRACE ( dimensionIntervalList | coverageVariableName ) RIGHT_BRACE
                     RIGHT_PARENTHESIS
-
-
-  		          | coverageExpression IS (NOT)? NULL
-		
-
-
+                  | coverageExpression IS (NOT)? NULL
                   // -- enterprise begin
-
                   // mddExp null values nullClause
                   | coverageExpression nullClause
-
                   // mddExp null values nullset(mddExp2)
                   | coverageExpression nullSetFrom
-
-
                   // mddExp null mask boolMddExp
                   | coverageExpression nullMask
-
                   // mddExp null mask discard
                   | coverageExpression nullMaskDiscard
-
-
                   // -- enterprise end
-
                   | coverageExpression OVERLAY coverageExpression
-
                   | flipExpression
-
                   | sortExpression
-
                   | polygonizeExpression
 ;
 /**

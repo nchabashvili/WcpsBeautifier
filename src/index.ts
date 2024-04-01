@@ -63,10 +63,10 @@ let $kernel1 := coverage kernel1
                 value list <1; 2; 1; 0; 0; 0; -1; -2; -1>,
     $xrange := domain($c, x),
     $yrange := domain($c, y)
-return (
+return 
   encode(
     $coverage.test, "image/png"
-  )
+  
 )
 `
 const charStream = new CharStream(input);

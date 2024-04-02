@@ -414,37 +414,18 @@ coverageExpression:
                     RIGHT_PARENTHESIS
 
                   | LEFT_PARENTHESIS coverageExpression RIGHT_PARENTHESIS
-
                   | scalarExpression
 		              | domainIntervals
-
                   | timeExtractorElement
-
                   | timeTruncatorElement
-
-
                   | geoXYAxisLabelAndDomainResolution
-
-
-
                   | coverageExpression DOT fieldName
-
-
-		          | coverageConstructorExpression
-
+  	              | coverageConstructorExpression
                   | coverageVariableName
-
                   | coverageExpression numericalComparissonOperator coverageExpression
-
                   | coverageExpression coverageArithmeticOperator coverageExpression
-
-
                   | coverageConstantExpression
-
                   | decodeCoverageExpression
-
-
-
                   | EXTEND LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE ( dimensionIntervalList  | coverageVariableName )  RIGHT_BRACE
                     RIGHT_PARENTHESIS
 
@@ -452,61 +433,40 @@ coverageExpression:
                     RIGHT_PARENTHESIS
 
                   | unaryArithmeticExpression
-
                   | trigonometricExpression
-
                   | exponentialExpression
-
                   | minBinaryExpression
-  		
                   | maxBinaryExpression
-  		
-		          | unaryPowerExpression
-
-		          | unaryModExpression
-
+    		          | unaryPowerExpression
+    		          | unaryModExpression
                   | unaryBooleanExpression
-
                   | castExpression
-
                   | rangeConstructorExpression
-
                   | clipWKTExpression
-
                   | clipCurtainExpression
-
                   | clipCorridorExpression
-
                   | crsTransformExpression
-
                   | crsTransformShorthandExpression
-
-		          | switchCaseExpression
-
-		          | SCALE LEFT_PARENTHESIS
+    		          | switchCaseExpression
+    		          | SCALE LEFT_PARENTHESIS
 		                coverageExpression COMMA LEFT_BRACE ( domainIntervals | coverageVariableName ) RIGHT_BRACE
                     RIGHT_PARENTHESIS
-
 
                   | SCALE LEFT_PARENTHESIS
                         coverageExpression COMMA LEFT_BRACE? ( scalarExpression | coverageVariableName ) RIGHT_BRACE?
                     RIGHT_PARENTHESIS
 
-
                   | SCALE LEFT_PARENTHESIS
                         coverageExpression COMMA LEFT_BRACE ( scaleDimensionPointList | coverageVariableName ) RIGHT_BRACE
                     RIGHT_PARENTHESIS
-
 
                   | SCALE LEFT_PARENTHESIS
                         coverageExpression COMMA LEFT_BRACE ( dimensionIntervalList | coverageVariableName ) RIGHT_BRACE
                     RIGHT_PARENTHESIS
 
 
-  		          | coverageExpression IS (NOT)? NULL
+    		          | coverageExpression IS (NOT)? NULL
 		
-
-
                   // -- enterprise begin
 
                   // mddExp null values nullClause
@@ -829,8 +789,8 @@ clipCurtainExpression: CLIP LEFT_PARENTHESIS coverageExpression
                                                 PROJECTION LEFT_PARENTHESIS curtainProjectionAxisLabel1 COMMA curtainProjectionAxisLabel2 RIGHT_PARENTHESIS
                                                 COMMA wktExpression 
                                              RIGHT_PARENTHESIS
-					     (COMMA crsName)?
-			    RIGHT_PARENTHESIS
+					                    (COMMA crsName)?
+			                RIGHT_PARENTHESIS
 ;
 
 

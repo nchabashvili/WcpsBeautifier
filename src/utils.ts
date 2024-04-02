@@ -1,5 +1,5 @@
 import { Domain } from 'domain';
-import { AxisIteratorContext, BooleanScalarExpressionContext, CellCountExpressionContext, ClipWKTExpressionContext, CondenseExpressionContext, CoverageExpressionContext, DecodeCoverageExpressionContext, DescribeCoverageExpressionContext, DomainExpressionContext, DomainIntervalsContext, DomainPropertyValueExtractionContext, EncodedCoverageExpressionContext, ForClauseContext, GeneralCondenseExpressionContext, GeoXYAxisLabelAndDomainResolutionContext, GetComponentExpressionContext, ImageCrsDomainByDimensionExpressionContext, ImageCrsDomainExpressionContext, LetClauseContext, NumericalScalarExpressionContext, ProcessingExpressionContext, RangeConstructorElementContext, RangeConstructorElementListContext, ReduceBooleanExpressionContext, ReduceExpressionContext, ReturnClauseContext, ScalarExpressionContext, ScalarValueCoverageExpressionContext, StringScalarExpressionContext, WhereClauseContext, WktExpressionContext, WktPointElementListContext, WktPointsContext, WktPolygonContext } from './grammar/wcpsParser';
+import { AxisIteratorContext, BooleanScalarExpressionContext, BooleanSwitchCaseCombinedExpressionContext, BooleanSwitchCaseCoverageExpressionContext, CellCountExpressionContext, ClipCorridorExpressionContext, ClipCurtainExpressionContext, ClipWKTExpressionContext, CondenseExpressionContext, CoverageExpressionContext, CrsTransformExpressionContext, CrsTransformShorthandExpressionContext, DecodeCoverageExpressionContext, DescribeCoverageExpressionContext, DimensionBoundConcatenationElementContext, DimensionCrsElementContext, DimensionCrsListContext, DimensionGeoXYResolutionContext, DimensionGeoXYResolutionsListContext, DimensionIntervalElementContext, DimensionIntervalListContext, DomainExpressionContext, DomainIntervalsContext, DomainPropertyValueExtractionContext, EncodedCoverageExpressionContext, ForClauseContext, GeneralCondenseExpressionContext, GeoXYAxisLabelAndDomainResolutionContext, GetComponentExpressionContext, ImageCrsDomainByDimensionExpressionContext, ImageCrsDomainExpressionContext, LetClauseContext, NumericalScalarExpressionContext, ProcessingExpressionContext, RangeConstructorElementContext, RangeConstructorElementListContext, ReduceBooleanExpressionContext, ReduceExpressionContext, ReturnClauseContext, ScalarExpressionContext, ScalarValueCoverageExpressionContext, StringScalarExpressionContext, SwitchCaseDefaultElementContext, SwitchCaseElementContext, SwitchCaseExpressionContext, UnaryArithmeticExpressionContext, UnaryBooleanExpressionContext, UnaryModExpressionContext, UnaryPowerExpressionContext, WhereClauseContext, WktExpressionContext, WktPointElementListContext, WktPointsContext, WktPolygonContext } from './grammar/wcpsParser';
 import { RangeConstructorExpressionContext } from './grammar/wcpsParser';
 
 function UnexpectedTokenException(context: string, node: any) {
@@ -484,9 +484,257 @@ export function BeautifyCoverageExpression(node: CoverageExpressionContext): str
         return BeautifyClipWKTExpression(node.clipWKTExpression());
     }
 
-    
+    if (node.unaryArithmeticExpression() != null) {
+        return `${BeautifyunaryArithmeticExpression(node.unaryArithmeticExpression())}`;
+    }
+    if (node.clipCurtainExpression() != null) {
+        return BeautifyClipCurtainExpression(node.clipCurtainExpression());
+    }
+    if (node.clipCorridorExpression() != null) {
+        return BeautifyClipCorridorExpression(node.clipCorridorExpression());
+    }
+    if (node.crsTransformExpression() !=  null) {
+        return BeautifyCrsTransformExpression(node.crsTransformExpression());
+    }
+    if (node.crsTransformShorthandExpression() != null) {
+        return BeautifyCrsTransformShorthandExpression(node.crsTransformShorthandExpression());
+    }
+    if (node.switchCaseExpression() != null) {
+        return BeautifySwitchCaseExpression(node.switchCaseExpression());
+    }
+    if (node.unaryPowerExpression() != null) {
+        return BeautifyUnaryPowerExpression(node.unaryPowerExpression());
+    }
+    if (node.unaryModExpression() != null) {
+        return BeautifyUnaryModExpression(node.unaryModExpression());
+    }
+    if (node.unaryBooleanExpression() != null) {
+        return BeautifyUnaryBooleanExpression(node.unaryBooleanExpression());
+    }
 
-    return '';
+    throw UnexpectedTokenException("coverage", node);
+}
+
+export function BeautifyUnaryBooleanExpression(node: UnaryBooleanExpressionContext): string {
+    const covName = node.coverageVariableName().getText();
+    const covExpr = BeautifyCoverageExpression(node.coverageExpression());
+    const numScalExp = BeautifyNumericalScalarExpression(node.numericalScalarExpression());
+
+    if (node.numericalScalarExpression() != null) {
+        return `BIT(${covExpr}, ${numScalExp})`;
+    }
+    if (node.coverageVariableName() != null) {
+        return `BIT(${covExpr}, ${covName})`;
+    }
+    return `NOT(${covExpr})`;
+}
+
+export function BeautifyUnaryModExpression(node: UnaryModExpressionContext): string {
+    const covName = node.coverageVariableName().getText();
+    const covExpr = BeautifyCoverageExpression(node.coverageExpression());
+    const numScalExp = BeautifyNumericalScalarExpression(node.numericalScalarExpression());
+
+    if (node.coverageVariableName() != null) {
+        return `mod( ${covExpr}, ${covName})`;
+    }
+
+    return `mod( ${covExpr}, ${numScalExp})`;
+}
+
+export function BeautifyUnaryPowerExpression(node: UnaryPowerExpressionContext): string {
+    const covName = node.coverageVariableName().getText();
+    const covExpr = BeautifyCoverageExpression(node.coverageExpression());
+    const numScalExp = BeautifyNumericalScalarExpression(node.numericalScalarExpression());
+
+    if (node.coverageVariableName() != null) {
+        return `pow( ${covExpr}, ${covName})`;
+    }
+
+    return `pow( ${covExpr}, ${numScalExp})`;
+}
+
+export function BeautifySwitchCaseExpression(node: SwitchCaseExpressionContext): string {
+    let output = 'switch ';
+    output += node.switchCaseElementList().switchCaseElement_list().map(BeautifySwitchCaseElement).join("\n    ");
+    output += "\n        ";
+    output += BeautifySwitchCaseDefaultElement(node.switchCaseDefaultElement());
+
+    return output;
+}
+
+export function BeautifySwitchCaseDefaultElement(node: SwitchCaseDefaultElementContext): string {
+    return `default return ${BeautifyCoverageExpression(node.coverageExpression())}`;
+}
+
+export function BeautifySwitchCaseElement(node: SwitchCaseElementContext): string {
+    return `case ${BeautifyBooleanSwitchCaseCombinedExpression(node.booleanSwitchCaseCombinedExpression())} return ${BeautifyCoverageExpression(node.coverageExpression())}`;
+}
+
+export function BeautifyBooleanSwitchCaseCombinedExpression(node: BooleanSwitchCaseCombinedExpressionContext): string {
+    if (node.booleanOperator() != null) {
+        return `${BeautifyBooleanSwitchCaseCoverageExpression(node.booleanSwitchCaseCoverageExpression(0))} ${node.booleanOperator().getText()} ${BeautifyBooleanSwitchCaseCoverageExpression(node.booleanSwitchCaseCoverageExpression(1))}`
+    }
+    return `${BeautifyBooleanSwitchCaseCoverageExpression(node.booleanSwitchCaseCoverageExpression(0))}`
+}
+
+export function BeautifyBooleanSwitchCaseCoverageExpression(node: BooleanSwitchCaseCoverageExpressionContext): string {
+    const covName1 = BeautifyCoverageExpression(node.coverageExpression(0));
+    const covName2 = BeautifyCoverageExpression(node.coverageExpression(1));
+    const operator = node.numericalComparissonOperator().getText();
+
+    if (node.NULL() != null) {
+        if (node.NOT() != null) {
+            return `${covName1} is not null`;
+        }
+        return `${covName1} is null`;
+    }
+    return `${covName1} ${operator} ${covName2}`;
+}
+
+export function BeautifyCrsTransformShorthandExpression(node: CrsTransformShorthandExpressionContext): string {
+    const covName = BeautifyCoverageExpression(node.coverageExpression());
+    const crsName = node.crsName().getText();
+    const intType = node.interpolationType().getText();
+    const dimXY = BeautifyDimensionGeoXYResolutionsList(node.dimensionGeoXYResolutionsList());
+    const dimIntervalList = BeautifyDimensionIntervalList(node.dimensionIntervalList());
+    const domainExp = BeautifyDomainExpression(node.domainExpression());
+
+    if (node.interpolationType() != null) {
+        if (node.dimensionGeoXYResolutionsList() != null) {
+            if (node.dimensionIntervalList() != null) {
+                return `crsTransform(${covName}, ${crsName}, {${intType}}, {${dimXY}}, {${dimIntervalList}})`;
+            }
+            if (node.domainExpression() != null) {
+                return `crsTransform(${covName}, ${crsName}, {${intType}}, {${dimXY}}, {${domainExp}})`;
+            }
+            return `crsTransform(${covName}, ${crsName}, {${intType}}, {${dimXY}})`;
+        }
+        return `crsTransform(${covName}, ${crsName}, {${intType}})`;
+    }
+    return `crsTransform(${covName}, ${crsName})`;
+}
+
+
+export function BeautifyCrsTransformExpression(node : CrsTransformExpressionContext): string {
+    const covName = BeautifyCoverageExpression(node.coverageExpression());
+    const dimCrsList = BeautifyDimensionCrsList(node.dimensionCrsList());
+    const intType = node.interpolationType().getText();
+    const dimXY = BeautifyDimensionGeoXYResolutionsList(node.dimensionGeoXYResolutionsList());
+    const dimIntervalList = BeautifyDimensionIntervalList(node.dimensionIntervalList());
+    const domainExp = BeautifyDomainExpression(node.domainExpression());
+
+    if (node.interpolationType() != null) {
+        if (node.dimensionGeoXYResolutionsList() != null) {
+            if (node.dimensionIntervalList() != null) {
+                return `crsTransform(${covName}, ${dimCrsList}, {${intType}}, {${dimXY}}, {${dimIntervalList}})`;
+            }
+            if (node.domainExpression() != null) {
+                return `crsTransform(${covName}, ${dimCrsList}, {${intType}}, {${dimXY}}, {${domainExp}})`;
+            }
+            return `crsTransform(${covName}, ${dimCrsList}, {${intType}}, {${dimXY}})`;
+        }
+        return `crsTransform(${covName}, ${dimCrsList}, {${intType}})`;
+    }
+    return `crsTransform(${covName}, ${dimCrsList})`;
+}
+
+export function BeautifyDimensionCrsList(node: DimensionCrsListContext): string {
+    let output: string[] = [];
+    output.push(node.dimensionCrsElement_list().map(BeautifyDimensionCrsElement).join(", "));
+    return `{${output}}`;
+}
+
+export function BeautifyDimensionCrsElement(node: DimensionCrsElementContext): string {
+    return `${node.axisName().getText()}:${node.crsName().getText()}`;
+}
+
+export function BeautifyDimensionGeoXYResolutionsList(node: DimensionGeoXYResolutionsListContext): string {
+    let output: string[] = [];
+    output = node.dimensionGeoXYResolution_list().map(BeautifyDimensionGeoXYResolution);
+
+    return output.join(", ");
+}
+
+export function BeautifyDimensionGeoXYResolution(node: DimensionGeoXYResolutionContext): string {
+    const covName = node.COVERAGE_VARIABLE_NAME().getText();
+    const covExpr = BeautifyCoverageExpression(node.coverageExpression());
+    
+    return `${covName}:${covExpr}`;
+}
+
+export function BeautifyDimensionIntervalList(node: DimensionIntervalListContext): string {
+    let output: string[] = [];
+
+    output = node.dimensionIntervalElement_list().map(BeautifyDimensionIntervalElement);
+
+    return output.join(", ");
+}
+
+export function BeautifyDimensionIntervalElement(node: DimensionIntervalElementContext): string {
+    const axName = node.axisName().getText();
+    const crsName = node.crsName().getText();
+    const ConcElements = node.dimensionBoundConcatenationElement_list().map(BeautifyDimensionBoundConcatenationElement).join(":");
+    const img = BeautifyImageCrsDomainByDimensionExpression(node.imageCrsDomainByDimensionExpression());
+
+    if (node.imageCrsDomainByDimensionExpression() != null) {
+        if (node.crsName() != null){
+            return `${axName}:${crsName}(${img})`;
+        }
+        return `${axName}(${img})`;
+    }
+    if (node.crsName() != null) {
+        return `${axName}:${crsName}(${ConcElements})`;
+    }
+    return `${axName}(${ConcElements})`;
+}
+
+export function BeautifyDimensionBoundConcatenationElement(node: DimensionBoundConcatenationElementContext): string {
+    let output: string[] = [];
+
+    output = node.coverageExpression_list().map(BeautifyCoverageExpression);
+
+    return output.join(".");
+}
+
+export function BeautifyClipCorridorExpression(node: ClipCorridorExpressionContext): string {
+    const covNam = BeautifyCoverageExpression(node.coverageExpression());
+    const label1 = node.corridorProjectionAxisLabel1().getText();
+    const label2 = node.corridorProjectionAxisLabel2().getText();
+    const wkt1 = node.corridorWKTLabel1().wktExpression().getText();
+    const wkt2 = node.corridorWKTLabel2().wktExpression().getText();
+    const crsName = node.crsName().getText();
+
+    if (node.DISCRETE() != null) {
+        if (node.crsName() != null) {
+            return `clip( ${covNam}, corridor( projection(${label1}, ${label2}), ${wkt1}, ${wkt2}, discrete), ${crsName})`;
+        }
+        return `clip( ${covNam}, corridor( projection(${label1}, ${label2}), ${wkt1}, ${wkt2}, discrete))`;
+    }
+
+    return `clip( ${covNam}, corridor( projection(${label1}, ${label2}), ${wkt1}, ${wkt2}))`;
+}
+
+export function BeautifyClipCurtainExpression(node: ClipCurtainExpressionContext): string {
+    const covExp = BeautifyCoverageExpression(node.coverageExpression());
+    const label1 = node.curtainProjectionAxisLabel1().getText();
+    const label2 = node.curtainProjectionAxisLabel2().getText();
+    const wkt = BeautifyWktExpression(node.wktExpression());
+    const crsName = node.crsName().getText();
+
+    if (node.crsName() != null) {
+        return `clip( ${covExp}, curtain( projection(${label1}, ${label2}), ${wkt}), ${crsName})`;
+    }
+
+    return `clip( ${covExp}, curtain( projection(${label1}, ${label2}), ${wkt}))`;
+}
+
+export function BeautifyunaryArithmeticExpression(node: UnaryArithmeticExpressionContext): string {
+    let output = node.unaryArithmeticExpressionOperator().getText();
+    if (node.LEFT_PARENTHESIS() != null) output += '(';
+    output += BeautifyCoverageExpression(node.coverageExpression());
+    if (node.RIGHT_PARENTHESIS() != null) output += ')';
+
+    return output;
 }
 
 export function BeautifyRangeConstructorExpression(node: RangeConstructorExpressionContext): string {
@@ -516,7 +764,7 @@ export function BeautifyWktExpression(node: WktExpressionContext): string {
     }
     if (node.wktMultipolygon() != null) {
         const elementList = [];
-        let output = [];
+        let output : string[] = [];
         for (let i = 0; i < 40; i++) {
             if (node.wktMultipolygon().wktPointElementList(i) != null) {
                 output.push(BeautifyWktPointElementList(node.wktMultipolygon().wktPointElementList(i)));
@@ -538,12 +786,12 @@ export function BeautifyWktPointElementList(node: WktPointElementListContext): s
 }
 
 export function BeautifyWktPoints(node: WktPointsContext): string {
-    let output = [];
-    let constants = [];
-    constants.push(node.constant_list().map(node => node.getText()));
+    let output: string[] = [];
+    let constants: string[] = [];
+    constants = node.constant_list().map(node => node.getText());
 
     for (let i = 0; i < output.length; i + 2) {
-        output.push(constants[i], ' ', constants[i + 1]);
+        output.push(`${constants[i]} ${constants[i + 1]}`);
     }
 
     return output.join(', ');

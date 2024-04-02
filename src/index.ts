@@ -19,7 +19,7 @@ import WCPSParser, {
 import { BeautifyLetClause, BeautifyReturnClause, BeautifyWhereClause, beautifyForClause } from './utils';
 
 //const input = `FOR $c IN (mean_summer_airtemp), $z IN (what_is_this), $f IN (nice,goodbye,third) LET $a:=$c[Lat(20:30),Long(40:45)], $b:=$c+2,$z:=[$z(0:20),$f(5:30),$j(3:30)] WHERE $a>25 RETURN encode($a+$b,"png")`;
-const input2 = `for $c in (CoverageName),
+const input = `for $c in (CoverageName),
  $z in (CoverageName)
 let $kernel1 := coverage kernel1
                 over $x x(-1:1), $y y(-1:1)
@@ -53,7 +53,7 @@ return
     "image/png"
   )
 `
-const input = `for $c in (CoverageName),
+const input2 = `for $c in (CoverageName),
  $z in (CoverageName)
 let $kernel1 := coverage kernel1
                 over $x x(-1:1), $y y(-1:1)

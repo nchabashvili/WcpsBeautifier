@@ -6,6 +6,8 @@ function UnexpectedTokenException(context: string, node: any) {
     return new Error(`${context}: Unexpected token: ${node.getText()}`);
 }
 
+
+
 export function beautifyForClause(node: ForClauseContext): string {
     const coverageVariableName = node.coverageVariableName().getText();
     const coverageIdForClauseList = node.coverageIdForClause_list().map((node) => node.getText());
@@ -133,7 +135,7 @@ export function BeautifyGetComponentExpression(node: GetComponentExpressionConte
 }
 
 export function BeautifyEncodedCoverageExpression(node: EncodedCoverageExpressionContext): string {
-    let output = "encode(\n";
+    let output = node.ENCODE().getText()+"(\n";
     output += BeautifyCoverageExpression(node.coverageExpression());
     output += `, ${node.STRING_LITERAL().getText()}`;
     if (node.extraParams() != null) output += `, ${node.extraParams().getText()}`;

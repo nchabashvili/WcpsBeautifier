@@ -535,7 +535,8 @@ class ParseTreeBeautifier extends ParseTreeListener {
     }
 
     if (node.booleanUnaryOperator() != null) {
-      let output = 'not ';
+
+      let output = `${transformCase(node.booleanUnaryOperator().NOT().getText(), this.options.caseTransform)} `;
 
       if (node.LEFT_PARENTHESIS() != null) output += '(';
       output += this.BeautifyBooleanScalarExpression(node.booleanScalarExpression(0));
@@ -901,7 +902,6 @@ class ParseTreeBeautifier extends ParseTreeListener {
     const covName = node.COVERAGE_VARIABLE_NAME().getText();
     const axises = node.axisIterator_list().map(this.BeautifyAxisIterator.bind(this)).join(', ');
     const constants = node.constant_list().map(node => node.getText()).join('; ');
-
     let output = `${transformCase(node.COVERAGE().getText(), this.options.caseTransform)} ${covName}\n`;
     output += `${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axises}\n${transformCase(node.VALUE().getText(), this.options.caseTransform)} ${transformCase(node.LIST().getText(), this.options.caseTransform)} <${constants}>`;
     return output;
@@ -919,44 +919,44 @@ class ParseTreeBeautifier extends ParseTreeListener {
 
   BeautifyTimeTruncatorElement(node: TimeTruncatorElementContext): string {
     if (node.ALL_YEARS() != null) {
-      return `allyears(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.ALL_YEARS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.ALL_MONTHS() != null) {
-      return `allmonths(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.ALL_MONTHS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.ALL_DAYS() != null) {
-      return `alldays(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.ALL_DAYS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.ALL_HOURS() != null) {
-      return `allhours(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.ALL_HOURS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.ALL_MINUTES() != null) {
-      return `allminutes(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.ALL_MINUTES().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.ALL_SECONDS() != null) {
-      return `allseconds(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.ALL_SECONDS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     throw this.UnexpectedTokenException("timeTruncatorElement", node);
   }
 
   BeautifyTimeExtractorElement(node: TimeExtractorElementContext): string {
     if (node.YEARS() != null) {
-      return `years(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.YEARS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.MONTHS() != null) {
-      return `months(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.MONTHS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.DAYS() != null) {
-      return `days(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.DAYS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.HOURS() != null) {
-      return `hours(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.HOURS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.MINUTES() != null) {
-      return `minutes(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.MINUTES().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     if (node.SECONDS() != null) {
-      return `seconds(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
+      return `${transformCase(node.SECONDS().getText(), this.options.caseTransform)}(${this.BeautifyTimeIntervalElement(node.timeIntervalElement())})`;
     }
     throw this.UnexpectedTokenException("timeExtractionElement", node);
   }
@@ -1253,7 +1253,7 @@ class ParseTreeBeautifier extends ParseTreeListener {
   }
 
   BeautifyunaryArithmeticExpression(node: UnaryArithmeticExpressionContext): string {
-    let output = node.unaryArithmeticExpressionOperator().getText();
+    let output = transformCase(node.unaryArithmeticExpressionOperator().getText(), this.options.caseTransform);
     if (node.LEFT_PARENTHESIS() != null) output += '(\n';
     output += indent(this.BeautifyCoverageExpression(node.coverageExpression()), this.prefix);
     if (node.RIGHT_PARENTHESIS() != null) output += '\n)';

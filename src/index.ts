@@ -19,64 +19,51 @@ import WCPSParser, {
 import { Domain } from 'domain';
 import { AxisIteratorContext, BooleanScalarExpressionContext, BooleanSwitchCaseCombinedExpressionContext, BooleanSwitchCaseCoverageExpressionContext, CellCountExpressionContext, ClipCorridorExpressionContext, ClipCurtainExpressionContext, ClipWKTExpressionContext, CondenseExpressionContext, CoverageConstantExpressionContext, CoverageConstructorExpressionContext, CoverageExpressionContext, CrsTransformExpressionContext, CrsTransformShorthandExpressionContext, DecodeCoverageExpressionContext, DescribeCoverageExpressionContext, DimensionBoundConcatenationElementContext, DimensionCrsElementContext, DimensionCrsListContext, DimensionGeoXYResolutionContext, DimensionGeoXYResolutionsListContext, DimensionIntervalElementContext, DimensionIntervalListContext, DimensionPointElementContext, DimensionPointListContext, DomainExpressionContext, DomainIntervalsContext, DomainPropertyValueExtractionContext, EncodedCoverageExpressionContext, ForClauseContext, GeneralCondenseExpressionContext, GeoXYAxisLabelAndDomainResolutionContext, GetComponentExpressionContext, ImageCrsDomainByDimensionExpressionContext, ImageCrsDomainExpressionContext, LetClauseContext, NumericalScalarExpressionContext, ProcessingExpressionContext, RangeConstructorElementContext, RangeConstructorElementListContext, ReduceBooleanExpressionContext, ReduceExpressionContext, ScalarExpressionContext, ScalarValueCoverageExpressionContext, ScaleDimensionPointElementContext, ScaleDimensionPointListContext, StringScalarExpressionContext, SwitchCaseDefaultElementContext, SwitchCaseElementContext, SwitchCaseExpressionContext, TimeExtractorElementContext, TimeIntervalElementContext, TimeTruncatorElementContext, UdfExpressionContext, UnaryArithmeticExpressionContext, UnaryBooleanExpressionContext, UnaryModExpressionContext, UnaryPowerExpressionContext, WktExpressionContext, WktPointElementListContext, WktPointsContext, WktPolygonContext } from './grammar/wcpsParser';
 import { RangeConstructorExpressionContext } from './grammar/wcpsParser';
-import { BeautifyLetClause, BeautifyReturnClause, BeautifyWhereClause, beautifyForClause } from './utils';
 
 
-const input = `for $c in (CoverageName),
- $z in (CoverageName)
-let $kernel1 := coverage kernel1
-                over $x x(-1:1), $y y(-1:1)
-                value list <1; 0; -1; 2; 0; -2; 1; 0; -1>,
-    $kernel2 := coverage kernel2
-                over $x x(-1:1), $y y(-1:1)
-                value list <1; 2; 1; 0; 0; 0; -1; -2; -1>,
-    $xrange := domain($c, x),
-    $yrange := domain($c, y)
+
+const input1 = `for $c in (CoverageName),$z in (CoverageName)
+let $kernel1:=coverage kernel1 over $x x(-1:1), $y y(-1:1) value list <1; 0; -1; 2; 0; -2; 1; 0; -1>,
+    $kernel2:=coverage kernel2 over $x x(-1:1), $y y(-1:1) value list <1; 2; 1; 0; 0; 0; -1; -2; -1>,$xrange:=domain($c, x),$yrange:=domain($c, y)
 where a > b
-return
-  EncoDe(
-    sqrt(
-      pow(
-        coverage Gx
-        over $px1 x($xrange), $py1 y($yrange)
-        values
-          condense + over $kx1 x(-1:1), $ky1 y(-1:1)
-          using $kernel1[x($kx1), y($ky1)] * $c[x($px1 + $kx1), y($py1 + $ky1)],
-        2.0
-      )
-      +
-      pow(
-        coverage Gy
-        over $px2 x($xrange), $py2 y($yrange)
-        values
-          condense + over $kx2 x(-1:1), $ky2 y(-1:1)
-          using $kernel2[x($kx2), y($ky2)] * $c[x($px2 + $kx2), y($py2 + $ky2)],
-        2.0
-      )
+return EncoDe(sqrt(pow(coverage Gx
+over $px1 x($xrange), $py1 y($yrange)
+values condense + over $kx1 x(-1:1), $ky1 y(-1:1)
+using $kernel1[x($kx1), y($ky1)] * $c[x($px1 + $kx1), y($py1 + $ky1)],
+2.0)+pow(coverage Gy over $px2 x($xrange), $py2 y($yrange)values condense + over $kx2 x(-1:1), $ky2 y(-1:1)using $kernel2[x($kx2), y($ky2)] * $c[x($px2 + $kx2), y($py2 + $ky2)],2.0)
     ),
     "image/png"
   )
 `
-const input2 = `for $c in (CoverageName),
- $z in (CoverageName)
-let $kernel1 := coverage kernel1
-                over $x x(-1:1), $y y(-1:1)
-                value list <1; 0; -1; 2; 0; -2; 1; 0; -1>,
-    $kernel2 := coverage kernel2
-                over $x x(-1:1), $y y(-1:1)
-                value list <1; 2; 1; 0; 0; 0; -1; -2; -1>,
-    $xrange := domain($c, x),
-    $yrange := domain($c, y)
-return 
-  encode(
-    $coverage.test, "image/png"
-  
-)
+const input2 = `for $cov1 in(CoverageName1),$cov2 in(CoverageName2),$cov3 in(CoverageName3) let threshold:=100,$cov1filtered:=switch case $cov1>threshold return $cov1 default return 0,$cov2filtered:=switch case $cov2>threshold return $cov2 default return 0,$cov3filtered:=switch case $cov3>threshold return $cov3 default return 0
+return encode(switch case $cov3filtered>0 return $cov3filtered case $cov2filtered>0 return $cov2filtered default return $cov1filtered,"image/png")
 `
+
+const input = `for $cov1 in (Coverage1), $cov2 in (Coverage2)
+let $threshold := 200,
+    $filteredCov1 := switch case $cov1 > $threshold return $cov1 default return 0,
+    $filteredCov2 := switch case $cov2 > $threshold return $cov2 default return 0,
+    $composite := switch
+                    case $filteredCov2 > 0 return $filteredCov2
+                    default return $filteredCov1
+return
+  encode(
+    condense + over $pLat Lat(domain($composite, Lat))
+    using max($composite[Lat($pLat)]),
+    "image/png"
+  )
+`
+
 type CaseTransforms = 'uppercase' | 'lowercase' | 'capitalize' | 'none'
 
 function indent(text: string, prefix: string): string {
   return text.split('\n').map(line => `${prefix}${line}`).join('\n');
+}
+
+function indentNewLine(text: string, prefix: string): string {
+  return text.split('\n').map((line, index) => {
+    return index === 0 ? line : `${prefix.repeat(2)}${line}`;
+  }).join('\n');
 }
 
 function transformCase(word: string, transformation: CaseTransforms): string {
@@ -130,14 +117,14 @@ class ParseTreeBeautifier extends ParseTreeListener {
 
   enterEveryRule(node: ParserRuleContext): void {
     if (node instanceof ForClauseListContext) {
-      const forClauseSet = node.forClause_list().map(beautifyForClause);
+      const forClauseSet = node.forClause_list().map(this.beautifyForClause.bind(this));
 
       const forClauseList = forClauseSet.join(`,\n    `);
       this.output.push(`${transformCase(node.FOR().getText(), this.options.caseTransform)} ${forClauseList}`);
     }
 
     if (node instanceof LetClauseListContext) {
-      const letClauseSet = node.letClause_list().map(BeautifyLetClause);
+      const letClauseSet = node.letClause_list().map(this.BeautifyLetClause.bind(this));
 
       const letClauseList = letClauseSet.join(',\n    ');
       this.output.push(`${transformCase(node.LET().getText(), this.options.caseTransform)} ${letClauseList}`);
@@ -193,29 +180,28 @@ class ParseTreeBeautifier extends ParseTreeListener {
 
     let letClause = '';
 
-    if (DimensionIntervalList) {
+    if (DimensionIntervalList != null) {
       const coverageVariableName = DimensionIntervalList.coverageVariableName().getText();
       const dimensionIntervalList = this.BeautifyDimensionIntervalList(DimensionIntervalList.dimensionIntervalList());
-
       letClause += coverageVariableName;
       letClause += ' := ';
       letClause += '[';
-      letClause += dimensionIntervalList;
+      letClause += indentNewLine(dimensionIntervalList, this.prefix);
       letClause += ']';
     }
 
-    if (letClauseWithCoverageExpression) {
+    if (letClauseWithCoverageExpression != null) {
       const coverageVariableName = letClauseWithCoverageExpression.coverageVariableName().getText();
 
       letClause += coverageVariableName;
       letClause += ' := ';
       if (letClauseWithCoverageExpression.coverageExpression() != null) {
         const coverageExpression = this.BeautifyCoverageExpression(letClauseWithCoverageExpression.coverageExpression());
-        letClause += coverageExpression;
+        letClause += indentNewLine(coverageExpression, this.prefix);
       }
       if (letClauseWithCoverageExpression.wktExpression() != null) {
         const wktExpression = this.BeautifyWktExpression(letClauseWithCoverageExpression.wktExpression());
-        letClause += wktExpression;
+        letClause += indentNewLine(wktExpression, this.prefix);
       }
     }
 
@@ -443,7 +429,7 @@ class ParseTreeBeautifier extends ParseTreeListener {
     ];
 
     if (whereClause !== null) {
-      lines.push(BeautifyWhereClause(whereClause));
+      lines.push(this.BeautifyWhereClause(whereClause));
     }
 
     lines.push(`${transformCase(node.USING().getText(), this.options.caseTransform)} ${this.BeautifyCoverageExpression(covExpr)}`);
@@ -1058,9 +1044,9 @@ class ParseTreeBeautifier extends ParseTreeListener {
   }
 
   BeautifySwitchCaseExpression(node: SwitchCaseExpressionContext): string {
-    let output = `${transformCase(node.SWITCH().getText(), this.options.caseTransform)} `;
-    output += node.switchCaseElementList().switchCaseElement_list().map(this.BeautifySwitchCaseElement.bind(this)).join("\n    ");
-    output += "\n        ";
+    let output = `${transformCase(node.SWITCH().getText(), this.options.caseTransform)}\n    `;
+    output += node.switchCaseElementList().switchCaseElement_list().map(this.BeautifySwitchCaseElement.bind(this)).join('\n    ');
+    output += "\n    ";
     output += this.BeautifySwitchCaseDefaultElement(node.switchCaseDefaultElement());
 
     return output;
@@ -1246,10 +1232,10 @@ class ParseTreeBeautifier extends ParseTreeListener {
 
     if (node.crsName() != null) {
       const crsName = node.crsName().getText();
-      return `${clip}( ${covExp}, ${curtain}( ${projection}(${label1}, ${label2}), ${wkt}), ${crsName})`;
+      return `${clip}(${covExp}, ${curtain}(${projection}(${label1}, ${label2}), ${wkt}), ${crsName})`;
     }
 
-    return `${clip}( ${covExp}, ${curtain}( ${projection}(${label1}, ${label2}), ${wkt}))`;
+    return `${clip}(${covExp}, ${curtain}(${projection}(${label1}, ${label2}), ${wkt}))`;
   }
 
   BeautifyunaryArithmeticExpression(node: UnaryArithmeticExpressionContext): string {

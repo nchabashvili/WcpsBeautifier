@@ -372,7 +372,7 @@ class ParseTreeBeautifier extends ParseTreeListener {
     let output = '';
 
     if (node.domainExpression() != null) {
-      output = this.BeautifyDomainExpression(node.domainExpression());
+      output += this.BeautifyDomainExpression(node.domainExpression());
     }
     if (node.imageCrsDomainExpression() != null) {
       const imgCrsDom = node.imageCrsDomainExpression();
@@ -390,7 +390,6 @@ class ParseTreeBeautifier extends ParseTreeListener {
     if (node.domainPropertyValueExtraction() != null) {
       output += `.${node.domainPropertyValueExtraction().getText()}`;
     }
-
     return output;
   }
 
@@ -403,7 +402,8 @@ class ParseTreeBeautifier extends ParseTreeListener {
   }
 
   BeautifyDomainExpression(node: DomainExpressionContext): string {
-    let output = transformCase(node.DOMAIN().getText(), this.options.caseTransform);
+    let output = '';
+    output += transformCase(node.DOMAIN().getText(), this.options.caseTransform);
     output += '(';
     output += this.BeautifyCoverageExpression(node.coverageExpression());
     if (node.axisName() != null) {
@@ -445,39 +445,41 @@ class ParseTreeBeautifier extends ParseTreeListener {
     if (node.domainIntervals() != null) {
       const domInt = this.BeautifyDomainIntervals(node.domainIntervals());
       if (node.regularTimeStep() != null) {
+        const regTimeStp = node.regularTimeStep().getText();
         if (node.ASC() != null) {
-          const regTimeStp = node.regularTimeStep().getText();
-          return `${covName} ${axisName} (${domInt}:${regTimeStp}) ${transformCase(node.ASC().getText(), this.options.caseTransform)}`;
+          return `${covName} ${axisName}(${domInt}:${regTimeStp}) ${transformCase(node.ASC().getText(), this.options.caseTransform)}`;
         }
         if (node.DESC() != null) {
-          const regTimeStp = node.regularTimeStep().getText();
-          return `${covName} ${axisName} (${domInt}:${regTimeStp}) ${transformCase(node.DESC().getText(), this.options.caseTransform)}`;
+          return `${covName} ${axisName}(${domInt}:${regTimeStp}) ${transformCase(node.DESC().getText(), this.options.caseTransform)}`;
         }
+        return `${covName} ${axisName}(${domInt}:${regTimeStp})`;
       }
       if (node.ASC() != null) {
-        return `${covName} ${axisName} (${domInt}) ${transformCase(node.ASC().getText(), this.options.caseTransform)}`;
+        return `${covName} ${axisName}(${domInt}) ${transformCase(node.ASC().getText(), this.options.caseTransform)}`;
       }
       if (node.DESC() != null) {
-        return `${covName} ${axisName} (${domInt}) ${transformCase(node.DESC().getText(), this.options.caseTransform)}`;
+        return `${covName} ${axisName}(${domInt}) ${transformCase(node.DESC().getText(), this.options.caseTransform)}`;
       }
+      return `${covName} ${axisName}(${domInt})`;
     }
     if (node.regularTimeStep() != null) {
       const regTimeStp = node.regularTimeStep().getText();
       if (node.ASC() != null) {
-        return `${covName} ${axisName} (${dimElements}:${regTimeStp}) ${transformCase(node.ASC().getText(), this.options.caseTransform)}`;
+        return `${covName} ${axisName}(${dimElements}:${regTimeStp}) ${transformCase(node.ASC().getText(), this.options.caseTransform)}`;
       }
       if (node.DESC() != null) {
-        return `${covName} ${axisName} (${dimElements}:${regTimeStp}) ${transformCase(node.DESC().getText(), this.options.caseTransform)}`;
+        return `${covName} ${axisName}(${dimElements}:${regTimeStp}) ${transformCase(node.DESC().getText(), this.options.caseTransform)}`;
       }
+      return `${covName} ${axisName}(${dimElements}:${regTimeStp})`;
     }
     if (node.ASC() != null) {
-      return `${covName} ${axisName} (${dimElements}) ${transformCase(node.ASC().getText(), this.options.caseTransform)}`;
+      return `${covName} ${axisName}(${dimElements}) ${transformCase(node.ASC().getText(), this.options.caseTransform)}`;
     }
     if (node.DESC() != null) {
-      return `${covName} ${axisName} (${dimElements}) ${transformCase(node.DESC().getText(), this.options.caseTransform)}`;
+      return `${covName} ${axisName}(${dimElements}) ${transformCase(node.DESC().getText(), this.options.caseTransform)}`;
     }
 
-    return `${covName} ${axisName} (${dimElements})`;
+    return `${covName} ${axisName}(${dimElements})`;
   }
 
   BeautifyReduceExpression(node: ReduceExpressionContext): string {
@@ -501,7 +503,6 @@ class ParseTreeBeautifier extends ParseTreeListener {
 
   BeautifyGeoXYAxisLabelAndDomainResolution(node: GeoXYAxisLabelAndDomainResolutionContext): string {
     let output = "";
-
     output += node.COVERAGE_NAME().getText();
     output += "(";
     output += this.BeautifyCoverageExpression(node.coverageExpression());
@@ -614,7 +615,7 @@ class ParseTreeBeautifier extends ParseTreeListener {
       return this.BeautifyReduceExpression(node.reduceExpression());
     }
     if (node.generalCondenseExpression() != null) {
-      return `(\n${indent(this.BeautifyGeneralCondenseExpression(node.generalCondenseExpression()), this.prefix)}\n)`;
+      return `${this.BeautifyGeneralCondenseExpression(node.generalCondenseExpression())}`;
     }
 
     throw this.UnexpectedTokenException('CondenseExpression', node);

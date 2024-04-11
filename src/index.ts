@@ -35,11 +35,15 @@ using $kernel1[x($kx1), y($ky1)] * $c[x($px1 + $kx1), y($py1 + $ky1)],
     "image/png"
   )
 `
-const input2 = `for $cov1 in(CoverageName1),$cov2 in(CoverageName2),$cov3 in(CoverageName3) let threshold:=100,$cov1filtered:=switch case $cov1>threshold return $cov1 default return 0,$cov2filtered:=switch case $cov2>threshold return $cov2 default return 0,$cov3filtered:=switch case $cov3>threshold return $cov3 default return 0
-return encode(switch case $cov3filtered>0 return $cov3filtered case $cov2filtered>0 return $cov2filtered default return $cov1filtered,"image/png")
+const input2 = `for $cov1 in(CoverageName1),$cov2 in(CoverageName2),
+$cov3 in(CoverageName3) let threshold:=100,$cov1filtered:=
+switch case $cov1>threshold return $cov1 default return 0,$cov2filtered:=
+switch case $cov2>threshold return $cov2 default return 0,$cov3filtered:=switch 
+case $cov3>threshold return $cov3 default return 0
+return encode(switch case $cov3filtered>0 return $cov3filtered case $cov2filtered>0 return 
+  $cov2filtered default return $cov1filtered,"image/png")
 `
-
-const input = `for $cov1 in (Coverage1), $cov2 in (Coverage2)
+const input3 = `for $cov1 in (Coverage1), $cov2 in (Coverage2)
 let $threshold := 200,
     $filteredCov1 := switch case $cov1 > $threshold return $cov1 default return 0,
     $filteredCov2 := switch case $cov2 > $threshold return $cov2 default return 0,
@@ -51,8 +55,19 @@ return
     condense + over $pLat Lat(domain($composite, Lat))
     using max($composite[Lat($pLat)]),
     "image/png"
-  )
+  ) 
 `
+
+const input4 = `fOr $c in ( AvgLandTemp ) 
+REturN enCODE(
+    SwiTch 
+      CAse $c[ansi("2014-07"), Lat(35:75), Long(-20:40)] = 99999 return {red: 255; green: 255; blue: 255} 
+  case 18 > $c[ansi("2014-07"), Lat(35:75), Long(-20:40)] 
+return {red: 0; green: 0; blue: 255} case 23 > $c[ansi("2014-07"), Lat(35:75), Long(-20:40)] 
+  return {red: 255; green: 255; blue: 0} 
+  case 30 > $c[ansi("2014-07"), Lat(35:75), Long(-20:40)]  return {red: 255; green: 140; blue: 0} 
+default return {red: 255; green: 0; blue: 0}, "image/png")
+`;
 
 type CaseTransforms = 'uppercase' | 'lowercase' | 'capitalize' | 'none'
 
@@ -90,7 +105,7 @@ interface BeautifyOptions {
   caseTransform: CaseTransforms;
 }
 
-const charStream = new CharStream(input);
+const charStream = new CharStream(input2);
 const lexer = new WCPSLexer(charStream);
 const tokens = new CommonTokenStream(lexer);
 const parser = new WCPSParser(tokens);
@@ -119,14 +134,14 @@ class ParseTreeBeautifier extends ParseTreeListener {
     if (node instanceof ForClauseListContext) {
       const forClauseSet = node.forClause_list().map(this.beautifyForClause.bind(this));
 
-      const forClauseList = forClauseSet.join(`,\n    `);
+      const forClauseList = forClauseSet.join(`,\n${this.prefix}`);
       this.output.push(`${transformCase(node.FOR().getText(), this.options.caseTransform)} ${forClauseList}`);
     }
 
     if (node instanceof LetClauseListContext) {
       const letClauseSet = node.letClause_list().map(this.BeautifyLetClause.bind(this));
 
-      const letClauseList = letClauseSet.join(',\n    ');
+      const letClauseList = letClauseSet.join(`,\n${this.prefix}`);
       this.output.push(`${transformCase(node.LET().getText(), this.options.caseTransform)} ${letClauseList}`);
     }
 
@@ -1045,10 +1060,11 @@ class ParseTreeBeautifier extends ParseTreeListener {
   }
 
   BeautifySwitchCaseExpression(node: SwitchCaseExpressionContext): string {
-    let output = `${transformCase(node.SWITCH().getText(), this.options.caseTransform)}\n    `;
-    output += node.switchCaseElementList().switchCaseElement_list().map(this.BeautifySwitchCaseElement.bind(this)).join('\n    ');
-    output += "\n    ";
-    output += this.BeautifySwitchCaseDefaultElement(node.switchCaseDefaultElement());
+    let output = `${transformCase(node.SWITCH().getText(), this.options.caseTransform)}\n`;
+    const cases = node.switchCaseElementList().switchCaseElement_list().map(this.BeautifySwitchCaseElement.bind(this)).join(`\n`);
+    output += indent(cases, this.prefix);
+    output += "\n";
+    output += indent(this.BeautifySwitchCaseDefaultElement(node.switchCaseDefaultElement()), this.prefix);
 
     return output;
   }
@@ -1058,7 +1074,8 @@ class ParseTreeBeautifier extends ParseTreeListener {
   }
 
   BeautifySwitchCaseElement(node: SwitchCaseElementContext): string {
-    return `${transformCase(node.CASE().getText(), this.options.caseTransform)} ${this.BeautifyBooleanSwitchCaseCombinedExpression(node.booleanSwitchCaseCombinedExpression())} ${transformCase(node.RETURN().getText(), this.options.caseTransform)} ${this.BeautifyCoverageExpression(node.coverageExpression())}`;
+    const ret = `${transformCase(node.RETURN().getText(), this.options.caseTransform)} ${this.BeautifyCoverageExpression(node.coverageExpression())}`;
+    return `${transformCase(node.CASE().getText(), this.options.caseTransform)} ${this.BeautifyBooleanSwitchCaseCombinedExpression(node.booleanSwitchCaseCombinedExpression())}\n${indent(ret, this.prefix)}`;
   }
 
   BeautifyBooleanSwitchCaseCombinedExpression(node: BooleanSwitchCaseCombinedExpressionContext): string {

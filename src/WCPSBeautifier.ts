@@ -75,63 +75,14 @@ import WCPSParser, {
 import { CaseTransforms, indent, transformCase, indentNewLine } from './utils';
 
 
-
-const input1 = `for $c in (CoverageName),$z in (CoverageName)
-let $kernel1:=coverage kernel1 over $x x(-1:1), $y y(-1:1) value list <1; 0; -1; 2; 0; -2; 1; 0; -1>,
-    $kernel2:=coverage kernel2 over $x x(-1:1), $y y(-1:1) value list <1; 2; 1; 0; 0; 0; -1; -2; -1>,$xrange:=domain($c, x),$yrange:=domain($c, y)
-where a > b
-return EncoDe(sqrt(pow(coverage Gx
-over $px1 x($xrange), $py1 y($yrange)
-values condense + over $kx1 x(-1:1), $ky1 y(-1:1)
-using $kernel1[x($kx1), y($ky1)] * $c[x($px1 + $kx1), y($py1 + $ky1)],
-2.0)+pow(coverage Gy over $px2 x($xrange), $py2 y($yrange)values condense + over $kx2 x(-1:1), $ky2 y(-1:1)using $kernel2[x($kx2), y($ky2)] * $c[x($px2 + $kx2), y($py2 + $ky2)],2.0)
-    ),
-    "image/png"
-  )
-`
-const input2 = `for $cov1 in(CoverageName1),$cov2 in(CoverageName2),
-$cov3 in(CoverageName3) let threshold:=100,$cov1filtered:=
-switch case $cov1>threshold return $cov1 default return 0,$cov2filtered:=
-switch case $cov2>threshold return $cov2 default return 0,$cov3filtered:=switch 
-case $cov3>threshold return $cov3 default return 0
-return encode(switch case $cov3filtered>0 return $cov3filtered case $cov2filtered>0 return 
-  $cov2filtered default return $cov1filtered,"image/png")
-`
-const input3 = `for $cov1 in (Coverage1), $cov2 in (Coverage2)
-let $threshold := 200,
-    $filteredCov1 := switch case $cov1 > $threshold return $cov1 default return 0,
-    $filteredCov2 := switch case $cov2 > $threshold return $cov2 default return 0,
-    $composite := switch
-                    case $filteredCov2 > 0 return $filteredCov2
-                    default return $filteredCov1
-return
-  encode(
-    condense + over $pLat Lat(domain($composite, Lat))
-    using max($composite[Lat($pLat)]),
-    "image/png"
-  ) 
-`
-
-const input4 = `fOr $c in ( AvgLandTemp ) 
-REturN enCODE(
-    SwiTch 
-      CAse $c[ansi("2014-07"), Lat(35:75), Long(-20:40)] = 99999 return {red: 255; green: 255; blue: 255} 
-  case 18 > $c[ansi("2014-07"), Lat(35:75), Long(-20:40)] 
-return {red: 0; green: 0; blue: 255} case 23 > $c[ansi("2014-07"), Lat(35:75), Long(-20:40)] 
-  return {red: 255; green: 255; blue: 0} 
-  case 30 > $c[ansi("2014-07"), Lat(35:75), Long(-20:40)]  return {red: 255; green: 140; blue: 0} 
-default return {red: 255; green: 0; blue: 0}, "image/png")
-`;
-
-
 // ParseTreeBeautifier
-interface BeautifyOptions {
+export interface BeautifyOptions {
   tabSize: number;
   useTabs: boolean;
   caseTransform: CaseTransforms;
 }
 
-class WCPSBeautifier extends ParseTreeListener {
+export class WCPSBeautifier extends ParseTreeListener {
   public output: Array<string> = [];
   public options: BeautifyOptions;
 
@@ -656,6 +607,10 @@ class WCPSBeautifier extends ParseTreeListener {
 
   BeautifyCoverageExpression(node: CoverageExpressionContext): string {
 
+    if (node.coverageExpressionInParenthesis() != null) {
+      return `(${this.BeautifyCoverageExpression(node.coverageExpressionInParenthesis().coverageExpression())})`;
+    }
+
     if (node.fieldName() != null) {
       const fieldName = node.fieldName().getText();
       return `${this.BeautifyCoverageExpression(node.coverageExpression(0))}.${fieldName}`;
@@ -706,7 +661,7 @@ class WCPSBeautifier extends ParseTreeListener {
     }
 
     if (node.rangeConstructorExpression() != null) {
-      return `{${this.BeautifyRangeConstructorExpression(node.rangeConstructorExpression())}}`;
+      return `{\n${indent(this.BeautifyRangeConstructorExpression(node.rangeConstructorExpression()), this.prefix)}\n}`;
     }
 
     if (node.clipWKTExpression() != null) {
@@ -799,52 +754,64 @@ class WCPSBeautifier extends ParseTreeListener {
       return node.coverageVariableName().getText();
     }
     if (node.EXTEND() != null) {
-      if (node.domainIntervals() != null) {
-        const dimIntList = this.BeautifyDimensionIntervalList(node.dimensionIntervalList());
-        const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
-        return `${transformCase(node.EXTEND().getText(), this.options.caseTransform)}(${covExp}, [${dimIntList}])`;
-      }
-    }
-    if (node.SCALE() != null) {
-      const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
-      const domInt = this.BeautifyDomainIntervals(node.domainIntervals());
-      const scal = this.BeautifyScalarExpression(node.scalarExpression());
-      const scaDimenPts = this.BeautifyScaleDimensionPointList(node.scaleDimensionPointList());
 
       if (node.domainIntervals() != null) {
-        return `${transformCase(node.SCALE().getText(), this.options.caseTransform)}(${covExp}, [${domInt}])`;
-      }
-      if (node.scalarExpression() != null) {
-        return `${transformCase(node.SCALE().getText(), this.options.caseTransform)}(${covExp}, [${scal}])`;
-      }
-      if (node.scaleDimensionPointList() != null) {
-        return `${transformCase(node.SCALE().getText(), this.options.caseTransform)}(${covExp}, [${scaDimenPts}])`;
+
+        const dimIntList = this.BeautifyDimensionIntervalList(node.dimensionIntervalList());
+        const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
+        return `${transformCase(node.EXTEND().getText(), this.options.caseTransform)}(${covExp}, {${dimIntList}})`;
       }
     }
+
+    if (node.SCALE() != null) {
+      const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
+
+      if (node.domainIntervals() != null) {
+        const domInt = this.BeautifyDomainIntervals(node.domainIntervals());
+        return `${transformCase(node.SCALE().getText(), this.options.caseTransform)}(${covExp}, {${domInt}})`;
+      }
+
+      if (node.scalarExpression() != null) {
+        const scal = this.BeautifyScalarExpression(node.scalarExpression());
+        return `${transformCase(node.SCALE().getText(), this.options.caseTransform)}(${covExp}, {${scal}})`;
+      }
+
+      if (node.scaleDimensionPointList() != null) {
+        const scaDimenPts = this.BeautifyScaleDimensionPointList(node.scaleDimensionPointList());
+        return `${transformCase(node.SCALE().getText(), this.options.caseTransform)}(${covExp}, {${scaDimenPts}})`;
+      }
+    }
+
     if (node.NULL() != null) {
       const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
+
       if (node.NOT() != null) {
         return `${covExp}  is not null`
       }
+
       return `${covExp} is null`
     }
+
     if (node.nullSetFrom() != null) {
       const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
       const covExp2 = this.BeautifyCoverageExpression(node.nullSetFrom().coverageExpression());
 
       return `${covExp} null values nullset(${covExp2})`;
     }
+
     if (node.nullMask() != null) {
       const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
       const covExp2 = this.BeautifyCoverageExpression(node.nullMask().coverageExpression());
 
       return `${covExp} null mask ${covExp2}`;
     }
+
     if (node.nullMaskDiscard() != null) {
       const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
 
       return `${covExp} null mask discard`;
     }
+
     if (node.nullClause() != null) {
       const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
       const nullSetMemberList = node.nullClause().nullSetMemberList_list().map(node => `[${node}]`).join(', ');
@@ -852,19 +819,23 @@ class WCPSBeautifier extends ParseTreeListener {
       if (node.nullClause().LEFT_BRACE() != null) {
         return `${covExp} null values {${nullSetMemberList}}`;
       }
+
       return `${covExp} null values ${nullSetMemberList}`;
     }
+
     if (node.OVERLAY() != null) {
       const covExp1 = this.BeautifyCoverageExpression(node.coverageExpression(0));
       const covExp2 = this.BeautifyCoverageExpression(node.coverageExpression(1));
 
       return `${covExp1} ${transformCase(node.OVERLAY().getText(), this.options.caseTransform)} ${covExp2}`;
     }
+
     if (node.flipExpression() != null) {
       const covExp1 = this.BeautifyCoverageExpression(node.coverageExpression(0));
 
       return `${transformCase(node.flipExpression().FLIP().getText(), this.options.caseTransform)} ${covExp1} ${transformCase(node.flipExpression().ALONG().getText(), this.options.caseTransform)} ${node.flipExpression().axisName().getText()}`;
     }
+
     if (node.sortExpression() != null) {
       const covExp1 = this.BeautifyCoverageExpression(node.coverageExpression(0));
       const covExp2 = this.BeautifyCoverageExpression(node.coverageExpression(1));
@@ -876,6 +847,7 @@ class WCPSBeautifier extends ParseTreeListener {
 
       return `${transformCase(node.sortExpression().SORT().getText(), this.options.caseTransform)} ${covExp1} ${transformCase(node.flipExpression().ALONG().getText(), this.options.caseTransform)} ${axisName} by ${covExp2}`;
     }
+
     if (node.polygonizeExpression() != null) {
       const covExp = this.BeautifyCoverageExpression(node.coverageExpression(0));
       const string = node.polygonizeExpression().STRING_LITERAL().getText();
@@ -883,6 +855,7 @@ class WCPSBeautifier extends ParseTreeListener {
       if (node.polygonizeExpression().INTEGER() != null) {
         return `${transformCase(node.polygonizeExpression().POLYGONIZE().getText(), this.options.caseTransform)}(${covExp}, ${string} ${node.polygonizeExpression().INTEGER().getText()}`;
       }
+
       return `${transformCase(node.polygonizeExpression().POLYGONIZE().getText(), this.options.caseTransform)}(${covExp}, ${string}`;
     }
 
@@ -890,15 +863,16 @@ class WCPSBeautifier extends ParseTreeListener {
   }
 
   BeautifyScaleDimensionPointList(node: ScaleDimensionPointListContext): string {
-    const output = node.scaleDimensionPointElement_list().map(this.BeautifyScaleDimensionPointElement.bind(this)).join(', ');
+    let output = node.scaleDimensionPointElement_list().map(this.BeautifyScaleDimensionPointElement.bind(this)).join(', ');
 
     return output;
   }
 
   BeautifyScaleDimensionPointElement(node: ScaleDimensionPointElementContext): string {
     const scalExpr = this.BeautifyScalarExpression(node.scalarExpression());
+    const axisName = node.axisName().getText();
 
-    return `${node.axisName().getText}(${scalExpr})`;
+    return `${axisName}(${scalExpr})`;
   }
 
   BeautifyDimensionPointList(node: DimensionPointListContext): string {
@@ -932,7 +906,7 @@ class WCPSBeautifier extends ParseTreeListener {
     const covExpr = this.BeautifyCoverageExpression(node.coverageExpression());
     const axises = node.axisIterator_list().map(this.BeautifyAxisIterator.bind(this)).join(', ');
     let output = '';
-    output += `${transformCase(node.COVERAGE().getText(), this.options.caseTransform)} ${covName}\n${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axises}\n${transformCase(node.VALUES().getText(), this.options.caseTransform)} ${covExpr}`;
+    output += `${transformCase(node.COVERAGE().getText(), this.options.caseTransform)} ${covName}\n${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axises}\n${transformCase(node.VALUES().getText(), this.options.caseTransform)} ${indentNewLine(covExpr, this.prefix)}`;
 
     return output;
   }
@@ -1133,20 +1107,26 @@ class WCPSBeautifier extends ParseTreeListener {
 
     if (node.interpolationType() != null) {
       const intType = node.interpolationType().getText();
+
       if (node.dimensionGeoXYResolutionsList() != null) {
         const dimXY = this.BeautifyDimensionGeoXYResolutionsList(node.dimensionGeoXYResolutionsList());
+
         if (node.dimensionIntervalList() != null) {
           const dimIntervalList = this.BeautifyDimensionIntervalList(node.dimensionIntervalList());
           return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(crsName, this.prefix)},\n{${indent(intType, this.prefix)}},\n{${indent(dimXY, this.prefix)}},\n{${indent(dimIntervalList, this.prefix)}}\n)`;
         }
+
         if (node.domainExpression() != null) {
           const domainExp = this.BeautifyDomainExpression(node.domainExpression());
           return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(crsName, this.prefix)},\n{${indent(intType, this.prefix)}},\n{${indent(dimXY, this.prefix)}},\n{${indent(domainExp, this.prefix)}}\n)`;
         }
+
         return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},${indent(crsName, this.prefix)},\n{${indent(intType, this.prefix)}},\n{${indent(dimXY, this.prefix)}}\n)`;
       }
+
       return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(crsName, this.prefix)},\n{${indent(intType, this.prefix)}}\n)`;
     }
+
     return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(crsName, this.prefix)}\n)`;
   }
 
@@ -1157,27 +1137,33 @@ class WCPSBeautifier extends ParseTreeListener {
 
     if (node.interpolationType() != null) {
       const intType = node.interpolationType().getText();
+
       if (node.dimensionGeoXYResolutionsList() != null) {
         const dimXY = this.BeautifyDimensionGeoXYResolutionsList(node.dimensionGeoXYResolutionsList());
+
         if (node.dimensionIntervalList() != null) {
           const dimIntervalList = this.BeautifyDimensionIntervalList(node.dimensionIntervalList());
           return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(dimCrsList, this.prefix)},\n{${indent(intType, this.prefix)}},\n{${indent(dimXY, this.prefix)}},\n{${indent(dimIntervalList, this.prefix)}}\n)`;
         }
+
         if (node.domainExpression() != null) {
           const domainExp = this.BeautifyDomainExpression(node.domainExpression());
           return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(dimCrsList, this.prefix)},\n{${indent(intType, this.prefix)}},\n{${indent(dimXY, this.prefix)}},\n{${indent(domainExp, this.prefix)}}\n)`;
         }
+
         return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(dimCrsList, this.prefix)},\n{${indent(intType, this.prefix)}},\n{${indent(dimXY, this.prefix)}}\n)`;
       }
+
       return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(dimCrsList, this.prefix)},\n{${indent(intType, this.prefix)}}\n)`;
     }
+    
     return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(dimCrsList, this.prefix)}\n)`;
   }
 
   BeautifyDimensionCrsList(node: DimensionCrsListContext): string {
-    let output: string[] = [];
-    output.push(node.dimensionCrsElement_list().map(this.BeautifyDimensionCrsElement.bind(this)).join(", "));
-    return `{${output}}`;
+    let output = '';
+    output += node.dimensionCrsElement_list().map(this.BeautifyDimensionCrsElement.bind(this)).join(", ");
+    return output;
   }
 
   BeautifyDimensionCrsElement(node: DimensionCrsElementContext): string {
@@ -1185,10 +1171,11 @@ class WCPSBeautifier extends ParseTreeListener {
   }
 
   BeautifyDimensionGeoXYResolutionsList(node: DimensionGeoXYResolutionsListContext): string {
-    let output: string[] = [];
-    output = node.dimensionGeoXYResolution_list().map(this.BeautifyDimensionGeoXYResolution.bind(this));
+    let output = '';
 
-    return output.join(", ");
+    output += node.dimensionGeoXYResolution_list().map(this.BeautifyDimensionGeoXYResolution.bind(this)).join(", ");
+
+    return output;
   }
 
   BeautifyDimensionGeoXYResolution(node: DimensionGeoXYResolutionContext): string {
@@ -1199,11 +1186,11 @@ class WCPSBeautifier extends ParseTreeListener {
   }
 
   BeautifyDimensionIntervalList(node: DimensionIntervalListContext): string {
-    let output: string[] = [];
+    let output = '';
 
-    output = node.dimensionIntervalElement_list().map(this.BeautifyDimensionIntervalElement.bind(this));
+    output = node.dimensionIntervalElement_list().map(this.BeautifyDimensionIntervalElement.bind(this)).join(", ");
 
-    return output.join(", ");
+    return output;
   }
 
   BeautifyDimensionIntervalElement(node: DimensionIntervalElementContext): string {
@@ -1226,11 +1213,11 @@ class WCPSBeautifier extends ParseTreeListener {
   }
 
   BeautifyDimensionBoundConcatenationElement(node: DimensionBoundConcatenationElementContext): string {
-    let output: string[] = [];
+    let output = '';
 
-    output = node.coverageExpression_list().map(this.BeautifyCoverageExpression.bind(this));
+    output = node.coverageExpression_list().map(this.BeautifyCoverageExpression.bind(this)).join('.');
 
-    return output.join(".");
+    return output;
   }
 
   BeautifyClipCorridorExpression(node: ClipCorridorExpressionContext): string {
@@ -1243,9 +1230,9 @@ class WCPSBeautifier extends ParseTreeListener {
     const clip = transformCase(node.CLIP().getText(), this.options.caseTransform);
     const corridor = transformCase(node.CORRIDOR().getText(), this.options.caseTransform);
     const projection = transformCase(node.PROJECTION().getText(), this.options.caseTransform);
-    const discrete = transformCase(node.DISCRETE().getText(), this.options.caseTransform);
 
     if (node.DISCRETE() != null) {
+      const discrete = transformCase(node.DISCRETE().getText(), this.options.caseTransform);
       if (node.crsName() != null) {
         const crsName = node.crsName().getText();
 
@@ -1286,11 +1273,11 @@ class WCPSBeautifier extends ParseTreeListener {
 
   BeautifyRangeConstructorExpression(node: RangeConstructorExpressionContext): string {
     const output = node.rangeConstructorElementList().rangeConstructorElement_list().map(this.BeautifyRangeConstructorElements.bind(this));
-    return output.join("; ");
+    return output.join(";\n");
   }
 
   BeautifyRangeConstructorElements(node: RangeConstructorElementContext): string {
-    return `${node.fieldName().getText()}:${this.BeautifyCoverageExpression(node.coverageExpression())}`;
+    return `${node.fieldName().getText()}: ${this.BeautifyCoverageExpression(node.coverageExpression())}`;
   }
 
   BeautifyClipWKTExpression(node: ClipWKTExpressionContext): string {
@@ -1377,12 +1364,3 @@ class WCPSBeautifier extends ParseTreeListener {
     return output;
   }
 }
-
-const beautifier = new WCPSBeautifier({
-  tabSize: 4,
-  useTabs: false,
-  caseTransform: 'uppercase',
-});
-
-console.log(beautifier.beautify(input1));
-

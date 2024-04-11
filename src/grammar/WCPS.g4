@@ -403,6 +403,9 @@ decodeCoverageExpression: DECODE LEFT_PARENTHESIS
 /**
  * See subclauses
  */
+
+coverageExpressionInParenthesis: LEFT_PARENTHESIS coverageExpression RIGHT_PARENTHESIS;
+
 coverageExpression: 
                   udfExpression 
                   |coverageExpression booleanOperator coverageExpression
@@ -413,7 +416,7 @@ coverageExpression:
                   | TRIM LEFT_PARENTHESIS coverageExpression COMMA LEFT_BRACE dimensionIntervalList RIGHT_BRACE
                     RIGHT_PARENTHESIS
 
-                  | LEFT_PARENTHESIS coverageExpression RIGHT_PARENTHESIS
+                  | coverageExpressionInParenthesis
                   | scalarExpression
 		              | domainIntervals
                   | timeExtractorElement

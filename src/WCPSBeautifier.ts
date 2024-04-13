@@ -180,27 +180,13 @@ export class WCPSBeautifier extends ParseTreeListener {
       letClause += coverageVariableName;
       letClause += ' := ';
       if (letClauseWithCoverageExpression.coverageExpression() != null) {
-        let generalCondenseExpression = null;
+        
         const coverageExpression = node.letClauseWithCoverageExpression().coverageExpression();
 
-        if (coverageExpression.scalarExpression() != null) {
-          const scalarExpression = coverageExpression.scalarExpression();
-
-          if (scalarExpression.numericalScalarExpression() != null) {
-            const numericalScalarExpression = scalarExpression.numericalScalarExpression();
-
-            if (numericalScalarExpression.condenseExpression() != null) {
-              const condenseExpression = numericalScalarExpression.condenseExpression();
-
-              if (condenseExpression.generalCondenseExpression() != null) {
-                generalCondenseExpression = condenseExpression.generalCondenseExpression();
-
-              }
-            }
-          }
-        }
-
-        if (letClauseWithCoverageExpression.coverageExpression().switchCaseExpression() != null || letClauseWithCoverageExpression.coverageExpression().coverageConstructorExpression() != null || letClauseWithCoverageExpression.coverageExpression().coverageConstantExpression() != null || generalCondenseExpression != null) {
+        if (letClauseWithCoverageExpression.coverageExpression().switchCaseExpression() != null 
+        || letClauseWithCoverageExpression.coverageExpression().coverageConstructorExpression() != null 
+        || letClauseWithCoverageExpression.coverageExpression().coverageConstantExpression() != null 
+        || coverageExpression.scalarExpression()?.numericalScalarExpression()?.condenseExpression()?.generalCondenseExpression() != null) {
 
           const coverageExpression = this.BeautifyCoverageExpression(letClauseWithCoverageExpression.coverageExpression());
           letClause += `\n${indent(coverageExpression, this.prefix)}`;

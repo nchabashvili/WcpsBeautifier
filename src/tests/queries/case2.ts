@@ -17,10 +17,12 @@ using $kernel1[x($kx1), y($ky1)] * $c[x($px1 + $kx1), y($py1 + $ky1)],
 export const output = 
 `FOR $c in (CoverageName),
     $z in (CoverageName)
-LET $kernel1 := COVERAGE kernel1
+LET $kernel1 := 
+        COVERAGE kernel1
         OVER $x x(-1:1), $y y(-1:1)
         VALUE LIST <1; 0; -1; 2; 0; -2; 1; 0; -1>,
-    $kernel2 := COVERAGE kernel2
+    $kernel2 := 
+        COVERAGE kernel2
         OVER $x x(-1:1), $y y(-1:1)
         VALUE LIST <1; 2; 1; 0; 0; 0; -1; -2; -1>,
     $xrange := DOMAIN($c, x),
@@ -32,14 +34,16 @@ RETURN
             POW(
                 COVERAGE Gx
                 OVER $px1 x($xrange), $py1 y($yrange)
-                VALUES CONDENSE +
+                VALUES
+                    CONDENSE +
                     OVER $kx1 x(-1:1), $ky1 y(-1:1)
                     USING $kernel1[x($kx1), y($ky1)] * $c[x($px1 + $kx1), y($py1 + $ky1)],
                 2.0
             ) + POW(
                 COVERAGE Gy
                 OVER $px2 x($xrange), $py2 y($yrange)
-                VALUES CONDENSE +
+                VALUES
+                    CONDENSE +
                     OVER $kx2 x(-1:1), $ky2 y(-1:1)
                     USING $kernel2[x($kx2), y($ky2)] * $c[x($px2 + $kx2), y($py2 + $ky2)],
                 2.0

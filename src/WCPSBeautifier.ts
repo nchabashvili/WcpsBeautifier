@@ -11,63 +11,63 @@ import WCPSParser, {
   LetClauseListContext,
   ReturnClauseContext,
   WhereClauseContext,
-  AxisIteratorContext, 
-  BooleanScalarExpressionContext, 
+  AxisIteratorContext,
+  BooleanScalarExpressionContext,
   BooleanSwitchCaseCombinedExpressionContext,
-  BooleanSwitchCaseCoverageExpressionContext, 
+  BooleanSwitchCaseCoverageExpressionContext,
   CellCountExpressionContext,
-  ClipCorridorExpressionContext, 
+  ClipCorridorExpressionContext,
   ClipCurtainExpressionContext,
   ClipWKTExpressionContext,
-  CondenseExpressionContext, 
+  CondenseExpressionContext,
   CoverageConstantExpressionContext,
   CoverageConstructorExpressionContext,
-  CoverageExpressionContext, 
+  CoverageExpressionContext,
   CrsTransformExpressionContext,
   CrsTransformShorthandExpressionContext,
-  DecodeCoverageExpressionContext, 
+  DecodeCoverageExpressionContext,
   DescribeCoverageExpressionContext,
   DimensionBoundConcatenationElementContext,
-  DimensionCrsElementContext, 
+  DimensionCrsElementContext,
   DimensionCrsListContext,
   DimensionGeoXYResolutionContext,
   DimensionGeoXYResolutionsListContext,
-  DimensionIntervalElementContext, 
+  DimensionIntervalElementContext,
   DimensionIntervalListContext,
-  DimensionPointElementContext, 
-  DimensionPointListContext, 
-  DomainExpressionContext, 
-  DomainIntervalsContext, 
-  EncodedCoverageExpressionContext, 
+  DimensionPointElementContext,
+  DimensionPointListContext,
+  DomainExpressionContext,
+  DomainIntervalsContext,
+  EncodedCoverageExpressionContext,
   ForClauseContext,
-  GeneralCondenseExpressionContext, 
+  GeneralCondenseExpressionContext,
   GeoXYAxisLabelAndDomainResolutionContext,
   GetComponentExpressionContext,
   ImageCrsDomainByDimensionExpressionContext,
-  ImageCrsDomainExpressionContext, 
-  LetClauseContext, 
+  ImageCrsDomainExpressionContext,
+  LetClauseContext,
   NumericalScalarExpressionContext,
-  ProcessingExpressionContext, 
-  RangeConstructorElementContext, 
+  ProcessingExpressionContext,
+  RangeConstructorElementContext,
   ReduceBooleanExpressionContext,
-  ReduceExpressionContext, 
+  ReduceExpressionContext,
   ScalarExpressionContext,
   ScalarValueCoverageExpressionContext,
-  ScaleDimensionPointElementContext, 
-  ScaleDimensionPointListContext, 
-  SwitchCaseDefaultElementContext, 
-  SwitchCaseElementContext, 
-  SwitchCaseExpressionContext, 
+  ScaleDimensionPointElementContext,
+  ScaleDimensionPointListContext,
+  SwitchCaseDefaultElementContext,
+  SwitchCaseElementContext,
+  SwitchCaseExpressionContext,
   TimeExtractorElementContext,
-  TimeIntervalElementContext, 
-  TimeTruncatorElementContext, 
-  UdfExpressionContext, 
-  UnaryArithmeticExpressionContext, 
-  UnaryBooleanExpressionContext, 
+  TimeIntervalElementContext,
+  TimeTruncatorElementContext,
+  UdfExpressionContext,
+  UnaryArithmeticExpressionContext,
+  UnaryBooleanExpressionContext,
   UnaryModExpressionContext,
-  UnaryPowerExpressionContext, 
-  WktExpressionContext, 
-  WktPointElementListContext, 
+  UnaryPowerExpressionContext,
+  WktExpressionContext,
+  WktPointElementListContext,
   WktPointsContext,
   RangeConstructorExpressionContext
 } from './grammar/WCPSParser';
@@ -170,7 +170,7 @@ export class WCPSBeautifier extends ParseTreeListener {
       letClause += coverageVariableName;
       letClause += ' := ';
       letClause += '[';
-      letClause += indentNewLine(dimensionIntervalList, this.prefix);
+      letClause += dimensionIntervalList;
       letClause += ']';
     }
 
@@ -180,9 +180,37 @@ export class WCPSBeautifier extends ParseTreeListener {
       letClause += coverageVariableName;
       letClause += ' := ';
       if (letClauseWithCoverageExpression.coverageExpression() != null) {
-        const coverageExpression = this.BeautifyCoverageExpression(letClauseWithCoverageExpression.coverageExpression());
-        letClause += indentNewLine(coverageExpression, this.prefix);
+        let generalCondenseExpression = null;
+        const coverageExpression = node.letClauseWithCoverageExpression().coverageExpression();
+
+        if (coverageExpression.scalarExpression() != null) {
+          const scalarExpression = coverageExpression.scalarExpression();
+
+          if (scalarExpression.numericalScalarExpression() != null) {
+            const numericalScalarExpression = scalarExpression.numericalScalarExpression();
+
+            if (numericalScalarExpression.condenseExpression() != null) {
+              const condenseExpression = numericalScalarExpression.condenseExpression();
+
+              if (condenseExpression.generalCondenseExpression() != null) {
+                generalCondenseExpression = condenseExpression.generalCondenseExpression();
+
+              }
+            }
+          }
+        }
+
+        if (letClauseWithCoverageExpression.coverageExpression().switchCaseExpression() != null || letClauseWithCoverageExpression.coverageExpression().coverageConstructorExpression() != null || letClauseWithCoverageExpression.coverageExpression().coverageConstantExpression() != null || generalCondenseExpression != null) {
+
+          const coverageExpression = this.BeautifyCoverageExpression(letClauseWithCoverageExpression.coverageExpression());
+          letClause += `\n${indent(coverageExpression, this.prefix)}`;
+
+        } else {
+          const coverageExpression = this.BeautifyCoverageExpression(letClauseWithCoverageExpression.coverageExpression());
+          letClause += indentNewLine(coverageExpression, this.prefix);
+        }
       }
+
       if (letClauseWithCoverageExpression.wktExpression() != null) {
         const wktExpression = this.BeautifyWktExpression(letClauseWithCoverageExpression.wktExpression());
         letClause += indentNewLine(wktExpression, this.prefix);
@@ -906,7 +934,11 @@ export class WCPSBeautifier extends ParseTreeListener {
     const covExpr = this.BeautifyCoverageExpression(node.coverageExpression());
     const axises = node.axisIterator_list().map(this.BeautifyAxisIterator.bind(this)).join(', ');
     let output = '';
-    output += `${transformCase(node.COVERAGE().getText(), this.options.caseTransform)} ${covName}\n${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axises}\n${transformCase(node.VALUES().getText(), this.options.caseTransform)} ${indentNewLine(covExpr, this.prefix)}`;
+    if (covExpr.length > 30) {
+      output += `${transformCase(node.COVERAGE().getText(), this.options.caseTransform)} ${covName}\n${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axises}\n${transformCase(node.VALUES().getText(), this.options.caseTransform)}\n${indent(covExpr, this.prefix)}`;
+    } else {
+      output += `${transformCase(node.COVERAGE().getText(), this.options.caseTransform)} ${covName}\n${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axises}\n${transformCase(node.VALUES().getText(), this.options.caseTransform)} ${covExpr}`;
+    }
 
     return output;
   }
@@ -1054,9 +1086,9 @@ export class WCPSBeautifier extends ParseTreeListener {
   BeautifySwitchCaseExpression(node: SwitchCaseExpressionContext): string {
     let output = `${transformCase(node.SWITCH().getText(), this.options.caseTransform)}\n`;
     const cases = node.switchCaseElementList().switchCaseElement_list().map(this.BeautifySwitchCaseElement.bind(this)).join(`\n`);
-    output += indent(cases, this.prefix);
+    output += cases;
     output += "\n";
-    output += indent(this.BeautifySwitchCaseDefaultElement(node.switchCaseDefaultElement()), this.prefix);
+    output += this.BeautifySwitchCaseDefaultElement(node.switchCaseDefaultElement());
 
     return output;
   }
@@ -1156,7 +1188,7 @@ export class WCPSBeautifier extends ParseTreeListener {
 
       return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(dimCrsList, this.prefix)},\n{${indent(intType, this.prefix)}}\n)`;
     }
-    
+
     return `${transformCase(node.CRS_TRANSFORM().getText(), this.options.caseTransform)}(\n${indent(covName, this.prefix)},\n${indent(dimCrsList, this.prefix)}\n)`;
   }
 

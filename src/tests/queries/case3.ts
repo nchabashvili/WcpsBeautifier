@@ -29,12 +29,14 @@ export const output =
 LET $nir := $cov.nir,
     $red := $cov.red,
     $ndvi := ($nir - $red) / ($nir + $red),
-    $maskedNDVI := SWITCH
-            CASE $ndvi > 0.2
-                RETURN $ndvi
-            DEFAULT
-                RETURN 0,
-    $aggregatedSum := CONDENSE +
+    $maskedNDVI := 
+        SWITCH
+        CASE $ndvi > 0.2
+            RETURN $ndvi
+        DEFAULT
+            RETURN 0,
+    $aggregatedSum := 
+        CONDENSE +
         OVER $lat Lat(0:90)
         USING $maskedNDVI[Lat($lat)],
     $scaled := SCALE($maskedNDVI, {Lat(2), Long(2)}),

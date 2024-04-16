@@ -1,6 +1,26 @@
 implementation 
 
-1. recieved grammar from [name];
+1. before starting coding i knew that project had to be done in javascript but after thinking about it i decided to write it in typescript to handle type security
+and to test my code esasily after finishing it.to start implementing my project i needed to find a way to write a parser. [description of what parser is]. 
+thankfully there exists a tool called antlr, which i wanted to use. I recieved grammar file and WCPS Lexer Tokens from Dimitar Mishev.. antlr tool takes a grammar file written in antlr syntax and compiles a parser in the desired language.
+[description of how antlr works].
+after generating the parser in typescript i spent time understanding how this parser worked and how my code would comunicate with the parser to differenciate different expressions from eachother.
+after this i got an example query from ChatCube [description found on chatcube website : "About ChatCUBE:
+Let AI build your datacube query!
+WCPS is the worldwide standard for geo datacube analytics, characterized by its conciseness, zero-coding, and flexibility. WCPS queries are significantly easier to write than python code, and they run significantly faster than python.
+Neveretheless, there is syntax to memorize. Beginners ask themselves "how to start with datacube queries?", and experts wonder "what was that special construct again, and what was its syntax?".
+AI comes to help. ChatCUBE is an OpenAI-based tool which can explain WCPS concepts and can write queries for you. Best of all: it understands natural language! As such, it is a valuable tool for quick query writing, in addition to the online tutorials.
+While the chat bot does its best queries are not necessarily always entirely correct; crosscheck before deploying them! ChatCUBE is an experimental service under development by rasdaman GmbH with support by the Large-Scale Scientific Information Systems Research Group at Constructor University, developed in the course of the FAIRiCUBE and Cube4EnvSec projects. The service is free to use, and you can help us in using it and providing feedback. We collect anonymized usage data to improve the service continuously. Using it you accept this.
+"]. i started my code with a method that takes a single argument: a ParserRuleContext named node.
+The method has a return type of void, which means it doesn’t return any value.
+The method contains several conditional checks using the if statements.
+Each if block checks whether the given node belongs to a specific type of context (ForClauseListContext, LetClauseListContext, WhereClauseContext, ReturnClauseContext).
+ForClauseListContext and LetClauseListContext are similar because they both start with a string and then are followed by a list of expressions that are joined by a comma and a new line and both of them call functions to beautify their expressions. function BeautifyForClause gets called with an argument forClause_list using a map so every string in the list gets beautified and then join by a comma and a new line in instance of ForClauseListContext.
+similarly in instance of LetClauseListContext BeautifyLetClause gets called with argument letClause_list and using map function every input gets beautified that is in the list just like in the instance of ForClauseListContext
+WhereClauseContext and ReturnClauseContext functions also look similar. they also start with a string Where and Return. after this both are followed by a Coverage expression. in instance of where and return they just call their respective beautifing functions called BeautifyWhereClause and BeautifyReturnClause.
+
+
+recieved grammar file from Dimitar Mishev.;
 2. removed labels from the grammar file to access clauses easily
 3. created a parser from the grammar File using antl;
 4. started working in index.ts.

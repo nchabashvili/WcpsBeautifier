@@ -1341,24 +1341,25 @@ export class WCPSBeautifier extends ParseTreeListener {
   BeautifyWktPointElementList(node: WktPointElementListContext): string {
     const wktPoints = node.wktPoints_list().map(this.BeautifyWktPoints.bind(this));
 
-    return `(${wktPoints.join('), ')})`;
+    return `${wktPoints.join(', ')}`;
   }
 
   BeautifyWktPoints(node: WktPointsContext): string {
-    let output: string[] = [];
-    let constants: string[] = [];
-    constants = node.constant_list().map(node => node.getText());
 
-    for (let i = 0; i < output.length; i + 2) {
+    let constants =  node.constant_list().map(node => node.getText());
+    let output = [];
+
+    for (let i = 0; i < constants.length; i += 2) {
       output.push(`${constants[i]} ${constants[i + 1]}`);
     }
 
-    return output.join(', ');
+    return `(${output.join(', ')})`;
+    
   }
 
   BeautifyDecodeCoverageExpression(node: DecodeCoverageExpressionContext): string {
     const decode = transformCase(node.DECODE().getText(), this.options.caseTransform);
-    let output = "${decode}(\n";
+    let output = `${decode}(\n`;
     output += node.positionalParamater();
     if (node.extraParams() != null) output += `, ${node.extraParams().getText()}`;
     output += "\n)";

@@ -9,7 +9,7 @@ return encode(
     values
       condense + over $z y(domain($cov1, y))
       using $cov1[x($x), y($z)] * $cov2[x($z), y($y)],
-    POLYGON((30 10, 40 40, 20 40, 10 20, 30 10))
+    polygon((30 10, 40 40, 20 40, 10 20, 30 10))
   ),
   "image/png"
 )`
@@ -26,7 +26,13 @@ RETURN
                 CONDENSE +
                 OVER $z y(DOMAIN($cov1, y))
                 USING $cov1[x($x), y($z)] * $cov2[x($z), y($y)],
-            POLYGON((30 10, 40 40, 20 40, 10 20, 30 10))
+            POLYGON((
+                30 10,
+                40 40,
+                20 40,
+                10 20,
+                30 10
+            ))
         ),
         "image/png"
     )`

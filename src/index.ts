@@ -1,9 +1,9 @@
 import { WCPSBeautifier } from "./WCPSBeautifier";
 
 const beautifier = new WCPSBeautifier({
-    tabSize: 2,
+    tabSize: 4,
     useTabs: false,
-    caseTransform: 'lowercase',
+    caseTransform: 'uppercase',
 });
 
 const input0 = `FOR $c in (CoverageName)
@@ -130,9 +130,32 @@ return encode(
   "image/png"
 )
 `
+const input10 = `for c in (test_eobstest)
+return
+  encode(
+    clip( c,
+          corridor(
+            projection(Lat, Long),
+            LineString(4566099.12252 2999080.94347 "1950-01-01",
+                       4566099.12252 3248973.78965 "1950-01-02"),
+            Polygon((4452779.63173 2875744.62435, 4452779.63173 3503549.8435,
+                     5009377.0857 3503549.8435, 5009377.0857 2875744.62435) )
+          ),
+          "http://localhost:8080/def/crs/EPSG/0/3857"
+    ),
+    "application/gml+xml"
+  )`
+
+const input11 =
+`for $c in (test_irr_cube_2)
+return
+ encode(scale($c[ansi("2008-01-01T02:01:20":"2008-01-08T00:02:58")] ,{ E:"CRS:1"(0:20), N:"CRS:1"(0:10) }
+   )
+ , "json" )`;
 
 
-const inputs = [input0, input1, input2, input3, input4, input5, input6, input7, input8, input9];
+
+const inputs = [input0, input1, input2, input3, input4, input5, input6, input7, input8, input9, input10, input11];
 
 const result = inputs.map((input)=>{
     return beautifier.beautify(input);

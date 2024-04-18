@@ -19,6 +19,9 @@ import * as caseLower7 from "./lowerCases/case7"
 import * as caseLower8 from "./lowerCases/case8"
 import * as caseLower9 from "./lowerCases/case9"
 import * as caseLower10 from "./lowerCases/case10"
+import * as caseCap1 from "./capitalize/case1";
+import * as caseCap2 from "./capitalize/case2"
+
 
 
 describe('WCPSBeautifier', () => {
@@ -105,5 +108,16 @@ describe('WCPSBeautifier', () => {
             const beautifier = new WCPSBeautifier(caseLower10.options)
             expect(beautifier.beautify(caseLower10.input)).toEqual(caseLower10.output);
         })
+    })
+    describe('capitalize, tab = 3', () => {
+        test('#1', () => {
+            const beautifier = new WCPSBeautifier(caseCap1.options)
+            expect(beautifier.beautify(caseCap1.input)).toEqual(caseCap1.output);
+        })
+        test('#2', () => {
+            const beautifier = new WCPSBeautifier(caseCap2.options)
+            expect(beautifier.beautify(caseCap2.input)).toEqual(caseCap2.output);
+        })
+        
     })
 })

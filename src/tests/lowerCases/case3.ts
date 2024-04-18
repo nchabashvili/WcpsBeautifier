@@ -39,7 +39,11 @@ let $nir := $cov.nir,
     condense +
     over $lat Lat(0:90)
     using $maskedNDVI[Lat($lat)],
-  $scaled := scale($maskedNDVI, {Lat(2), Long(2)}),
+  $scaled := 
+    scale(
+      $maskedNDVI,
+      {Lat(2), Long(2)}
+    ),
   $yRange := domain($cov, y),
   $temporalSubset := $cov[ansi("2020-01-01T00:00:00Z":"2020-12-31T23:59:59Z")],
   $spatialSubset := $cov[Lat(30:60), Long(10:40)],

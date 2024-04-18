@@ -5,7 +5,7 @@ import {
   ParseTreeWalker,
   ParserRuleContext,
 } from 'antlr4';
-import WCPSLexer from './grammar/WCPSLexer';
+import WCPSLexer from './grammar/wcpsLexer';
 import WCPSParser, {
   ForClauseListContext,
   LetClauseListContext,
@@ -70,7 +70,7 @@ import WCPSParser, {
   WktPointElementListContext,
   WktPointsContext,
   RangeConstructorExpressionContext
-} from './grammar/WCPSParser';
+} from './grammar/wcpsParser';
 
 import { CaseTransforms, indent, transformCase, indentNewLine } from './utils';
 
@@ -621,6 +621,7 @@ export class WCPSBeautifier extends ParseTreeListener {
   }
 
   BeautifyCoverageExpression(node: CoverageExpressionContext): string {
+
 
     if (node.coverageExpressionInParenthesis() != null) {
       return `(${this.BeautifyCoverageExpression(node.coverageExpressionInParenthesis().coverageExpression())})`;

@@ -1,9 +1,9 @@
 import { WCPSBeautifier } from "./WCPSBeautifier";
 
 const beautifier = new WCPSBeautifier({
-    tabSize: 4,
+    tabSize: 3,
     useTabs: false,
-    caseTransform: 'uppercase',
+    caseTransform: 'capitalize',
 });
 
 const input0 = `FOR $c in (CoverageName)
@@ -12,7 +12,8 @@ RETURN
     ENCODE(
         $c[$dom],
         "text/csv"
-    )`
+    )
+`
 
 const input1 = `for $c in (CoverageName),$z in (CoverageName)
 let $kernel1:=coverage kernel1 over $x x(-1:1), $y y(-1:1) value list <1; 0; -1; 2; 0; -2; 1; 0; -1>,
@@ -27,6 +28,7 @@ using $kernel1[x($kx1), y($ky1)] * $c[x($px1 + $kx1), y($py1 + $ky1)],
     "image/png"
   )
 `
+
 const input5 = `for $cov1 in(CoverageName1),$cov2 in(CoverageName2),
 $cov3 in(CoverageName3) let threshold:=100,$cov1filtered:=
 switch case $cov1>threshold return $cov1 default return 0,$cov2filtered:=
@@ -35,6 +37,7 @@ case $cov3>threshold return $cov3 default return 0
 return encode(switch case $cov3filtered>0 return $cov3filtered case $cov2filtered>0 return 
   $cov2filtered default return $cov1filtered,"image/png")
 `
+
 const input4 = `for $cov1 in (Coverage1), $cov2 in (Coverage2)
 let $threshold := 200,
     $filteredCov1 := switch case $cov1 > $threshold return $cov1 default return 0,
@@ -59,7 +62,7 @@ return {red: 0; green: 0; blue: 255} case 23 > $c[ansi("2014-07"), Lat(35:75), L
   return {red: 255; green: 255; blue: 0} 
   case 30 > $c[ansi("2014-07"), Lat(35:75), Long(-20:40)]  return {red: 255; green: 140; blue: 0} 
 default return {red: 255; green: 0; blue: 0}, "image/png")
-`;
+`
 
 const input2 = `for $cov in (CoverageName)
 let $nir := $cov.nir,
@@ -83,7 +86,7 @@ return
     },
     "application/json"
   )
-`;
+`
 
 const input6 = `for $c in (CoverageName)
 let $subset := $c[Lat(10:50), Long(10:50)],
@@ -95,7 +98,7 @@ return
     $avgValue,
     "image/png"
   )
-`;
+`
 
 const input7 = `for $c in (CoverageName)
 return encode(
@@ -130,41 +133,42 @@ return encode(
   "image/png"
 )
 `
-const input10 = `for c in (test_eobstest)
+
+const input10 = 
+`for c in (test_eobstest)
 return
   encode(
-    clip( c,
-          corridor(
-            projection(Lat, Long),
-            LineString(4566099.12252 2999080.94347 "1950-01-01",
-                       4566099.12252 3248973.78965 "1950-01-02"),
-            Polygon((4452779.63173 2875744.62435, 4452779.63173 3503549.8435,
-                     5009377.0857 3503549.8435, 5009377.0857 2875744.62435) )
-          ),
-          "http://localhost:8080/def/crs/EPSG/0/3857"
+clip( c,
+corridor(
+projection(Lat, Long),
+LineString(4566099.12252 2999080.94347 "1950-01-01",4566099.12252 3248973.78965 "1950-01-02"),
+Polygon((4452779.63173 2875744.62435, 4452779.63173 3503549.8435,5009377.0857 3503549.8435, 5009377.0857 2875744.62435) )
+),
+"http://localhost:8080/def/crs/EPSG/0/3857"
     ),
     "application/gml+xml"
-  )`
+  )
+`
 
-const input11 =
-`for $c in (test_irr_cube_2)
+const input11 = `for $c in (test_irr_cube_2)
 return
  encode(scale($c[ansi("2008-01-01T02:01:20":"2008-01-08T00:02:58")] ,{ E:"CRS:1"(0:20), N:"CRS:1"(0:10) }
    )
- , "json" )`;
+ , "json" )
+ `
 
 
-const input12 = `
-for $c in (test_wms_3d_time_series_irregular)
+const input12 = `for $c in (test_wms_3d_time_series_irregular)
+where a = c
 return
     encode(
             FLIP $c[Lat(40:90), Long(80:140)] + 20 ALONG unix
-          , "json")`
+          , "json")
+`
 
 
-// const inputs = [input0, input1, input2, input3, input4, input5, input6, input7, input8, input9, input10, input11];
+const inputs = [input10];
 
-const inputs = [input12];
 
 const result = inputs.map((input)=>{
     return beautifier.beautify(input);

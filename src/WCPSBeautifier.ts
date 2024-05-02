@@ -69,7 +69,8 @@ import WCPSParser, {
   WktExpressionContext,
   WktPointElementListContext,
   WktPointsContext,
-  RangeConstructorExpressionContext
+  RangeConstructorExpressionContext,
+  FlipExpressionContext
 } from './grammar/wcpsParser';
 
 import { CaseTransforms, indent, transformCase, indentNewLine } from './utils';
@@ -540,20 +541,19 @@ export class WCPSBeautifier extends ParseTreeListener {
 
     if (node.numericalComparissonOperator() != null) {
       let output = "";
-
-      output += this.BeautifyNumericalScalarExpression(node.numericalScalarExpression(0));
+      const numScalExp = node.numericalScalarExpression_list().map(this.BeautifyNumericalScalarExpression.bind(this));
+      output += numScalExp[0];
       output += node.numericalComparissonOperator().getText();
-      output += this.BeautifyNumericalScalarExpression(node.numericalScalarExpression(1));
+      output += numScalExp[1];
 
       return output;
     }
 
-    if (node.stringOperator != null) {
+    if (node.stringOperator() != null) {
       let output = "";
-
       output += node.stringScalarExpression(0).getText();
       output += node.stringOperator().getText();
-      output += node.stringScalarExpression(1);
+      output += node.stringScalarExpression(1).getText();
 
       return output;
     }
@@ -621,8 +621,6 @@ export class WCPSBeautifier extends ParseTreeListener {
   }
 
   BeautifyCoverageExpression(node: CoverageExpressionContext): string {
-
-
     if (node.coverageExpressionInParenthesis() != null) {
       return `(${this.BeautifyCoverageExpression(node.coverageExpressionInParenthesis().coverageExpression())})`;
     }
@@ -847,9 +845,9 @@ export class WCPSBeautifier extends ParseTreeListener {
     }
 
     if (node.flipExpression() != null) {
-      const covExp1 = this.BeautifyCoverageExpression(node.coverageExpression(0));
 
-      return `${transformCase(node.flipExpression().FLIP().getText(), this.options.caseTransform)} ${covExp1} ${transformCase(node.flipExpression().ALONG().getText(), this.options.caseTransform)} ${node.flipExpression().axisName().getText()}`;
+      return this.BeautifyFlipExpression(node.flipExpression());
+
     }
 
     if (node.sortExpression() != null) {
@@ -1044,6 +1042,14 @@ export class WCPSBeautifier extends ParseTreeListener {
     }
     output += `(${covExpr}, ${numScalExp})`;
     return output;
+  }
+
+  BeautifyFlipExpression(node: FlipExpressionContext): string {
+
+    const covExp1 = this.BeautifyCoverageExpression(node.coverageExpression());
+    const flip = transformCase(node.FLIP().getText(), this.options.caseTransform);
+
+    return `${flip} ${covExp1} ${transformCase(node.ALONG().getText(), this.options.caseTransform)} ${node.axisName().getText()}`;
   }
 
   BeautifyUnaryPowerExpression(node: UnaryPowerExpressionContext): string {
@@ -1256,13 +1262,14 @@ export class WCPSBeautifier extends ParseTreeListener {
       if (node.crsName() != null) {
         const crsName = node.crsName().getText();
 
-        return `${clip}(\n${indent(covNam, this.prefix)}, ${corridor}(\n${indent(projection, this.prefix.repeat(2))}(${label1}, ${label2}),\n${indent(wkt1, this.prefix.repeat(2))},\n${indent(wkt2, this.prefix.repeat(2))}\n${indent(discrete, this.prefix.repeat(2))}),\n${indent(crsName, this.prefix)})`;
+        return `${clip}(\n${indent(covNam, this.prefix)}, ${corridor}(\n${indent(projection, this.prefix.repeat(2))}(${label1}, ${label2}),\n${indent(wkt1, this.prefix.repeat(2))},\n${indent(wkt2, this.prefix.repeat(2))}\n${indent(discrete, this.prefix.repeat(2))}\n${indent(')', this.prefix)},\n${indent(crsName, this.prefix)}\n)`;
 
       }
-      return `${clip}(\n${indent(covNam, this.prefix)}, ${corridor}(\n${indent(projection, this.prefix.repeat(2))}(${label1}, ${label2}),\n${indent(wkt1, this.prefix.repeat(2))},\n${indent(wkt2, this.prefix.repeat(2))}\n${indent(discrete, this.prefix.repeat(2))})\n)`;
-    }
+      return `${clip}(\n${indent(covNam, this.prefix)}, ${corridor}(\n${indent(projection, this.prefix.repeat(2))}(${label1}, ${label2}),\n${indent(wkt1, this.prefix.repeat(2))},\n${indent(wkt2, this.prefix.repeat(2))}\n${indent(discrete, this.prefix.repeat(2))}\n${indent(')', this.prefix)},\n)`;
 
-    return `${clip}(\n${indent(covNam, this.prefix)}, ${corridor}(\n${indent(projection, this.prefix.repeat(2))}(${label1}, ${label2}),\n${indent(wkt1, this.prefix.repeat(2))},\n${indent(wkt2, this.prefix.repeat(2))}\n${indent(')', this.prefix)}\n)`;
+    }
+    return `${clip}(\n${indent(covNam, this.prefix)}, ${corridor}(\n${indent(projection, this.prefix.repeat(2))}(${label1}, ${label2}),\n${indent(wkt1, this.prefix.repeat(2))},\n${indent(wkt2, this.prefix.repeat(2))}\n${indent(')', this.prefix)},\n)`;
+
   }
 
   BeautifyClipCurtainExpression(node: ClipCurtainExpressionContext): string {
@@ -1277,10 +1284,10 @@ export class WCPSBeautifier extends ParseTreeListener {
 
     if (node.crsName() != null) {
       const crsName = node.crsName().getText();
-      return `${clip}(${covExp}, ${curtain}(${projection}(${label1}, ${label2}), ${wkt}), ${crsName})`;
+      return `${clip}(\n${indent(covExp, this.prefix)},\n${indent(curtain, this.prefix)}(\n${indent(projection, this.prefix.repeat(2))}(${label1}, ${label2}),\n${indent(wkt, this.prefix.repeat(2))}\n${indent(')', this.prefix)},\n${indent(crsName, this.prefix)}\n)`;
     }
 
-    return `${clip}(${covExp}, ${curtain}(${projection}(${label1}, ${label2}), ${wkt}))`;
+    return `${clip}(\n${indent(covExp, this.prefix)},\n${indent(curtain, this.prefix)}(\n${indent(projection, this.prefix.repeat(2))}(${label1}, ${label2}),\n${indent(wkt, this.prefix.repeat(2))}\n${indent(')', this.prefix)},\n)`;
   }
 
   BeautifyunaryArithmeticExpression(node: UnaryArithmeticExpressionContext): string {

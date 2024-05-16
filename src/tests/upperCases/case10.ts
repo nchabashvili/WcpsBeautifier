@@ -5,7 +5,8 @@ export const input =
 return encode(
   clip(
     coverage result
-    over $x x(domain($cov1, x)), $y y(domain($cov1, y))
+    over $x x(domain($cov1, x)),
+        $y y(domain($cov1, y))
     values
       condense + over $z y(domain($cov1, y))
       using $cov1[x($x), y($z)] * $cov2[x($z), y($y)],
@@ -21,7 +22,8 @@ RETURN
     ENCODE(
         CLIP(
             COVERAGE result
-            OVER $x x(DOMAIN($cov1, x)), $y y(DOMAIN($cov1, y))
+            OVER $x x(DOMAIN($cov1, x)),
+                $y y(DOMAIN($cov1, y))
             VALUES
                 CONDENSE +
                 OVER $z y(DOMAIN($cov1, y))

@@ -134,7 +134,7 @@ export class WCPSBeautifier extends ParseTreeListener {
 
     let output = transformCase(node.ENCODE().getText(), this.options.caseTransform);
     output += '(\n';
-    // LUKA: indent example
+    
     output += indent(this.BeautifyCoverageExpression(node.coverageExpression()), this.prefix);
     output += `,\n${indent(node.STRING_LITERAL().getText(), this.prefix)}`;
     if (node.extraParams() != null) output += `, ${node.extraParams().getText()}`;
@@ -218,11 +218,9 @@ export class WCPSBeautifier extends ParseTreeListener {
     } else {
       whereClause += ' ';
     }
-    if (this.BeautifyCoverageExpression(node.coverageExpression()).length > 35) {
-      whereClause += '\n' + indent(this.BeautifyCoverageExpression(node.coverageExpression()), this.prefix) + '\n';
-    } else {
-      whereClause += this.BeautifyCoverageExpression(node.coverageExpression());
-    }
+    
+    whereClause += this.BeautifyCoverageExpression(node.coverageExpression());
+  
     if (hasRight) whereClause += ')';
 
     return whereClause;
@@ -425,7 +423,7 @@ export class WCPSBeautifier extends ParseTreeListener {
 
     const lines = [
       `${transformCase(node.CONDENSE().getText(), this.options.caseTransform)} ${condenseExprOperator}`,
-      `${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axisIteratorList.join(', ')}`,
+      `${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axisIteratorList.join(`,\n${this.prefix}`)}`,
     ];
 
     if (whereClause !== null) {
@@ -918,7 +916,7 @@ export class WCPSBeautifier extends ParseTreeListener {
   BeautifyCoverageConstructorExpression(node: CoverageConstructorExpressionContext): string {
     const covName = node.COVERAGE_VARIABLE_NAME().getText();
     const covExpr = this.BeautifyCoverageExpression(node.coverageExpression());
-    const axises = node.axisIterator_list().map(this.BeautifyAxisIterator.bind(this)).join(', ');
+    const axises = node.axisIterator_list().map(this.BeautifyAxisIterator.bind(this)).join(`,\n${this.prefix}`);
     let output = '';
     if (covExpr.length > 30) {
       output += `${transformCase(node.COVERAGE().getText(), this.options.caseTransform)} ${covName}\n${transformCase(node.OVER().getText(), this.options.caseTransform)} ${axises}\n${transformCase(node.VALUES().getText(), this.options.caseTransform)}\n${indent(covExpr, this.prefix)}`;

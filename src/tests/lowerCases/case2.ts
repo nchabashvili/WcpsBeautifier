@@ -33,18 +33,22 @@ return
     sqrt(
       pow(
         coverage Gx
-        over $px1 x($xrange), $py1 y($yrange)
+        over $px1 x($xrange),
+          $py1 y($yrange)
         values
           condense +
-          over $kx1 x(-1:1), $ky1 y(-1:1)
+          over $kx1 x(-1:1),
+            $ky1 y(-1:1)
           using $kernel1[x($kx1), y($ky1)] * $c[x($px1 + $kx1), y($py1 + $ky1)],
         2.0
       ) + pow(
         coverage Gy
-        over $px2 x($xrange), $py2 y($yrange)
+        over $px2 x($xrange),
+          $py2 y($yrange)
         values
           condense +
-          over $kx2 x(-1:1), $ky2 y(-1:1)
+          over $kx2 x(-1:1),
+            $ky2 y(-1:1)
           using $kernel2[x($kx2), y($ky2)] * $c[x($px2 + $kx2), y($py2 + $ky2)],
         2.0
       )

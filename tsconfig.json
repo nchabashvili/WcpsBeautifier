@@ -1,3 +1,4 @@
+//code for running in TypeScript
 {
   "compilerOptions": {
     "module": "commonjs",
@@ -10,3 +11,24 @@
   },
   "include": ["src"]
 }
+
+
+// when we want to transpile to JS remove code above and use this
+// {
+//   "compilerOptions": {
+//     "target": "es6",
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "lib": ["ESNext", "DOM"],
+//     "declaration": false,
+//     "experimentalDecorators": true,
+//     "noImplicitReturns": true,
+//     "resolveJsonModule": true,
+//     "noUnusedLocals": false,
+//     "allowJs": true,
+//     "strict": true,
+//     "types": ["jest", "node"],
+//     "outDir": "./dist/js"
+//   },
+//   "include": ["src"]
+// }

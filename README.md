@@ -17,4 +17,9 @@ inputs can be written in index.ts
 change code in tsconfig.json. view the file.
 run commands
 `npm i webpack webpack-cli --save-dev`
+
 `npm run build`
+
+check dist/lib/WCPSBeautifier.js
+
+change code back in tsconfig.json

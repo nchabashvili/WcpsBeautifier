@@ -3,8 +3,17 @@ formats any type of WCPS query if it is grammatically correct.
 
 # Set up
 
-install node.js by following instructions on this link:
+1. install node.js by following instructions on this link:
 [install node.js and NPM](https://nodejs.org/en/download/package-manager)
+
+2. run these commands:
+```bash
+npm install
+```
+```bash
+npm run build
+```
+
 
 
 # How To Use
@@ -14,10 +23,6 @@ install node.js by following instructions on this link:
 3. Press Ctrl+C to see the formatted query appear below the inputted one.
 
 # Run
-
-```bash
-npm run build
-```
 
 ```bash
 npm run run

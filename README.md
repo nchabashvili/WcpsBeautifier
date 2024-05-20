@@ -1,5 +1,6 @@
 # WCPS code formatter
 formats any type of WCPS query if it is grammatically correct.
+Using beautifier functions written in ./src/WCPSBeautifier.ts
 
 # Set up
 
@@ -13,8 +14,6 @@ npm install
 ```bash
 npm run build
 ```
-
-
 
 # How To Use
 

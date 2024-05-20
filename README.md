@@ -16,6 +16,10 @@ install node.js by following instructions on this link:
 # Run
 
 ```bash
+npm run build
+```
+
+```bash
 npm run run
 ```
 

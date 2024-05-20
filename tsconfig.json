@@ -1,4 +1,4 @@
-//code for running in TypeScript
+// //code for running in TypeScript
 {
   "compilerOptions": {
     "module": "commonjs",
@@ -13,7 +13,8 @@
 }
 
 
-// when we want to transpile to JS remove code above and use this
+//when we want to transpile to JS remove code above and use this
+
 // {
 //   "compilerOptions": {
 //     "target": "es6",
